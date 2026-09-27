@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { motion, AnimatePresence } from 'framer-motion'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -15,13 +14,10 @@ const VIDEOS = [
   { id: 'OPf0YbXqDm0', title: 'Lighting & Texturing' },
   { id: '2Vv-BfVoq4g', title: 'Rigging Showcase' },
   { id: 'fJ9rUzIMcZQ', title: 'Motion Graphics Reel' },
-  { id: 'YQHsXMglC9A', title: 'Animation Pipeline' },
 ]
 
 export default function Showreel() {
   const sectionRef = useRef(null)
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [direction, setDirection] = useState(0)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -39,57 +35,29 @@ export default function Showreel() {
         scrollTrigger: { trigger: '.showreel-heading', start: 'top 85%' },
       })
 
-      gsap.from('.showreel-player-wrapper', {
+      gsap.from('.showreel-card', {
         y: 50,
         opacity: 0,
-        scale: 0.97,
-        duration: 1,
+        scale: 0.9,
+        duration: 0.8,
+        stagger: 0.1,
         ease: 'power3.out',
-        scrollTrigger: { trigger: '.showreel-player-wrapper', start: 'top 85%' },
+        scrollTrigger: { trigger: '.showreel-grid', start: 'top 85%' },
       })
     }, sectionRef)
 
     return () => ctx.revert()
   }, [])
 
-  const goPrev = () => {
-    const newIndex = currentIndex === 0 ? VIDEOS.length - 1 : currentIndex - 1
-    setDirection(-1)
-    setCurrentIndex(newIndex)
-  }
-
-  const goNext = () => {
-    const newIndex = currentIndex === VIDEOS.length - 1 ? 0 : currentIndex + 1
-    setDirection(1)
-    setCurrentIndex(newIndex)
-  }
-
-  const video = VIDEOS[currentIndex]
-
-  const slideVariants = {
-    enter: (dir) => ({
-      x: dir > 0 ? 80 : -80,
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (dir) => ({
-      x: dir > 0 ? -80 : 80,
-      opacity: 0,
-    }),
-  }
-
   return (
     <section
       id="showreel"
       ref={sectionRef}
-      className="relative py-20 lg:py-32 px-6 lg:px-8"
+      className="relative py-16 lg:py-24 px-6 lg:px-8"
       aria-label="Showreel"
     >
-      <div className="max-w-5xl mx-auto relative z-10">
-        <div className="text-center mb-10">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-16">
           <p className="showreel-label section-label justify-center mb-4">
             Showreel
           </p>
@@ -101,109 +69,30 @@ export default function Showreel() {
           </p>
         </div>
 
-        {/* Main Video Container */}
-        <div className="showreel-player-wrapper flex flex-col gap-6">
-          <div className="showreel-container w-full relative rounded-2xl overflow-hidden aspect-video border border-tropixie-border bg-tropixie-bg-alt shadow-lg">
-            <AnimatePresence mode="wait" custom={direction}>
-              <motion.div
-                key={currentIndex}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  x: { type: 'spring', stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.2 },
-                }}
-                className="absolute inset-0"
-              >
+        <div className="showreel-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {VIDEOS.map((video) => (
+            <div 
+              key={video.id} 
+              className="showreel-card flex flex-col gap-4 group"
+            >
+              <div className="relative rounded-2xl overflow-hidden aspect-video border border-tropixie-border bg-tropixie-bg-alt shadow-lg group-hover:border-tropixie-primary transition-colors duration-300">
                 <iframe
-                  src={`https://www.youtube.com/embed/${video.id}?rel=0&modestbranding=1&color=white`}
+                  src={`https://www.youtube.com/embed/${video.id}?autoplay=0&mute=1&loop=1&playlist=${video.id}&rel=0&modestbranding=1`}
                   title={video.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="w-full h-full absolute inset-0"
                   style={{ border: 'none' }}
                   loading="lazy"
                 />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Thumbnails Row */}
-          <div className="showreel-thumbnails-row flex items-center justify-between gap-4 mt-4">
-            {/* Left Arrow */}
-            <motion.button
-              onClick={goPrev}
-              className="showreel-arrow shrink-0"
-              aria-label="Previous video"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </motion.button>
-
-            {/* 4 Frames of Thumbnails */}
-            <div className="flex-1 flex gap-3 sm:gap-4 overflow-hidden">
-              {Array.from({ length: 4 }).map((_, i) => {
-                const indexToShow = (currentIndex + i) % VIDEOS.length;
-                const thumbVideo = VIDEOS[indexToShow];
-                const isActive = i === 0;
-
-                return (
-                  <button
-                    key={`${thumbVideo.id}-${i}`}
-                    onClick={() => {
-                      setDirection(i > 0 ? 1 : -1);
-                      setCurrentIndex(indexToShow);
-                    }}
-                    className={`relative flex-1 aspect-video rounded-lg overflow-hidden border-2 transition-all duration-300 ${
-                      isActive ? 'border-tropixie-primary scale-100 opacity-100 shadow-lg' : 'border-transparent scale-95 opacity-60 hover:opacity-100 hover:scale-100'
-                    }`}
-                  >
-                    <img
-                      src={`https://img.youtube.com/vi/${thumbVideo.id}/hqdefault.jpg`}
-                      alt={thumbVideo.title}
-                      className="w-full h-full object-cover"
-                    />
-                    {isActive && (
-                      <div className="absolute inset-0 bg-tropixie-primary/20 pointer-events-none"></div>
-                    )}
-                  </button>
-                );
-              })}
+              </div>
+              <div className="px-2">
+                <p className="text-lg font-bold text-tropixie-heading group-hover:text-tropixie-primary transition-colors">
+                  {video.title}
+                </p>
+              </div>
             </div>
-
-            {/* Right Arrow */}
-            <motion.button
-              onClick={goNext}
-              className="showreel-arrow shrink-0"
-              aria-label="Next video"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </motion.button>
-          </div>
-
-          {/* Video Title + Counter */}
-          <div className="showreel-info flex items-center justify-between mt-2 px-2">
-            <p className="showreel-video-title text-lg font-bold text-tropixie-heading">{video.title}</p>
-            <div className="showreel-counter font-space tracking-widest text-sm">
-              <span className="text-tropixie-primary font-bold">
-                {String(currentIndex + 1).padStart(2, '0')}
-              </span>
-              <span className="text-tropixie-text-dim mx-1">/</span>
-              <span className="text-tropixie-text-dim">
-                {String(VIDEOS.length).padStart(2, '0')}
-              </span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 

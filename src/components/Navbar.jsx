@@ -56,11 +56,11 @@ export default function Navbar() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center gap-2 cursor-pointer"
+            className="flex items-center gap-3 cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img src="/logo.png" alt="Tropixie" className="h-8 w-auto" />
-            <span className="text-tropixie-heading font-semibold text-lg tracking-wide font-[var(--font-space)]">
+            <img src="/logo.png" alt="Tropixie" className="h-15 lg:h-18 w-auto" />
+            <span className="text-tropixie-heading font-bold text-2xl lg:text-3xl tracking-widest uppercase font-[var(--font-space)]">
               Tropixie
             </span>
           </motion.div>

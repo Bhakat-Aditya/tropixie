@@ -7,7 +7,7 @@ export default function Hero() {
   const [bgIndex, setBgIndex] = useState(0)
 
   const backgrounds = [
-    '/1.jpg', '/2.jpg', '/3.jpg', '/4.jpg', 
+    '/1.jpg', '/2.jpg', '/3.jpg', '/4.jpg',
     '/5.jpg', '/6.jpg', '/7.jpeg', '/8.jpg'
   ]
 
@@ -114,14 +114,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 flex flex-col items-center gap-5">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="hero-subtitle"
-        >
-          Animation Studio
-        </motion.p>
+
 
         {/* Animated title */}
         <h1 className="hero-title overflow-hidden" ref={titleRef}>
@@ -135,6 +128,15 @@ export default function Hero() {
             </span>
           ))}
         </h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="hero-subtitle"
+        >
+          Animation Studio
+        </motion.p>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
