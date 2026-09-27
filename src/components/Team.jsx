@@ -1,9 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const TEAM = [
   {
@@ -57,189 +53,191 @@ const TEAM = [
 ]
 
 export default function Team() {
-  const sectionRef = useRef(null)
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [direction, setDirection] = useState(0)
-  const [isPaused, setIsPaused] = useState(false)
+  const [selectedMember, setSelectedMember] = useState(null)
+  const carouselRef = useRef(null)
 
+  // Prevent background scrolling when modal is open
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.team-header', {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        scrollTrigger: { trigger: '.team-header', start: 'top 85%' }
-      })
-      
-      gsap.from('.monitor-frame', {
-        y: 60,
-        opacity: 0,
-        scale: 0.95,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: '.monitor-frame', start: 'top 85%' }
-      })
-    }, sectionRef)
-    return () => ctx.revert()
-  }, [])
+    if (selectedMember) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [selectedMember])
 
-  useEffect(() => {
-    if (isPaused) return
-    const timer = setInterval(() => {
-      setDirection(1)
-      setCurrentIndex((prev) => (prev + 1) % TEAM.length)
-    }, 2000)
-    return () => clearInterval(timer)
-  }, [isPaused])
-
-  const handleNext = () => {
-    setDirection(1)
-    setCurrentIndex((prev) => (prev + 1) % TEAM.length)
-  }
-
-  const handlePrev = () => {
-    setDirection(-1)
-    setCurrentIndex((prev) => (prev - 1 + TEAM.length) % TEAM.length)
-  }
-
-  const handleDragEnd = (e, { offset }) => {
-    const swipe = offset.x
-    if (swipe < -50) {
-      setDirection(1)
-      setCurrentIndex((prev) => (prev + 1) % TEAM.length)
-    } else if (swipe > 50) {
-      setDirection(-1)
-      setCurrentIndex((prev) => (prev - 1 + TEAM.length) % TEAM.length)
+  const scrollLeft = () => {
+    if (carouselRef.current) {
+      const scrollAmount = carouselRef.current.clientWidth;
+      carouselRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' })
     }
   }
 
-  const slideVariants = {
-    enter: (dir) => ({
-      x: dir > 0 ? '100%' : '-100%',
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (dir) => ({
-      x: dir > 0 ? '-100%' : '100%',
-      opacity: 0,
-    })
+  const scrollRight = () => {
+    if (carouselRef.current) {
+      const scrollAmount = carouselRef.current.clientWidth;
+      carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+    }
   }
 
-  const activeMember = TEAM[currentIndex]
-
   return (
-    <section 
-      id="team" 
-      ref={sectionRef} 
-      className="relative py-16 lg:py-24 bg-tropixie-bg overflow-hidden" 
-      aria-label="Our team"
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
-        
-        <div className="team-header text-center max-w-3xl mx-auto mb-16">
-          <p className="section-label justify-center mb-4">Our Team</p>
-          <h2 className="section-heading mb-6">The Creative Minds</h2>
-          <p className="text-tropixie-text-muted text-lg font-light leading-relaxed">
-            Meet the talented individuals who bring stories to life. Swipe through to learn more about them.
-          </p>
-        </div>
-
-        {/* The "Small Monitor" Frame */}
-        <div 
-          className="monitor-frame max-w-5xl mx-auto p-3 lg:p-5 bg-gradient-to-b from-gray-200 to-gray-400 rounded-[2.5rem] lg:rounded-[3rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)]"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={() => setIsPaused(true)}
-          onTouchEnd={() => setIsPaused(false)}
-        >
-          {/* The Inner Screen */}
-          <div className="monitor-screen relative w-full h-[650px] lg:h-[550px] bg-white rounded-3xl lg:rounded-[2.5rem] overflow-hidden shadow-inner flex flex-col lg:flex-row">
-            
-            <AnimatePresence mode="popLayout" initial={false} custom={direction}>
-              <motion.div
-                key={currentIndex}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ type: 'spring', stiffness: 300, damping: 35 }}
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={1}
-                onDragEnd={handleDragEnd}
-                className="absolute inset-0 flex flex-col lg:flex-row w-full h-full cursor-grab active:cursor-grabbing"
+    <>
+      <section id="team" className="relative py-20 lg:py-28 bg-tropixie-light overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          
+          {/* Header & Controls */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div className="flex flex-col">
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-4 mb-4"
               >
-                {/* Left side: Image */}
-                <div className="w-full lg:w-1/2 h-[45%] lg:h-full relative overflow-hidden bg-tropixie-bg-alt">
-                  <img 
-                    src={activeMember.image} 
-                    alt={activeMember.name} 
-                    className="w-full h-full object-cover object-top pointer-events-none"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
-                  
-                  {/* Floating badge inside screen */}
-                  <div className="absolute bottom-6 left-6 z-10 pointer-events-none">
-                    <span className="bg-white/20 backdrop-blur-md text-white border border-white/30 text-xs font-space font-bold tracking-widest uppercase px-4 py-2 rounded-full shadow-lg">
-                      {activeMember.role}
-                    </span>
-                  </div>
-                </div>
+                <span className="text-tropixie-primary font-[var(--font-space)] tracking-[0.15em] text-sm font-semibold uppercase">Our Team</span>
+                <div className="h-[2px] w-12 bg-tropixie-primary"></div>
+              </motion.div>
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-3xl md:text-4xl font-bold font-[var(--font-space)] text-[#1a102b]"
+              >
+                Meet Our Creative Family
+              </motion.h2>
+            </div>
 
-                {/* Right side: Info */}
-                <div className="w-full lg:w-1/2 h-[55%] lg:h-full p-8 lg:p-14 flex flex-col justify-center bg-white">
-                  <div className="mb-2">
-                    <span className="text-tropixie-primary font-space font-semibold tracking-widest text-xs uppercase mb-2 block">
-                      {String(currentIndex + 1).padStart(2, '0')} / {String(TEAM.length).padStart(2, '0')}
-                    </span>
-                    <h3 className="text-3xl lg:text-4xl font-space font-bold text-tropixie-heading mb-4 leading-tight">
-                      {activeMember.name}
-                    </h3>
+            {/* Carousel Arrows */}
+            <div className="flex gap-4">
+              <button 
+                onClick={scrollLeft}
+                className="w-12 h-12 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-500 hover:border-tropixie-primary hover:bg-tropixie-primary hover:text-white transition-all shadow-sm"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
+              </button>
+              <button 
+                onClick={scrollRight}
+                className="w-12 h-12 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-500 hover:border-tropixie-primary hover:bg-tropixie-primary hover:text-white transition-all shadow-sm"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+              </button>
+            </div>
+          </div>
+
+          {/* Carousel Grid - Shows exactly 4 on large screens */}
+          <div 
+            ref={carouselRef}
+            className="flex overflow-x-auto gap-6 pb-8 pt-4 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 lg:mx-0 lg:px-0"
+            style={{ scrollBehavior: 'smooth' }}
+          >
+            {TEAM.map((member, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: (idx % 4) * 0.1, duration: 0.4 }}
+                onClick={() => setSelectedMember(member)}
+                // Math for 4 items: (100% - (3 gaps * 1.5rem)) / 4
+                // 1.5rem = 24px gap. 3 gaps = 72px total gap space.
+                className="group relative cursor-pointer flex-shrink-0 snap-center rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgba(168,85,247,0.15)] hover:-translate-y-2 transition-all duration-300 w-[260px] md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-4.5rem)/4)]"
+              >
+                <div className="aspect-[3/4] relative w-full h-full bg-gray-100">
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" 
+                  />
+                  {/* Elegant Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a102b]/90 via-[#1a102b]/20 to-transparent"></div>
+                  
+                  {/* Simple Info Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end text-center">
+                    <h4 className="font-bold text-white font-[var(--font-space)] text-xl mb-1 truncate drop-shadow-md">
+                      {member.name}
+                    </h4>
+                    <div className="flex items-center justify-center gap-2 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                      <span className="text-tropixie-primary font-semibold text-sm">View Profile</span>
+                      <svg className="w-4 h-4 text-tropixie-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
                   </div>
-                  <div className="w-12 h-1 bg-tropixie-primary rounded-full mb-6 shrink-0" />
-                  <p className="text-tropixie-text-muted text-sm lg:text-base leading-relaxed font-light overflow-y-auto pr-2 pb-8 lg:pb-0" style={{ scrollbarWidth: 'none' }}>
-                    {activeMember.bio}
-                  </p>
                 </div>
               </motion.div>
-            </AnimatePresence>
-
-            {/* Navigation Arrows */}
-            <div className="absolute inset-y-0 left-0 right-0 flex justify-between items-center px-4 lg:px-6 pointer-events-none z-30">
-              <button 
-                onClick={handlePrev}
-                className="pointer-events-auto w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/70 backdrop-blur-md border border-white text-tropixie-heading flex items-center justify-center hover:bg-white hover:text-tropixie-primary hover:scale-105 transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.1)]"
-                aria-label="Previous"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-              </button>
-              <button 
-                onClick={handleNext}
-                className="pointer-events-auto w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/70 backdrop-blur-md border border-white text-tropixie-heading flex items-center justify-center hover:bg-white hover:text-tropixie-primary hover:scale-105 transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.1)]"
-                aria-label="Next"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-              </button>
-            </div>
-
-            {/* Pagination Dots Layered over the Screen */}
-            <div className="absolute bottom-6 right-8 lg:right-14 z-20 flex gap-2 pointer-events-none">
-              {TEAM.map((_, i) => (
-                <div 
-                  key={i} 
-                  className={`h-2 rounded-full transition-all duration-300 ${i === currentIndex ? 'w-6 bg-tropixie-primary' : 'w-2 bg-tropixie-border'}`}
-                />
-              ))}
-            </div>
-
+            ))}
           </div>
-        </div>
 
-      </div>
-    </section>
+        </div>
+      </section>
+
+      {/* Team Member Modal */}
+      <AnimatePresence>
+        {selectedMember && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedMember(null)}
+              className="fixed inset-0 bg-[#0d0718]/80 backdrop-blur-sm z-[200]"
+            />
+            <motion.div
+              data-lenis-prevent
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-[2rem] z-[201] shadow-2xl flex flex-col md:flex-row overflow-hidden"
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setSelectedMember(null)}
+                className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-white/50 backdrop-blur-md md:bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-full flex items-center justify-center transition-colors z-10 shadow-sm"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+              </button>
+
+              {/* Image Side */}
+              <div className="w-full md:w-[45%] flex-shrink-0 aspect-square md:aspect-auto md:h-full min-h-[300px] relative bg-gray-100 flex items-center justify-center p-6 md:p-10">
+                <img 
+                  src={selectedMember.image} 
+                  alt={selectedMember.name} 
+                  className="w-full h-full max-h-[60vh] object-contain rounded-2xl shadow-md"
+                />
+              </div>
+
+              {/* Content Side */}
+              <div className="w-full md:w-[55%] p-8 md:p-12 flex flex-col justify-center bg-tropixie-light">
+                <span className="inline-block px-4 py-1.5 rounded-full bg-tropixie-primary/10 text-tropixie-primary font-semibold text-xs tracking-widest uppercase mb-4 w-max">
+                  {selectedMember.role}
+                </span>
+                
+                <h3 className="text-3xl md:text-4xl font-bold font-[var(--font-space)] text-[#1a102b] mb-6">
+                  {selectedMember.name}
+                </h3>
+                
+                <p className="text-gray-600 font-[var(--font-outfit)] text-base md:text-lg leading-relaxed mb-8">
+                  {selectedMember.bio}
+                </p>
+
+                {/* Social Icons inside Modal */}
+                <div className="flex items-center gap-4 mt-auto">
+                  <a href="#" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:text-white hover:bg-tropixie-primary transition-all">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg>
+                  </a>
+                  <a href="#" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:text-white hover:bg-tropixie-primary transition-all">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                  </a>
+                  <a href="#" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:text-white hover:bg-tropixie-primary transition-all">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   )
 }

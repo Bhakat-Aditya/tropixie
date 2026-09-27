@@ -9,6 +9,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
 import Showreel from './components/Showreel'
+import Students from './components/Students'
 import Team from './components/Team'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -38,7 +39,15 @@ export default function App() {
     gsap.ticker.add(raf)
     gsap.ticker.lagSmoothing(0)
 
+    const stopScroll = () => lenis.stop()
+    const startScroll = () => lenis.start()
+
+    window.addEventListener('stop-scroll', stopScroll)
+    window.addEventListener('start-scroll', startScroll)
+
     return () => {
+      window.removeEventListener('stop-scroll', stopScroll)
+      window.removeEventListener('start-scroll', startScroll)
       gsap.ticker.remove(raf)
       lenis.destroy()
     }
@@ -59,8 +68,9 @@ export default function App() {
         <main>
           <Hero />
           <About />
-          <Services />
           <Showreel />
+          <Students />
+          <Services />
           <Team />
           <Contact />
         </main>

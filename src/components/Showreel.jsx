@@ -1,102 +1,70 @@
-import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { motion } from 'framer-motion'
 
-gsap.registerPlugin(ScrollTrigger)
-
-const VIDEOS = [
-  { id: 'dQw4w9WgXcQ', title: 'Tropixie Showreel 2024' },
-  { id: 'ScMzIvxBSi4', title: 'Character Animation Demo' },
-  { id: '9bZkp7q19f0', title: '3D Modeling Breakdown' },
-  { id: 'kJQP7kiw5Fk', title: 'VFX Reel' },
-  { id: 'JGwWNGJdvx8', title: 'Behind the Scenes' },
-  { id: 'RgKAFK5djSk', title: 'Studio Tour' },
-  { id: 'OPf0YbXqDm0', title: 'Lighting & Texturing' },
-  { id: '2Vv-BfVoq4g', title: 'Rigging Showcase' },
-  { id: 'fJ9rUzIMcZQ', title: 'Motion Graphics Reel' },
+const PROJECTS = [
+  { id: 1, img: '/1.jpg', title: 'Animation 1' },
+  { id: 2, img: '/2.jpg', title: 'Animation 2' },
+  { id: 3, img: '/3.jpg', title: 'Animation 3' },
+  { id: 4, img: '/4.jpg', title: 'Animation 4' },
+  { id: 5, img: '/5.jpg', title: 'Animation 5' },
+  { id: 6, img: '/6.jpg', title: 'Animation 6' },
 ]
 
 export default function Showreel() {
-  const sectionRef = useRef(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.showreel-label', {
-        x: -40,
-        opacity: 0,
-        duration: 0.7,
-        scrollTrigger: { trigger: '.showreel-label', start: 'top 85%' },
-      })
-
-      gsap.from('.showreel-heading', {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        scrollTrigger: { trigger: '.showreel-heading', start: 'top 85%' },
-      })
-
-      gsap.from('.showreel-card', {
-        y: 50,
-        opacity: 0,
-        scale: 0.9,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: '.showreel-grid', start: 'top 85%' },
-      })
-    }, sectionRef)
-
-    return () => ctx.revert()
-  }, [])
-
   return (
-    <section
-      id="showreel"
-      ref={sectionRef}
-      className="relative py-16 lg:py-24 px-6 lg:px-8"
-      aria-label="Showreel"
-    >
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <p className="showreel-label section-label justify-center mb-4">
-            Showreel
-          </p>
-          <h2 className="showreel-heading section-heading mb-4">
-            Watch Our Work
-          </h2>
-          <p className="text-tropixie-text-muted max-w-xl mx-auto text-base lg:text-lg leading-relaxed">
-            A glimpse into the stories, characters, and worlds we bring to life through the magic of animation.
-          </p>
+    <section id="portfolio" className="relative py-20 lg:py-32 bg-tropixie-dark-card border-y border-tropixie-border">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        
+        {/* Header */}
+        <div className="flex flex-col items-center text-center mb-16">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-tropixie-secondary font-[var(--font-space)] tracking-[0.2em] text-sm font-semibold uppercase mb-4"
+          >
+            Portfolio
+          </motion.span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="flex items-center gap-4"
+          >
+            <div className="h-[1px] w-12 md:w-24 bg-tropixie-border"></div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-[var(--font-space)] text-white">
+              Our Recent Work
+            </h2>
+            <div className="h-[1px] w-12 md:w-24 bg-tropixie-border"></div>
+          </motion.div>
         </div>
 
-        <div className="showreel-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {VIDEOS.map((video) => (
-            <div 
-              key={video.id} 
-              className="showreel-card flex flex-col gap-4 group"
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PROJECTS.map((project, idx) => (
+            <motion.div 
+              key={project.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, duration: 0.5 }}
+              className="group relative rounded-2xl overflow-hidden aspect-video bg-tropixie-dark border border-tropixie-border cursor-pointer shadow-lg"
             >
-              <div className="relative rounded-2xl overflow-hidden aspect-video border border-tropixie-border bg-tropixie-bg-alt shadow-lg group-hover:border-tropixie-primary transition-colors duration-300">
-                <iframe
-                  src={`https://www.youtube.com/embed/${video.id}?autoplay=0&mute=1&loop=1&playlist=${video.id}&rel=0&modestbranding=1`}
-                  title={video.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full absolute inset-0"
-                  style={{ border: 'none' }}
-                  loading="lazy"
-                />
+              <img src={project.img} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
+              
+              {/* Play Button Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center bg-tropixie-dark/20 group-hover:bg-transparent transition-colors duration-300">
+                <div className="w-14 h-14 rounded-full border-2 border-tropixie-primary flex items-center justify-center bg-tropixie-dark/60 backdrop-blur-sm group-hover:bg-tropixie-primary transition-all duration-300 group-hover:scale-110">
+                  <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                </div>
               </div>
-              <div className="px-2">
-                <p className="text-lg font-bold text-tropixie-heading group-hover:text-tropixie-primary transition-colors">
-                  {video.title}
-                </p>
-              </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
 
-      <div className="section-divider mt-20 lg:mt-32" />
+
+
+      </div>
     </section>
   )
 }

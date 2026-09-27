@@ -1,201 +1,94 @@
-import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import { motion } from 'framer-motion'
 
 export default function Contact() {
-  const sectionRef = useRef(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.contact-header', {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        scrollTrigger: { trigger: '.contact-header', start: 'top 85%' },
-      })
-
-      gsap.from('.contact-item', {
-        x: -30,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 0.7,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: '.contact-list', start: 'top 85%' },
-      })
-
-      gsap.from('.contact-form', {
-        x: 30,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: '.contact-form', start: 'top 85%' },
-      })
-
-      gsap.from('.support-banner', {
-        scale: 0.95,
-        opacity: 0,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: { trigger: '.support-banner', start: 'top 85%' },
-      })
-    }, sectionRef)
-
-    return () => ctx.revert()
-  }, [])
-
   return (
-    <section
-      id="contact"
-      ref={sectionRef}
-      className="relative py-16 lg:py-24 px-6 lg:px-8 bg-tropixie-bg-alt overflow-hidden"
-      aria-label="Contact us"
-    >
-      {/* Decorative background orbs */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-tropixie-primary/10 to-transparent rounded-full blur-[100px] -z-10 transform translate-x-1/3 -translate-y-1/3" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-tropixie-secondary/10 to-transparent rounded-full blur-[100px] -z-10 transform -translate-x-1/3 translate-y-1/3" />
-
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section id="contact" className="relative py-20 bg-tropixie-light">
+      <div className="max-w-[1400px] mx-auto px-4 lg:px-8">
         
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 mb-24">
+        <div className="flex flex-col lg:flex-row gap-6">
           
-          {/* Left Column — Info */}
-          <div>
-            <div className="contact-header mb-12">
-              <p className="section-label mb-4 text-tropixie-primary font-space tracking-widest text-sm uppercase">Get in touch</p>
-              <h2 className="section-heading mb-6 text-5xl lg:text-7xl font-space font-bold leading-tight text-tropixie-heading">
-                Let&apos;s Create<br />Together.
+          {/* Main Contact Box */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex-grow lg:w-[65%] bg-gradient-to-r from-[#5a219e] to-[#b326a0] rounded-3xl p-8 md:p-12 text-white shadow-2xl flex flex-col md:flex-row gap-8 lg:gap-12"
+          >
+            {/* Left side: Info */}
+            <div className="flex-1 flex flex-col justify-center">
+              <span className="font-[var(--font-space)] tracking-[0.15em] text-xs font-semibold uppercase mb-2 text-white/80">
+                Let's Create
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-[var(--font-space)] mb-4 leading-tight">
+                Something Amazing Together
               </h2>
-              <p className="text-tropixie-text-muted text-lg leading-relaxed max-w-md font-light">
-                Have an idea, project, or collaboration in mind? We&apos;d love to hear from you and craft something extraordinary.
+              <p className="text-white/80 text-sm md:text-base font-[var(--font-outfit)] leading-relaxed mb-10 max-w-sm">
+                Have an idea, project, or collaboration in mind? We'd love to hear from you!
               </p>
-            </div>
-
-            <div className="contact-list grid gap-6">
-              {/* Email */}
-              <div className="contact-item">
-                <div className="contact-info-item group items-center">
-                  <div className="w-14 h-14 rounded-2xl bg-tropixie-primary/10 flex items-center justify-center text-tropixie-primary group-hover:bg-tropixie-primary group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                  </div>
-                  <div>
-                    <p className="text-tropixie-text-dim font-space text-xs uppercase tracking-widest mb-1">Email</p>
-                    <a href="mailto:hello.tropixie@gmail.com" className="text-xl lg:text-2xl font-space font-medium text-tropixie-heading group-hover:text-tropixie-primary transition-colors">
-                      hello.tropixie@gmail.com
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Phone */}
-              <div className="contact-item">
-                <div className="contact-info-item group items-center">
-                  <div className="w-14 h-14 rounded-2xl bg-tropixie-secondary/10 flex items-center justify-center text-tropixie-secondary group-hover:bg-tropixie-secondary group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                  </div>
-                  <div>
-                    <p className="text-tropixie-text-dim font-space text-xs uppercase tracking-widest mb-1">Phone</p>
-                    <a href="tel:+918436601135" className="text-xl lg:text-2xl font-space font-medium text-tropixie-heading group-hover:text-tropixie-secondary transition-colors">
-                      +91 84366 01135
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Address */}
-              <div className="contact-item">
-                <div className="contact-info-item group items-center">
-                  <div className="w-14 h-14 rounded-2xl bg-tropixie-magenta/10 flex items-center justify-center text-tropixie-magenta group-hover:bg-tropixie-magenta group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                  </div>
-                  <div>
-                    <p className="text-tropixie-text-dim font-space text-xs uppercase tracking-widest mb-1">Office</p>
-                    <p className="text-base font-space text-tropixie-heading leading-relaxed">
-                      Swajan, Michael Madhusudan Nagar,<br />
-                      Midnapur Town, Dist. Paschim Midnapore<br />
-                      (West Bengal) — Pin 721101
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column — Form */}
-          <div className="contact-form">
-            <div className="glass-card p-8 lg:p-12 rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(124,58,237,0.1)] relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-tropixie-primary/5 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2" />
               
-              <h3 className="text-3xl font-space font-bold text-tropixie-heading mb-8">Send us a message</h3>
-              <form className="space-y-6" onSubmit={(e) => {
-                e.preventDefault();
-                const formData = new FormData(e.target);
-                const firstName = formData.get('firstName') || '';
-                const lastName = formData.get('lastName') || '';
-                const email = formData.get('email') || '';
-                const message = formData.get('message') || '';
+              <div className="space-y-4 font-[var(--font-outfit)] text-sm">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center shrink-0">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                  </div>
+                  <span>+91 12345 67890</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center shrink-0">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                  </div>
+                  <span>hello@tropixie.com</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center shrink-0">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                  </div>
+                  <span>Medinipur, West Bengal, India</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right side: Form */}
+            <div className="flex-1 bg-white rounded-2xl p-6 md:p-8 flex flex-col justify-between shadow-lg">
+              <form className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input type="text" placeholder="Your Name" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 outline-none focus:border-tropixie-primary transition-colors" />
+                  <input type="email" placeholder="Your Email" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 outline-none focus:border-tropixie-primary transition-colors" />
+                </div>
+                <input type="text" placeholder="Subject" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 outline-none focus:border-tropixie-primary transition-colors" />
+                <textarea placeholder="Your Message" rows="4" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 outline-none focus:border-tropixie-primary transition-colors resize-none"></textarea>
                 
-                const text = `Hello Tropixie!%0A%0A*Name:* ${firstName} ${lastName}%0A*Email:* ${email}%0A*Message:* ${message}`;
-                const url = `https://wa.me/918436601135?text=${text}`;
-                window.open(url, '_blank');
-              }}>
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-tropixie-text-muted px-1 tracking-wide">First Name</label>
-                    <input type="text" name="firstName" required className="w-full bg-white/60 border border-tropixie-border rounded-2xl px-5 py-4 outline-none focus:border-tropixie-primary focus:ring-4 focus:ring-tropixie-primary/10 transition-all shadow-sm" placeholder="John" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-tropixie-text-muted px-1 tracking-wide">Last Name</label>
-                    <input type="text" name="lastName" required className="w-full bg-white/60 border border-tropixie-border rounded-2xl px-5 py-4 outline-none focus:border-tropixie-primary focus:ring-4 focus:ring-tropixie-primary/10 transition-all shadow-sm" placeholder="Doe" />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-tropixie-text-muted px-1 tracking-wide">Email Address</label>
-                  <input type="email" name="email" required className="w-full bg-white/60 border border-tropixie-border rounded-2xl px-5 py-4 outline-none focus:border-tropixie-primary focus:ring-4 focus:ring-tropixie-primary/10 transition-all shadow-sm" placeholder="john@example.com" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-tropixie-text-muted px-1 tracking-wide">Message</label>
-                  <textarea rows="4" name="message" required className="w-full bg-white/60 border border-tropixie-border rounded-2xl px-5 py-4 outline-none focus:border-tropixie-primary focus:ring-4 focus:ring-tropixie-primary/10 transition-all shadow-sm resize-none" placeholder="Tell us about your project..."></textarea>
-                </div>
-                <button type="submit" className="w-full cta-button justify-center py-5 text-base tracking-widest mt-6 shadow-xl shadow-tropixie-primary/20">
-                  <span>Send via WhatsApp</span>
-                  <span className="text-lg">💬</span>
+                <button type="button" className="bg-[#f97316] text-white font-semibold font-[var(--font-outfit)] py-3 px-8 rounded-full text-sm inline-flex items-center gap-2 hover:bg-[#ea580c] transition-colors w-max mt-4">
+                  Send Message
+                  <svg className="w-4 h-4 ml-1 transform rotate-45 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
                 </button>
               </form>
             </div>
-          </div>
-        </div>
+          </motion.div>
 
-        {/* Support Our Journey Banner */}
-        <div className="support-banner relative rounded-[2.5rem] overflow-hidden group shadow-2xl">
-          {/* Animated gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-tropixie-primary via-tropixie-heading to-tropixie-secondary opacity-95 transition-opacity duration-700 group-hover:opacity-100 -z-10" />
-          <div className="absolute inset-0 bg-[url('/2.jpg')] bg-cover bg-center mix-blend-overlay opacity-30 -z-10 transition-transform duration-1000 group-hover:scale-110" />
-          
-          <div className="relative z-10 p-12 lg:p-20 text-center lg:text-left flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
-            <div className="flex-1 space-y-6 relative">
-              <div className="absolute -left-8 -top-8 w-24 h-24 bg-white/10 rounded-full blur-2xl" />
-              <h3 className="font-space font-extrabold text-4xl lg:text-6xl text-white leading-tight">
-                Support Our<br />Journey
-              </h3>
-              <div className="w-20 h-1.5 bg-gradient-to-r from-white to-white/20 rounded-full mx-auto lg:mx-0" />
+          {/* Map Image (Right column) */}
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="w-full lg:w-[35%] h-[400px] lg:h-auto rounded-3xl overflow-hidden relative shadow-lg border border-gray-200 bg-gray-100"
+          >
+            {/* Placeholder for map image (using a background gradient or static image if we had one) */}
+            <div className="absolute inset-0 bg-[url('https://maps.googleapis.com/maps/api/staticmap?center=Medinipur,West+Bengal&zoom=14&size=600x600&maptype=roadmap&markers=color:purple%7CMedinipur,West+Bengal&key=YOUR_API_KEY')] bg-cover bg-center">
+              {/* Fallback pattern if image doesn't load */}
+              <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] -z-10"></div>
             </div>
-            
-            <div className="flex-[2] space-y-6 text-white/90 text-lg lg:text-xl leading-relaxed font-light">
-              <p>
-                Tropixie is more than a studio—it&apos;s a dream to bring stories, emotions, and imagination to life through animation inspired by Indian folklore and culture. We are building this with limited resources but endless passion.
-              </p>
-              <p>
-                With your support, we can create new jobs and opportunities, helping fresh talent from small towns and humble backgrounds to grow and shine.
-              </p>
-              <p className="font-medium text-white italic text-2xl mt-8">
-                Together, let&apos;s create something meaningful. <span className="text-tropixie-accent-warm">✦</span>
-              </p>
+            {/* Fake Pin */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2 text-sm font-bold text-gray-800 whitespace-nowrap">
+              <div className="w-6 h-6 rounded-full bg-tropixie-primary flex items-center justify-center text-white">
+                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path></svg>
+              </div>
+              Tropixie Animation Studio
             </div>
-          </div>
-        </div>
+          </motion.div>
 
+        </div>
       </div>
     </section>
   )
