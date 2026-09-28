@@ -9,7 +9,6 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
 import Showreel from './components/Showreel'
-import Students from './components/Students'
 import Team from './components/Team'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -69,7 +68,6 @@ export default function App() {
           <Hero />
           <About />
           <Showreel />
-          <Students />
           <Services />
           <Team />
           <Contact />

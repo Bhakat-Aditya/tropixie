@@ -5,7 +5,6 @@ const NAV_LINKS = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
   { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Students', href: '#students' },
   { label: 'Services', href: '#services' },
   { label: 'Team', href: '#team' },
   { label: 'Contact', href: '#contact' },
@@ -46,20 +45,24 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-400 ${
-          scrolled ? 'nav-scrolled py-3' : 'py-5 bg-transparent'
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-400 flex items-center ${
+          scrolled ? 'nav-scrolled h-16' : 'h-20 bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl w-full mx-auto px-4 lg:px-6 flex items-center justify-between h-full">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center cursor-pointer"
+            className="flex items-center cursor-pointer relative w-28 md:w-36 lg:w-58 h-full"
             onClick={() => scrollTo('#hero')}
           >
-            <img src="/logo.png" alt="Tropixie" className="h-10 lg:h-12 w-auto object-contain" />
+            <img 
+              src="/logo.png" 
+              alt="Tropixie" 
+              className="absolute -top-6 md:-top-10 lg:-top-17 left-0 w-full h-auto object-contain drop-shadow-2xl z-[150]" 
+              />
           </motion.div>
 
           {/* Desktop Links */}
@@ -72,14 +75,23 @@ export default function Navbar() {
             {NAV_LINKS.map((link) => (
               <button
                 key={link.href}
-                className={`font-[var(--font-outfit)] text-sm tracking-wide uppercase transition-colors duration-300 ${
+                className={`relative font-[var(--font-outfit)] text-sm tracking-widest uppercase py-1 transition-all duration-300 group ${
                   activeSection === link.href.replace('#', '')
-                    ? 'text-white font-semibold'
-                    : 'text-gray-300 hover:text-white'
+                    ? 'text-white font-bold'
+                    : 'text-gray-400 hover:text-white'
                 }`}
                 onClick={() => scrollTo(link.href)}
               >
                 {link.label}
+                
+                {/* Active & Hover Underline Glow */}
+                <span 
+                  className={`absolute -bottom-2 left-1/2 -translate-x-1/2 h-[2px] rounded-full transition-all duration-300 ${
+                    activeSection === link.href.replace('#', '')
+                      ? 'w-full bg-tropixie-primary shadow-[0_0_12px_rgba(168,85,247,0.9)]'
+                      : 'w-0 bg-white/40 group-hover:w-1/2'
+                  }`}
+                ></span>
               </button>
             ))}
           </motion.div>
@@ -91,7 +103,7 @@ export default function Navbar() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="hidden lg:block"
           >
-            <button className="btn-gradient !py-2 !px-6 text-sm" onClick={() => scrollTo('#contact')}>
+            <button className="btn-gradient !py-2 !px-6 text-sm" onClick={() => scrollTo('#contact-box')}>
               Let's Talk
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
             </button>
@@ -137,7 +149,11 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ delay: i * 0.05, duration: 0.3 }}
-                  className="font-[var(--font-outfit)] text-2xl font-medium text-white tracking-wider uppercase"
+                  className={`relative font-[var(--font-outfit)] text-3xl font-bold tracking-widest uppercase transition-all duration-300 ${
+                    activeSection === link.href.replace('#', '')
+                      ? 'text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-tropixie-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
                   onClick={() => scrollTo(link.href)}
                 >
                   {link.label}
@@ -148,7 +164,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: NAV_LINKS.length * 0.05, duration: 0.3 }}
                 className="btn-gradient mt-8" 
-                onClick={() => scrollTo('#contact')}
+                onClick={() => scrollTo('#contact-box')}
               >
                 Let's Talk
               </motion.button>

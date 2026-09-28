@@ -9,7 +9,7 @@ export default function Footer() {
           
           {/* Col 1 */}
           <div className="flex flex-col gap-6">
-            <img src="/logo.png" alt="Tropixie" className="h-10 w-auto object-contain self-start" />
+            <img src="/logo.png" alt="Tropixie" className="h-20 md:h-24 w-auto object-contain self-start" />
             <p className="text-sm leading-relaxed max-w-xs">
               Bringing imagination to life through animation, VFX, and storytelling.
             </p>
@@ -36,7 +36,6 @@ export default function Footer() {
               <li><a href="#hero" className="hover:text-tropixie-primary transition-colors">Home</a></li>
               <li><a href="#about" className="hover:text-tropixie-primary transition-colors">About Us</a></li>
               <li><a href="#portfolio" className="hover:text-tropixie-primary transition-colors">Portfolio</a></li>
-              <li><a href="#students" className="hover:text-tropixie-primary transition-colors">Students</a></li>
               <li><a href="#services" className="hover:text-tropixie-primary transition-colors">Services</a></li>
               <li><a href="#team" className="hover:text-tropixie-primary transition-colors">Our Team</a></li>
               <li><a href="#contact" className="hover:text-tropixie-primary transition-colors">Contact</a></li>
@@ -50,30 +49,31 @@ export default function Footer() {
               <li><a href="#services" className="hover:text-tropixie-primary transition-colors">3D Animation</a></li>
               <li><a href="#services" className="hover:text-tropixie-primary transition-colors">VFX & Effects</a></li>
               <li><a href="#services" className="hover:text-tropixie-primary transition-colors">Motion Graphics</a></li>
+              <li><a href="#services" className="hover:text-tropixie-primary transition-colors">3D Printing</a></li>
               <li><a href="#services" className="hover:text-tropixie-primary transition-colors">AI-Powered VFX</a></li>
               <li><a href="#services" className="hover:text-tropixie-primary transition-colors">Sound Design</a></li>
             </ul>
           </div>
 
-          {/* Col 4: Newsletter */}
+          {/* Col 4: Contact Info */}
           <div>
-            <h4 className="text-white font-bold font-[var(--font-space)] mb-6 tracking-wide">Newsletter</h4>
-            <p className="text-sm mb-4">
-              Subscribe to get updates about our latest projects and stories.
-            </p>
-            <form className="flex border border-tropixie-border rounded-lg overflow-hidden bg-white/5 focus-within:border-tropixie-primary transition-colors">
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="bg-transparent px-4 py-2 outline-none text-sm w-full text-white placeholder-gray-500"
-              />
-              <button 
-                type="button"
-                className="bg-tropixie-primary hover:bg-tropixie-primary/80 transition-colors px-4 text-white flex items-center justify-center"
-              >
-                <svg className="w-4 h-4 transform rotate-45 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
-              </button>
-            </form>
+            <h4 className="text-white font-bold font-[var(--font-space)] mb-6 tracking-wide">Contact Us</h4>
+            <div className="space-y-4 text-sm flex flex-col">
+              <a href="tel:+918436601135" className="hover:text-white transition-colors flex items-center gap-3">
+                <svg className="w-4 h-4 shrink-0 text-tropixie-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                +91 8436601135
+              </a>
+              <a href="mailto:hello.tropixie@gmail.com" className="hover:text-white transition-colors flex items-center gap-3">
+                <svg className="w-4 h-4 shrink-0 text-tropixie-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                hello.tropixie@gmail.com
+              </a>
+              <div className="flex items-start gap-3">
+                <svg className="w-4 h-4 shrink-0 mt-1 text-tropixie-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <span className="leading-relaxed">
+                  C8M9+37C, Michael Madhusudan Nagar,<br />Midnapore, West Bengal 721101
+                </span>
+              </div>
+            </div>
           </div>
 
         </div>
