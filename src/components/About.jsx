@@ -44,7 +44,9 @@ export default function About() {
               
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-[var(--font-space)] text-[#1a102b] mb-8 leading-tight">
                 Welcome to <br className="hidden sm:block" /> 
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-tropixie-primary via-purple-500 to-tropixie-secondary drop-shadow-lg inline-block mt-2">Tropixie Animation Studio</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-tropixie-primary via-purple-500 to-tropixie-secondary drop-shadow-lg inline-block mt-2">
+                  Tropixie Animation Studio<sup className="text-xl md:text-2xl font-medium ml-1 bg-clip-text text-tropixie-primary">&reg;</sup>
+                </span>
               </h2>
               
               <div className="space-y-5 text-gray-600 font-[var(--font-outfit)] text-lg md:text-xl mb-10 leading-relaxed max-w-4xl mx-auto px-4 text-center">
