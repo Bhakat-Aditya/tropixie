@@ -45,24 +45,27 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-400 flex items-center ${
-          scrolled ? 'nav-scrolled h-16' : 'h-20 bg-transparent'
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-400 flex items-center nav-scrolled ${
+          scrolled ? 'h-16' : 'h-20'
         }`}
       >
         <div className="max-w-7xl w-full mx-auto px-4 lg:px-6 flex items-center justify-between h-full">
-          {/* Logo */}
+          {/* Studio Name */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center cursor-pointer relative w-28 md:w-36 lg:w-58 h-full"
+            className="flex items-center cursor-pointer z-[150] h-full"
             onClick={() => scrollTo('#hero')}
           >
-            <img 
-              src="/logo.png" 
-              alt="Tropixie" 
-              className="absolute -top-6 md:-top-10 lg:-top-17 left-0 w-full h-auto object-contain drop-shadow-2xl z-[150]" 
-              />
+            <div className="font-[var(--font-space)] uppercase flex items-baseline gap-2 md:gap-3 whitespace-nowrap">
+              <span className="font-bold text-xl md:text-2xl lg:text-3xl tracking-[0.1em] text-white">
+                Tropixie
+              </span>
+              <span className="font-light text-[10px] md:text-xs lg:text-sm tracking-[0.25em] text-white/60 hidden sm:inline-block relative bottom-0.5">
+                Animation Studio
+              </span>
+            </div>
           </motion.div>
 
           {/* Desktop Links */}
@@ -96,18 +99,6 @@ export default function Navbar() {
             ))}
           </motion.div>
 
-          {/* Let's Talk Button */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="hidden lg:block"
-          >
-            <button className="btn-gradient !py-2 !px-6 text-sm" onClick={() => scrollTo('#contact-box')}>
-              Let's Talk
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            </button>
-          </motion.div>
 
           {/* Mobile Hamburger */}
           <button
@@ -159,19 +150,12 @@ export default function Navbar() {
                   {link.label}
                 </motion.button>
               ))}
-              <motion.button 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: NAV_LINKS.length * 0.05, duration: 0.3 }}
-                className="btn-gradient mt-8" 
-                onClick={() => scrollTo('#contact-box')}
-              >
-                Let's Talk
-              </motion.button>
+
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
     </>
   )
 }

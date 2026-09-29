@@ -31,32 +31,27 @@ export default function Contact() {
         
         {/* Support Our Journey Section */}
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto mb-16 lg:mb-24 bg-gradient-to-br from-[#0d0718] to-[#150d24] rounded-[2.5rem] p-8 md:p-14 text-center border border-tropixie-primary/20 shadow-[0_20px_50px_rgba(168,85,247,0.15)] relative overflow-hidden group"
+          className="max-w-4xl mx-auto mb-12 bg-gradient-to-r from-[#0d0718] to-[#2a114f] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between border border-tropixie-primary/30 shadow-[0_10px_30px_rgba(168,85,247,0.2)] relative overflow-hidden gap-6"
         >
           {/* Decorative Glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-tropixie-primary/20 rounded-full blur-[80px] -translate-y-1/2 pointer-events-none transition-opacity duration-700 group-hover:opacity-100 opacity-60"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-tropixie-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-[var(--font-space)] mb-8 text-white relative z-10">
-            Support Our Journey
-          </h2>
-          <div className="space-y-6 text-gray-300 font-[var(--font-outfit)] text-base md:text-lg leading-relaxed relative z-10">
-            <p>
-              Tropixie is more than a studio—it’s a dream to bring stories, emotions, and imagination to life through animation inspired by Indian folklore and culture.
+          <div className="relative z-10 text-center md:text-left flex-1">
+            <h3 className="text-2xl md:text-3xl font-bold font-[var(--font-space)] text-white mb-2">
+              Support Our Journey ✨
+            </h3>
+            <p className="text-gray-300 font-[var(--font-outfit)] text-sm md:text-base leading-relaxed max-w-2xl">
+              We are building Tropixie with limited resources but endless passion. Your support helps us create new opportunities for fresh talent from humble backgrounds to shine.
             </p>
-            <p>
-              We are building this with limited resources but endless passion. If our work resonates with you, your support means everything.
+          </div>
+          
+          <div className="relative z-10 flex-shrink-0">
+            <p className="text-xl md:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-tropixie-accent font-[var(--font-cursive)] -rotate-2 drop-shadow-md">
+              Let's grow together.
             </p>
-            <p>
-              With your support, we can create new jobs and opportunities, helping fresh talent from small towns and humble backgrounds to grow and shine. We kindly ask you to stand with us.
-            </p>
-            <div className="pt-6">
-              <p className="text-2xl md:text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-tropixie-accent font-[var(--font-cursive)] inline-block transform -rotate-1 drop-shadow-sm">
-                Together, let’s grow and create something meaningful.
-              </p>
-            </div>
           </div>
         </motion.div>
 

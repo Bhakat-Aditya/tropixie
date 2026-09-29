@@ -12,6 +12,7 @@ import Showreel from './components/Showreel'
 import Team from './components/Team'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import WhatsAppButton from './components/WhatsAppButton'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -64,7 +65,7 @@ export default function App() {
 
       <div className="relative overflow-x-hidden">
         <Navbar />
-        <main>
+        <main style={{ marginTop: '80px' }}>
           <Hero />
           <About />
           <Showreel />
@@ -73,6 +74,7 @@ export default function App() {
           <Contact />
         </main>
         <Footer />
+        <WhatsAppButton />
       </div>
     </>
   )

@@ -19,7 +19,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden" id="hero">
+    <section className="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden" id="hero">
       {/* Background Slideshow */}
       {backgrounds.map((bg, idx) => (
         <div
@@ -28,7 +28,7 @@ export default function Hero() {
             idx === bgIndex ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <img src={bg} alt="Background" className="w-full h-full object-cover" />
+          <img src={bg} alt="Background" className="w-full h-full object-cover object-top" />
         </div>
       ))}
       

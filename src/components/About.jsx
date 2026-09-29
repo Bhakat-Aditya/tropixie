@@ -26,83 +26,61 @@ export default function About() {
     <>
       <section id="about" className="relative py-20 lg:py-32 bg-tropixie-light overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="flex flex-col items-center text-center">
             
-            {/* Left Content */}
+            {/* Center Content */}
             <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8 }}
+              className="flex flex-col items-center w-full"
             >
               <div className="flex items-center gap-4 mb-6">
+                <div className="h-[2px] w-8 md:w-12 bg-tropixie-primary"></div>
                 <span className="text-tropixie-primary font-[var(--font-space)] tracking-widest text-sm font-semibold uppercase">About Us</span>
-                <div className="h-[2px] w-12 bg-tropixie-primary"></div>
+                <div className="h-[2px] w-8 md:w-12 bg-tropixie-primary"></div>
               </div>
               
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-[var(--font-space)] text-[#1a102b] mb-6 leading-tight">
-                Welcome to <br/> <span className="text-tropixie-primary">Tropixie</span> Animation Studio
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-[var(--font-space)] text-[#1a102b] mb-8 leading-tight">
+                Welcome to <br className="hidden sm:block" /> 
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-tropixie-primary via-purple-500 to-tropixie-secondary drop-shadow-lg inline-block mt-2">Tropixie Animation Studio</span>
               </h2>
               
-              <div className="space-y-4 text-gray-600 font-[var(--font-outfit)] text-lg mb-8 leading-relaxed">
+              <div className="space-y-5 text-gray-600 font-[var(--font-outfit)] text-lg md:text-xl mb-10 leading-relaxed max-w-4xl mx-auto px-4 text-center">
                 <p>
-                  In the historic city of Medinipur, Tropixie Animation Studio was born from the dreams and boundless creative passion of a group of young creators.
+                  In the historic city of Medinipur, Tropixie Animation Studio was born from the dreams and boundless creative passion of a group of young creators. Founded with a simple yet powerful vision, we strive to connect with people beyond the boundaries of language and culture.
                 </p>
                 <p>
-                  We blend storytelling tradition with modern technology to create meaningful, engaging, and high-quality animation for a global audience.
+                  We blend rich storytelling traditions with modern technology to create meaningful, high-quality animation. Whether it's 3D animation, VFX, or motion graphics, we serve as a creative space where ideas grow, experiments take shape, and stories come to life.
                 </p>
               </div>
               
               <button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-gradient-to-r from-tropixie-primary to-purple-600 text-white font-semibold py-3 px-8 rounded-full inline-flex items-center gap-2 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                className="bg-gradient-to-r from-tropixie-primary to-purple-600 text-white font-semibold py-4 px-10 rounded-full inline-flex items-center gap-3 hover:shadow-[0_10px_30px_rgba(168,85,247,0.4)] hover:-translate-y-1 transition-all duration-300"
               >
                 Know More About Us
                 <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
                   <svg className="w-3 h-3 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
                 </div>
               </button>
-
-
             </motion.div>
 
-            {/* Right Image Grid */}
+            {/* Bottom Image Grid (Portfolio Showcase) */}
             <motion.div 
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="grid grid-cols-3 gap-3 md:gap-4 h-[400px] sm:h-[500px]"
+              className="w-full mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6"
             >
-              {/* Top row - 2 images */}
-              <div className="col-span-2 row-span-1 rounded-2xl overflow-hidden shadow-lg">
-                <img src={gridImages[0]} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Team member" />
-              </div>
-              <div className="col-span-1 row-span-1 rounded-2xl overflow-hidden shadow-lg">
-                <img src={gridImages[1]} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Team member" />
-              </div>
-              
-              {/* Middle row - 3 images */}
-              <div className="col-span-1 row-span-1 rounded-2xl overflow-hidden shadow-lg">
-                <img src={gridImages[2]} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Team member" />
-              </div>
-              <div className="col-span-1 row-span-1 rounded-2xl overflow-hidden shadow-lg">
-                <img src={gridImages[3]} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Team member" />
-              </div>
-              <div className="col-span-1 row-span-1 rounded-2xl overflow-hidden shadow-lg">
-                <img src={gridImages[4]} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Team member" />
-              </div>
-
-              {/* Bottom row - 3 images */}
-              <div className="col-span-1 row-span-1 rounded-2xl overflow-hidden shadow-lg">
-                <img src={gridImages[5]} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Team member" />
-              </div>
-              <div className="col-span-1 row-span-1 rounded-2xl overflow-hidden shadow-lg">
-                <img src={gridImages[6]} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Team member" />
-              </div>
-              <div className="col-span-1 row-span-1 rounded-2xl overflow-hidden shadow-lg">
-                <img src={gridImages[7]} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Team member" />
-              </div>
+              {gridImages.map((src, idx) => (
+                <div key={idx} className="aspect-square rounded-2xl overflow-hidden shadow-lg group relative border border-gray-100">
+                  <img src={src} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={`Portfolio showcase ${idx + 1}`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+              ))}
             </motion.div>
             
           </div>
