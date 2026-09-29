@@ -100,7 +100,7 @@ export default function Services() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {EXPERTISE.map((service, idx) => (
             <motion.div 
               key={idx}
@@ -109,13 +109,13 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05, duration: 0.5 }}
               onClick={() => setSelectedService(service)}
-              className="cursor-pointer group relative bg-tropixie-dark rounded-xl p-6 border border-tropixie-border hover:border-tropixie-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300"
+              className="cursor-pointer group relative bg-tropixie-dark rounded-xl p-4 sm:p-6 border border-tropixie-border hover:border-tropixie-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300 flex flex-col justify-center items-center"
             >
-              <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-lg border border-tropixie-primary/20 mb-5 group-hover:scale-110 group-hover:border-tropixie-primary transition-all duration-300">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shadow-lg border border-tropixie-primary/20 mb-4 sm:mb-5 group-hover:scale-110 group-hover:border-tropixie-primary transition-all duration-300">
                 <img src={service.icon} alt={service.title} className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-bold text-lg text-white mb-2 font-[var(--font-space)] leading-tight">{service.title}</h3>
-              <p className="text-sm text-gray-400 font-[var(--font-outfit)] truncate">
+              <h3 className="font-bold text-base sm:text-lg text-white mb-2 font-[var(--font-space)] leading-tight w-full text-center">{service.title}</h3>
+              <p className="text-xs sm:text-sm text-gray-400 font-[var(--font-outfit)] w-full text-center line-clamp-2">
                 {service.shortDesc}
               </p>
             </motion.div>
@@ -123,21 +123,21 @@ export default function Services() {
         </div>
 
         {/* 3D Printing Centered Card */}
-        <div className="flex justify-center mt-6">
-          <div className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]">
+        <div className="flex justify-center mt-4 sm:mt-6">
+          <div className="w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.5 }}
               onClick={() => setSelectedService(PRINTING_SERVICE)}
-              className="cursor-pointer group relative bg-tropixie-dark rounded-xl p-6 border border-tropixie-border hover:border-tropixie-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300 h-full"
+              className="flex flex-col justify-center items-center cursor-pointer group relative bg-gradient-to-br from-tropixie-dark to-[#2a134a] rounded-xl p-4 sm:p-6 border border-purple-500/50 shadow-[0_0_25px_rgba(168,85,247,0.3)] hover:shadow-[0_0_35px_rgba(168,85,247,0.6)] hover:border-purple-400 transition-all duration-300 h-full"
             >
-              <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-lg border border-tropixie-primary/20 mb-5 group-hover:scale-110 group-hover:border-tropixie-primary transition-all duration-300">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shadow-[0_0_15px_rgba(168,85,247,0.5)] border border-purple-400/50 mb-4 sm:mb-5 group-hover:scale-110 transition-all duration-300">
                 <img src={PRINTING_SERVICE.icon} alt={PRINTING_SERVICE.title} className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-bold text-lg text-white mb-2 font-[var(--font-space)] leading-tight">{PRINTING_SERVICE.title}</h3>
-              <p className="text-sm text-gray-400 font-[var(--font-outfit)] truncate">
+              <h3 className="font-bold text-base sm:text-lg text-white mb-2 font-[var(--font-space)] leading-tight w-full text-center">{PRINTING_SERVICE.title}</h3>
+              <p className="text-xs sm:text-sm text-gray-400 font-[var(--font-outfit)] w-full text-center line-clamp-2">
                 {PRINTING_SERVICE.shortDesc}
               </p>
             </motion.div>
@@ -146,10 +146,9 @@ export default function Services() {
 
       </div>
 
-      {/* SVG Curve - transitions into the light section */}
-      <svg className="services-curve" viewBox="0 0 1440 120" preserveAspectRatio="none">
-        <path d="M0,60 C480,120 960,120 1440,60 L1440,120 L0,120 Z"></path>
-      </svg>
+      {/* Decorative Glowing Divider */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-gradient-to-r from-transparent via-tropixie-primary to-transparent opacity-70"></div>
+      <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-1/2 h-6 bg-tropixie-primary rounded-full blur-[20px] opacity-30 pointer-events-none"></div>
 
       {/* Service Modal */}
       <AnimatePresence>

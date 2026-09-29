@@ -133,3 +133,15 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% - 1rem)); } /* -100% width minus 1 gap (gap-4) */
+}
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+.marquee-container:hover .animate-marquee {
+  animation-play-state: paused;
+}

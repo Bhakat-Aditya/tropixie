@@ -44,12 +44,6 @@ const TEAM = [
     dpImage: '/6f.jpg',
     bio: 'A positive and hardworking animator, Sarmistha combines strong technical skills with perseverance. She handles challenges with determination and never gives up.',
   },
-  // {
-  //   name: 'Dolon Maity',
-  //   role: '3D Animator',
-  //   image: '/7.jpeg',
-  //   bio: 'Dolon is a highly skilled and dedicated 3D Animator who worked on several national and international animation projects. With professional experience in leading animation studios, Dolon brings both technical excellence and artistic creativity to every project.',
-  // },
   {
     name: 'Shilpa Bhunia',
     role: '3D Rig Artist',
@@ -103,7 +97,7 @@ export default function Team() {
           </div>
 
           {/* Grid - No Scroll, All Visible */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12 pb-8 pt-4">
+          <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-12 pb-8 pt-4">
             {TEAM.map((member, idx) => (
               <motion.div 
                 key={idx}
@@ -112,7 +106,7 @@ export default function Team() {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05, duration: 0.4 }}
                 onClick={() => setSelectedMember(member)}
-                className="flex flex-col items-center cursor-pointer group"
+                className="flex flex-col items-center cursor-pointer group w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)] md:w-[calc(25%-1.125rem)]"
               >
                 <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden mb-6 border-4 border-transparent group-hover:border-tropixie-primary transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.05)] group-hover:shadow-[0_20px_40px_rgba(168,85,247,0.2)] relative bg-gray-100 flex-shrink-0">
                   <img 

@@ -45,7 +45,7 @@ export default function About() {
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-[var(--font-space)] text-[#1a102b] mb-8 leading-tight">
                 Welcome to <br className="hidden sm:block" /> 
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-tropixie-primary via-purple-500 to-tropixie-secondary drop-shadow-lg inline-block mt-2">
-                  Tropixie Animation Studio<sup className="text-xl md:text-2xl font-medium ml-1 bg-clip-text text-tropixie-primary">&reg;</sup>
+                  Tropixie Animation Studio<sup className="text-xl md:text-2xl font-medium ml-1 bg-clip-text text-tropixie-primary">&trade;</sup>
                 </span>
               </h2>
               
@@ -69,20 +69,34 @@ export default function About() {
               </button>
             </motion.div>
 
-            {/* Bottom Image Grid (Portfolio Showcase) */}
+            {/* Bottom Carousel (Infinite Scroll) */}
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="w-full mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6"
+              className="marquee-container w-[100vw] mt-20 overflow-hidden flex gap-4"
+              style={{ maskImage: 'linear-gradient(to right, transparent, black 2%, black 98%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 2%, black 98%, transparent)' }}
             >
-              {gridImages.map((src, idx) => (
-                <div key={idx} className="aspect-square rounded-2xl overflow-hidden shadow-lg group relative border border-gray-100">
-                  <img src={src} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={`Portfolio showcase ${idx + 1}`} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-              ))}
+              {/* First Set */}
+              <div className="flex shrink-0 gap-4 animate-marquee py-4">
+                {[...gridImages, ...gridImages].map((src, idx) => (
+                  <div key={`set1-${idx}`} className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-3xl overflow-hidden shadow-lg group relative border border-gray-200 shrink-0 cursor-pointer">
+                    <img src={src} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={`Portfolio showcase ${idx + 1}`} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Second Set (Duplicate for seamless loop) */}
+              <div className="flex shrink-0 gap-4 animate-marquee py-4" aria-hidden="true">
+                {[...gridImages, ...gridImages].map((src, idx) => (
+                  <div key={`set2-${idx}`} className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-3xl overflow-hidden shadow-lg group relative border border-gray-200 shrink-0 cursor-pointer">
+                    <img src={src} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={`Portfolio showcase duplicate ${idx + 1}`} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                ))}
+              </div>
             </motion.div>
             
           </div>

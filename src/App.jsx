@@ -68,8 +68,8 @@ export default function App() {
         <main style={{ marginTop: '80px' }}>
           <Hero />
           <About />
-          <Showreel />
           <Services />
+          <Showreel />
           <Team />
           <Contact />
         </main>

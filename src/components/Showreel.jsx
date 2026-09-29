@@ -64,9 +64,10 @@ export default function Showreel() {
         </div>
       </div>
 
-      {/* Decorative Glowing Divider */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-gradient-to-r from-transparent via-tropixie-primary to-transparent opacity-70"></div>
-      <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-1/2 h-6 bg-tropixie-primary rounded-full blur-[20px] opacity-30 pointer-events-none"></div>
+      {/* SVG Curve - transitions into the light section */}
+      <svg className="services-curve" viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,60 C480,120 960,120 1440,60 L1440,120 L0,120 Z"></path>
+      </svg>
     </section>
   )
 }

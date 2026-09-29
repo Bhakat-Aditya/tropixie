@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 const NAV_LINKS = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
-  { label: 'Portfolio', href: '#portfolio' },
   { label: 'Services', href: '#services' },
+  { label: 'Portfolio', href: '#portfolio' },
   { label: 'Team', href: '#team' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -24,7 +24,7 @@ export default function Navbar() {
         const el = document.getElementById(sections[i])
         if (el) {
           const rect = el.getBoundingClientRect()
-          if (rect.top <= 200) {
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
             setActiveSection(sections[i])
             break
           }
@@ -58,11 +58,11 @@ export default function Navbar() {
             className="flex items-center cursor-pointer z-[150] h-full"
             onClick={() => scrollTo('#hero')}
           >
-            <div className="font-[var(--font-space)] uppercase flex items-baseline gap-2 md:gap-3 whitespace-nowrap">
-              <span className="font-bold text-xl md:text-2xl lg:text-3xl tracking-[0.1em] text-white">
+            <div className="font-[var(--font-space)] uppercase flex flex-col md:flex-row items-start md:items-baseline whitespace-nowrap leading-tight gap-1 md:gap-2">
+              <span className="font-bold text-xl tracking-[0.1em] text-white">
                 Tropixie
               </span>
-              <span className="font-light text-[10px] md:text-xs lg:text-sm tracking-[0.25em] text-white/60 hidden sm:inline-block relative bottom-0.5">
+              <span className="font-bold text-xl tracking-[0.1em] text-white">
                 Animation Studio
               </span>
             </div>

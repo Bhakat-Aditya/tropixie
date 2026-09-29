@@ -29,32 +29,6 @@ export default function Contact() {
     <section id="contact" className="relative py-20 bg-tropixie-light">
       <div className="max-w-[1400px] mx-auto px-4 lg:px-8">
         
-        {/* Support Our Journey Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto mb-12 bg-gradient-to-r from-[#0d0718] to-[#2a114f] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between border border-tropixie-primary/30 shadow-[0_10px_30px_rgba(168,85,247,0.2)] relative overflow-hidden gap-6"
-        >
-          {/* Decorative Glow */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-tropixie-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
-
-          <div className="relative z-10 text-center md:text-left flex-1">
-            <h3 className="text-2xl md:text-3xl font-bold font-[var(--font-space)] text-white mb-2">
-              Support Our Journey ✨
-            </h3>
-            <p className="text-gray-300 font-[var(--font-outfit)] text-sm md:text-base leading-relaxed max-w-2xl">
-              We are building Tropixie with limited resources but endless passion. Your support helps us create new opportunities for fresh talent from humble backgrounds to shine.
-            </p>
-          </div>
-          
-          <div className="relative z-10 flex-shrink-0">
-            <p className="text-xl md:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-tropixie-accent font-[var(--font-cursive)] -rotate-2 drop-shadow-md">
-              Let's grow together.
-            </p>
-          </div>
-        </motion.div>
-
         <div className="flex flex-col lg:flex-row gap-6">
           
           {/* Main Contact Box */}
@@ -150,6 +124,33 @@ export default function Contact() {
           </motion.div>
 
         </div>
+
+        {/* Support Our Journey Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto mt-12 bg-gradient-to-r from-[#0d0718] to-[#2a114f] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between border border-tropixie-primary/30 shadow-[0_10px_30px_rgba(168,85,247,0.2)] relative overflow-hidden gap-6"
+        >
+          {/* Decorative Glow */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-tropixie-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+
+          <div className="relative z-10 text-center md:text-left flex-1">
+            <h3 className="text-2xl md:text-3xl font-bold font-[var(--font-space)] text-white mb-2">
+              Support Our Journey ✨
+            </h3>
+            <p className="text-gray-300 font-[var(--font-outfit)] text-sm md:text-base leading-relaxed max-w-2xl">
+              We are building Tropixie with limited resources but endless passion. Your support helps us create new opportunities for fresh talent from humble backgrounds to shine.
+            </p>
+          </div>
+          
+          <div className="relative z-10 flex-shrink-0">
+            <p className="text-xl md:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-tropixie-accent font-[var(--font-cursive)] -rotate-2 drop-shadow-md">
+              Let's grow together.
+            </p>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   )
