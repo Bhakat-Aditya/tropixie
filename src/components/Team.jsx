@@ -65,39 +65,41 @@ export default function Team() {
     <>
       <section id="team" className="relative py-20 lg:py-28 bg-tropixie-light overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          
+
           {/* Header */}
-          <div className="flex flex-col items-center text-center mb-16">
+          <div className="flex flex-col items-center text-center mb-16 relative">
+            
+            {/* Elegant Top Header matches About Us */}
             <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-4 mb-6"
+            >
+              <div className="h-[2px] w-8 md:w-12 bg-tropixie-primary"></div>
+              <span className="text-tropixie-primary font-[var(--font-space)] tracking-widest text-sm font-semibold uppercase">Our Team</span>
+              <div className="h-[2px] w-8 md:w-12 bg-tropixie-primary"></div>
+            </motion.div>
+
+            <motion.div
               initial={{ opacity: 0, y: 30, scale: 0.9 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ type: "spring", stiffness: 200, damping: 15 }}
               className="flex flex-col items-center justify-center relative z-10 w-full"
             >
-              {/* "Meet Our" Wooden Pill */}
-              <div className="relative inline-flex items-center justify-center bg-[#c8824f] border-[4px] border-white rounded-full px-8 md:px-10 py-1.5 md:py-2.5 shadow-[0_6px_0_#8f5531,0_15px_20px_rgba(0,0,0,0.15)] mb-2 md:mb-0 z-20 hover:-translate-y-1 transition-transform duration-300">
-                <div className="absolute inset-0 rounded-full shadow-[inset_0_4px_10px_rgba(255,255,255,0.4),inset_0_-4px_10px_rgba(0,0,0,0.15)] pointer-events-none"></div>
-                <span 
-                  className="text-white font-black tracking-wider text-xl md:text-3xl"
-                  style={{ 
-                    fontFamily: "var(--font-space), 'Arial Rounded MT Bold', sans-serif",
-                    textShadow: '2px 2px 0 #7a4625, -2px -2px 0 #7a4625, 2px -2px 0 #7a4625, -2px 2px 0 #7a4625, 0 4px 0 #7a4625'
-                  }}
-                >
-                  Meet Our
-                </span>
-              </div>
+              <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold font-[var(--font-space)] text-[#1a102b] mb-2 md:mb-0 z-20">
+                Meet Our
+              </h3>
 
               {/* "Creative Family" 3D Text */}
-              <div className="flex flex-wrap justify-center items-center gap-x-3 md:gap-x-6 gap-y-0 mt-[-5px] md:mt-[-15px] z-10 pb-4">
-                <motion.span 
+              <div className="flex flex-wrap justify-center items-center gap-x-3 md:gap-x-6 gap-y-0 mt-[-5px] md:mt-[-10px] pb-6 relative z-10">
+                <motion.span
                   whileHover={{ rotate: -4, scale: 1.05 }}
-                  className="text-[3.5rem] sm:text-6xl md:text-[90px] font-black transform -rotate-2 cursor-default"
-                  style={{ 
-                    color: '#ffc107', 
-                    WebkitTextStroke: '2px #a65300',
-                    textShadow: '0 8px 0 #a65300, 0 15px 15px rgba(0,0,0,0.3)',
+                  className="text-[4rem] sm:text-[5.5rem] md:text-[90px] font-black transform -rotate-2 cursor-default"
+                  style={{
+                    color: '#1a102b', // Dark theme color
+                    textShadow: '1px 1px 0 #a855f7, 2px 2px 0 #a855f7, 3px 3px 0 #a855f7, 4px 4px 0 #a855f7, 5px 5px 0 #a855f7, 6px 6px 0 #a855f7, 7px 7px 0 #a855f7, 8px 8px 0 #a855f7, 0 20px 20px rgba(0,0,0,0.15)',
                     fontFamily: "var(--font-space), 'Arial Rounded MT Bold', sans-serif",
                     lineHeight: '1.1',
                     letterSpacing: '-0.02em'
@@ -105,13 +107,13 @@ export default function Team() {
                 >
                   Creative
                 </motion.span>
-                <motion.span 
+                
+                <motion.span
                   whileHover={{ rotate: 4, scale: 1.05 }}
-                  className="text-[3.5rem] sm:text-6xl md:text-[90px] font-black transform rotate-2 cursor-default mt-2 md:mt-4"
-                  style={{ 
-                    color: '#00d2ff', 
-                    WebkitTextStroke: '2px #005f9e',
-                    textShadow: '0 8px 0 #005f9e, 0 15px 15px rgba(0,0,0,0.3)',
+                  className="text-[4rem] sm:text-[5.5rem] md:text-[90px] font-black transform rotate-2 cursor-default mt-2 md:mt-6"
+                  style={{
+                    color: '#a855f7', // Tropixie Primary purple
+                    textShadow: '1px 1px 0 #1a102b, 2px 2px 0 #1a102b, 3px 3px 0 #1a102b, 4px 4px 0 #1a102b, 5px 5px 0 #1a102b, 6px 6px 0 #1a102b, 7px 7px 0 #1a102b, 8px 8px 0 #1a102b, 0 20px 20px rgba(0,0,0,0.15)',
                     fontFamily: "var(--font-space), 'Arial Rounded MT Bold', sans-serif",
                     lineHeight: '1.1',
                     letterSpacing: '-0.02em'
@@ -140,7 +142,7 @@ export default function Team() {
           {/* Grid - No Scroll, All Visible */}
           <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-16 pb-8 pt-4">
             {TEAM.map((member, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -151,32 +153,32 @@ export default function Team() {
               >
                 {/* Profile Image */}
                 <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden mb-2 z-10 border-[6px] border-white group-hover:border-[#085da6] transition-colors duration-300 shadow-[0_15px_35px_rgba(0,0,0,0.1)] relative bg-gray-100 flex-shrink-0">
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700 ease-out" 
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
                   {/* Subtle inner shadow for depth */}
                   <div className="absolute inset-0 rounded-full shadow-[inset_0_0_20px_rgba(0,0,0,0.1)] pointer-events-none transition-all duration-300"></div>
                 </div>
-                
+
                 {/* Text Tags Container */}
                 <div className="relative -mt-6 sm:-mt-8 w-full sm:w-[105%] z-20 flex flex-col items-center group-hover:-translate-y-1 transition-transform duration-300 ease-out">
-                  
+
                   {/* Name Tag (Blue) */}
                   <div className="relative w-[95%] sm:w-full flex justify-center py-2 sm:py-3 px-3 z-20 hover:scale-105 transition-transform duration-200">
                     <svg className="absolute inset-0 w-full h-full text-[#085da6] drop-shadow-md z-[-1]" preserveAspectRatio="none" viewBox="0 0 200 50">
-                      <rect x="5" y="8" width="190" height="34" rx="10" fill="currentColor" filter="url(#brush-blue)"/>
+                      <rect x="5" y="8" width="190" height="34" rx="10" fill="currentColor" filter="url(#brush-blue)" />
                     </svg>
                     <h4 className="font-bold text-white font-[var(--font-space)] text-xs sm:text-sm md:text-sm lg:text-base text-center tracking-wide leading-tight">
                       {member.name}
                     </h4>
                   </div>
-                  
+
                   {/* Role Tag (Yellow) */}
                   <div className="relative -mt-3 sm:-mt-4 w-[75%] sm:w-[80%] flex justify-center py-1.5 sm:py-2 px-2 z-10 group-hover:rotate-3 transition-transform duration-300">
                     <svg className="absolute inset-0 w-full h-full text-[#ffc107] drop-shadow-sm z-[-1]" preserveAspectRatio="none" viewBox="0 0 200 40">
-                      <rect x="10" y="8" width="180" height="24" rx="8" fill="currentColor" filter="url(#brush-yellow)"/>
+                      <rect x="10" y="8" width="180" height="24" rx="8" fill="currentColor" filter="url(#brush-yellow)" />
                     </svg>
                     <p className="text-[#0d0718] text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-widest text-center">
                       {member.role}
@@ -218,9 +220,9 @@ export default function Team() {
 
               {/* Image Side */}
               <div className="w-full md:w-[45%] flex-shrink-0 aspect-square md:aspect-auto md:h-full min-h-[300px] relative bg-gray-100 flex items-center justify-center p-6 md:p-10">
-                <img 
-                  src={selectedMember.image} 
-                  alt={selectedMember.name} 
+                <img
+                  src={selectedMember.image}
+                  alt={selectedMember.name}
                   className="w-full h-full max-h-[60vh] object-contain rounded-2xl shadow-md"
                 />
               </div>
@@ -230,11 +232,11 @@ export default function Team() {
                 <span className="inline-block px-4 py-1.5 rounded-full bg-tropixie-primary/10 text-tropixie-primary font-semibold text-xs tracking-widest uppercase mb-4 w-max">
                   {selectedMember.role}
                 </span>
-                
+
                 <h3 className="text-3xl md:text-4xl font-bold font-[var(--font-space)] text-[#1a102b] mb-6">
                   {selectedMember.name}
                 </h3>
-                
+
                 <p className="text-gray-600 font-[var(--font-outfit)] text-base md:text-lg leading-relaxed mb-8">
                   {selectedMember.bio}
                 </p>

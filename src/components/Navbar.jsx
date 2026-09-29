@@ -45,9 +45,8 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-400 flex items-center nav-scrolled ${
-          scrolled ? 'h-16' : 'h-20'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-400 flex items-center nav-scrolled ${scrolled ? 'h-16' : 'h-20'
+          }`}
       >
         <div className="max-w-7xl w-full mx-auto px-4 lg:px-6 flex items-center justify-between h-full">
           {/* Studio Name */}
@@ -78,22 +77,20 @@ export default function Navbar() {
             {NAV_LINKS.map((link) => (
               <button
                 key={link.href}
-                className={`relative font-[var(--font-outfit)] text-sm tracking-widest uppercase py-1 transition-all duration-300 group ${
-                  activeSection === link.href.replace('#', '')
-                    ? 'text-white font-bold'
-                    : 'text-gray-400 hover:text-white'
-                }`}
+                className={`relative font-[var(--font-outfit)] text-sm tracking-widest uppercase py-1 transition-all duration-300 group ${activeSection === link.href.replace('#', '')
+                  ? 'text-white font-bold'
+                  : 'text-gray-400 hover:text-white'
+                  }`}
                 onClick={() => scrollTo(link.href)}
               >
                 {link.label}
-                
+
                 {/* Active & Hover Underline Glow */}
-                <span 
-                  className={`absolute -bottom-2 left-1/2 -translate-x-1/2 h-[2px] rounded-full transition-all duration-300 ${
-                    activeSection === link.href.replace('#', '')
-                      ? 'w-full bg-tropixie-primary shadow-[0_0_12px_rgba(168,85,247,0.9)]'
-                      : 'w-0 bg-white/40 group-hover:w-1/2'
-                  }`}
+                <span
+                  className={`absolute -bottom-2 left-1/2 -translate-x-1/2 h-[2px] rounded-full transition-all duration-300 ${activeSection === link.href.replace('#', '')
+                    ? 'w-full bg-tropixie-primary shadow-[0_0_12px_rgba(168,85,247,0.9)]'
+                    : 'w-0 bg-white/40 group-hover:w-1/2'
+                    }`}
                 ></span>
               </button>
             ))}
@@ -140,11 +137,10 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ delay: i * 0.05, duration: 0.3 }}
-                  className={`relative font-[var(--font-outfit)] text-3xl font-bold tracking-widest uppercase transition-all duration-300 ${
-                    activeSection === link.href.replace('#', '')
-                      ? 'text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-tropixie-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
+                  className={`relative font-[var(--font-outfit)] text-3xl font-bold tracking-widest uppercase transition-all duration-300 ${activeSection === link.href.replace('#', '')
+                    ? 'text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-tropixie-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]'
+                    : 'text-gray-400 hover:text-white'
+                    }`}
                   onClick={() => scrollTo(link.href)}
                 >
                   {link.label}

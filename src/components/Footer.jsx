@@ -9,13 +9,13 @@ export default function Footer() {
 
           {/* Col 1 */}
           <div className="col-span-2 lg:col-span-1 flex flex-col items-center lg:items-start gap-1">
-            <img src="/logo.png" alt="Tropixie" className="h-54 w-auto object-contain mt-[-2rem] md:mt-[-3rem]" />
+            <img src="/logo.png" alt="Tropixie" className="h-30 w-auto object-contain mt-[-2rem] md:mt-[-3rem] lg:mt-2" />
             <div className="font-[var(--font-space)] uppercase flex flex-col items-center lg:items-start text-center lg:text-left whitespace-nowrap leading-tight gap-1 mt-[-1rem]">
-              <span className="font-bold text-2xl tracking-[0.1em] text-white">
+              <span className="font-bold text-2xl tracking-[0.1em] text-white lg:mt-10">
                 Tropixie
               </span>
-              <span className="font-bold text-2xl tracking-[0.1em] text-white">
-                Animation Studio
+              <span className="font-bold text-2xl tracking-[0.1em] text-white flex items-start justify-center lg:justify-start">
+                Animation Studio<sup className="text-xs md:text-sm font-medium ml-1 mt-1 text-tropixie-primary">&trade;</sup>
               </span>
             </div>
           </div>

@@ -76,10 +76,10 @@ export default function Services() {
   return (
     <section id="services" className="relative py-20 lg:py-32 bg-tropixie-dark-card border-y border-tropixie-border overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        
+
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -102,7 +102,7 @@ export default function Services() {
         {/* Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {EXPERTISE.map((service, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -125,7 +125,7 @@ export default function Services() {
         {/* 3D Printing Centered Card */}
         <div className="flex justify-center mt-4 sm:mt-6">
           <div className="w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -174,19 +174,19 @@ export default function Services() {
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
               </button>
-              
+
               <div className="w-24 h-24 rounded-3xl overflow-hidden shadow-[0_0_20px_rgba(168,85,247,0.3)] border border-tropixie-primary/30 mb-6">
                 <img src={selectedService.icon} alt={selectedService.title} className="w-full h-full object-cover" />
               </div>
-              
+
               <h2 className="text-2xl font-bold font-[var(--font-space)] text-white mb-4">
                 {selectedService.title}
               </h2>
-              
+
               <p className="text-gray-300 font-[var(--font-outfit)] text-base leading-relaxed">
                 {selectedService.fullDesc}
               </p>
-              
+
               <button
                 onClick={() => setSelectedService(null)}
                 className="mt-8 bg-gradient-to-r from-tropixie-primary to-purple-600 text-white font-semibold py-2.5 px-8 rounded-full hover:shadow-[0_0_15px_rgba(168,85,247,0.4)] transition-all duration-300"
