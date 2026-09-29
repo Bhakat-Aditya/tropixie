@@ -26,12 +26,6 @@ export default function About() {
   }, [isModalOpen])
 
 
-  const gridImages = [
-    '/Sumandeep.jpg', '/Sulekha.jpg', 
-    '/Dolon.jpeg', '/Payel2.jpg', '/2.jpg',
-    '/3.jpg', '/4.jpg', '/5.jpg'
-  ]
-
   return (
     <>
       <section id="about" className="relative py-20 lg:py-32 bg-tropixie-light overflow-hidden">
@@ -79,35 +73,7 @@ export default function About() {
               </button>
             </motion.div>
 
-            {/* Bottom Carousel (Infinite Scroll) */}
-            <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="marquee-container w-[100vw] mt-20 overflow-hidden flex gap-4"
-              style={{ maskImage: 'linear-gradient(to right, transparent, black 2%, black 98%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 2%, black 98%, transparent)' }}
-            >
-              {/* First Set */}
-              <div className="flex shrink-0 gap-4 animate-marquee py-4">
-                {[...gridImages, ...gridImages].map((src, idx) => (
-                  <div key={`set1-${idx}`} className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-3xl overflow-hidden shadow-lg group relative border border-gray-200 shrink-0 cursor-pointer">
-                    <img src={src} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={`Portfolio showcase ${idx + 1}`} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                ))}
-              </div>
-              
-              {/* Second Set (Duplicate for seamless loop) */}
-              <div className="flex shrink-0 gap-4 animate-marquee py-4" aria-hidden="true">
-                {[...gridImages, ...gridImages].map((src, idx) => (
-                  <div key={`set2-${idx}`} className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-3xl overflow-hidden shadow-lg group relative border border-gray-200 shrink-0 cursor-pointer">
-                    <img src={src} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={`Portfolio showcase duplicate ${idx + 1}`} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+
             
             {/* Tablet Slideshow */}
             <motion.div 
