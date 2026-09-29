@@ -62,8 +62,8 @@ export default function Navbar() {
               <span className="font-bold text-xl tracking-[0.1em] text-white">
                 Tropixie
               </span>
-              <span className="font-bold text-xl tracking-[0.1em] text-white">
-                Animation Studio
+              <span className="font-bold text-xl tracking-[0.1em] text-white flex items-start">
+                Animation Studio<sup className="text-[10px] md:text-xs font-medium ml-1 mt-0.5 text-tropixie-primary">&trade;</sup>
               </span>
             </div>
           </motion.div>

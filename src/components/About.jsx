@@ -3,6 +3,16 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 export default function About() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  
+  const slideImages = ['/pic 1.png', '/1a.png', '/2a.png']
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slideImages.length)
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [slideImages.length])
 
   useEffect(() => {
     if (isModalOpen) {
@@ -96,6 +106,53 @@ export default function About() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 ))}
+              </div>
+            </motion.div>
+            
+            {/* Tablet Slideshow */}
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="w-full max-w-4xl mx-auto mt-20 mb-8 px-4"
+            >
+              {/* Tablet Frame */}
+              <div className="relative mx-auto bg-[#1a1a1a] rounded-[2rem] md:rounded-[3rem] p-3 md:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.3),inset_0_0_0_1px_rgba(255,255,255,0.1)] aspect-[4/3] sm:aspect-[16/10] overflow-hidden group">
+                
+                {/* Camera / Sensor */}
+                <div className="absolute top-1/2 -left-2 transform -translate-y-1/2 w-1.5 h-12 bg-black rounded-r-lg hidden sm:block"></div>
+                <div className="absolute top-1/2 left-3 md:left-4 transform -translate-y-1/2 w-2 h-2 rounded-full bg-gray-800 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)] hidden sm:block z-20"></div>
+                
+                {/* Screen area */}
+                <div className="relative w-full h-full bg-black rounded-xl md:rounded-[2rem] overflow-hidden shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] border-2 border-[#111]">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentSlide}
+                      initial={{ opacity: 0, x: '10%' }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: '-10%' }}
+                      transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+                      className="absolute inset-0"
+                    >
+                      <img src={slideImages[currentSlide]} className="w-full h-full object-cover" alt={`Slide ${currentSlide + 1}`} />
+                    </motion.div>
+                  </AnimatePresence>
+                  
+                  {/* Indicators */}
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+                    {slideImages.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setCurrentSlide(idx)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          currentSlide === idx ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/70'
+                        }`}
+                        aria-label={`Go to slide ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
             </motion.div>
             

@@ -6,49 +6,42 @@ const TEAM = [
     name: 'Sumandeep Pandey',
     role: 'Co-Founder',
     image: '/1.jpg',
-    dpImage: '/1f.jpg',
     bio: "The creative force behind Tropixie, Sumandeep is a visionary with a deep love for literature and cinema. He leads the studio's creative direction—from script to concept—bringing unique ideas to life. Prior to Tropixie, he worked as a Motion Graphics (MFX) artist on projects across Hollywood and Bollywood.",
   },
   {
     name: 'Sulekha Garai Pandey',
     role: 'Co-Founder',
     image: '/2.jpg',
-    dpImage: '/2f.jpg',
     bio: 'A highly skilled 3D Texturing Artist with 5+ years of experience, before joining Tropixie, Sulekha worked on multiple national and international projects including Pinocchio and Friends, Bhoot Bandhus, and Roro Aur Hero etc.',
   },
   {
     name: 'Amit Mondal',
     role: 'Co-Founder',
     image: '/3.jpg',
-    dpImage: '/3f.jpg',
     bio: 'Our most senior artist, Amit has over 8 years of experience in 3D modeling and rendering. Before joining Tropixie, he worked on several national and international projects including Amazon, Boy and Ghost, Hello Celio, Taarak Mehta Ka Chhota Chashma, Daisy Dew Drop and the Rainbow Garden, Pinocchio and Friends etc. We fondly call him our "Knowledge Powerhouse"—someone who can solve even the most complex technical challenges with simple and effective solutions.',
   },
   {
     name: 'Shovon Pal',
     role: '3D Modeler',
     image: '/4.jpg',
-    dpImage: '/4f.jpg',
     bio: 'An energetic and hardworking artist, Shovon creates high-quality models with precision. He previously worked in the gaming industry and is now fully dedicated to Tropixie.',
   },
   {
     name: 'Payel Chakraborty',
     role: '3D Animator',
     image: '/5.jpg',
-    dpImage: '/5f.jpg',
     bio: 'A highly skilled and focused animator, Payel excels at solving complex challenges with a calm approach. Her animation brings characters to life with emotion and clarity.',
   },
   {
     name: 'Sarmistha Das',
     role: '3D Animator',
     image: '/6.jpg',
-    dpImage: '/6f.jpg',
     bio: 'A positive and hardworking animator, Sarmistha combines strong technical skills with perseverance. She handles challenges with determination and never gives up.',
   },
   {
     name: 'Shilpa Bhunia',
     role: '3D Rig Artist',
     image: '/8.jpg',
-    dpImage: '/7f.jpg',
     bio: 'An experienced and proficient rig artist, before joining Tropixie, Shilpa worked on projects like Rudra Shiva Kurukshetra etc. creating robust rigs for high-quality character animation.',
   },
 ]
@@ -76,53 +69,120 @@ export default function Team() {
           {/* Header */}
           <div className="flex flex-col items-center text-center mb-16">
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              className="flex items-center gap-4 mb-4"
+              transition={{ type: "spring", stiffness: 200, damping: 15 }}
+              className="flex flex-col items-center justify-center relative z-10 w-full"
             >
-              <div className="h-[2px] w-8 md:w-12 bg-tropixie-primary"></div>
-              <span className="text-tropixie-primary font-[var(--font-space)] tracking-[0.15em] text-sm font-semibold uppercase">Our Team</span>
-              <div className="h-[2px] w-8 md:w-12 bg-tropixie-primary"></div>
+              {/* "Meet Our" Wooden Pill */}
+              <div className="relative inline-flex items-center justify-center bg-[#c8824f] border-[4px] border-white rounded-full px-8 md:px-10 py-1.5 md:py-2.5 shadow-[0_6px_0_#8f5531,0_15px_20px_rgba(0,0,0,0.15)] mb-2 md:mb-0 z-20 hover:-translate-y-1 transition-transform duration-300">
+                <div className="absolute inset-0 rounded-full shadow-[inset_0_4px_10px_rgba(255,255,255,0.4),inset_0_-4px_10px_rgba(0,0,0,0.15)] pointer-events-none"></div>
+                <span 
+                  className="text-white font-black tracking-wider text-xl md:text-3xl"
+                  style={{ 
+                    fontFamily: "var(--font-space), 'Arial Rounded MT Bold', sans-serif",
+                    textShadow: '2px 2px 0 #7a4625, -2px -2px 0 #7a4625, 2px -2px 0 #7a4625, -2px 2px 0 #7a4625, 0 4px 0 #7a4625'
+                  }}
+                >
+                  Meet Our
+                </span>
+              </div>
+
+              {/* "Creative Family" 3D Text */}
+              <div className="flex flex-wrap justify-center items-center gap-x-3 md:gap-x-6 gap-y-0 mt-[-5px] md:mt-[-15px] z-10 pb-4">
+                <motion.span 
+                  whileHover={{ rotate: -4, scale: 1.05 }}
+                  className="text-[3.5rem] sm:text-6xl md:text-[90px] font-black transform -rotate-2 cursor-default"
+                  style={{ 
+                    color: '#ffc107', 
+                    WebkitTextStroke: '2px #a65300',
+                    textShadow: '0 8px 0 #a65300, 0 15px 15px rgba(0,0,0,0.3)',
+                    fontFamily: "var(--font-space), 'Arial Rounded MT Bold', sans-serif",
+                    lineHeight: '1.1',
+                    letterSpacing: '-0.02em'
+                  }}
+                >
+                  Creative
+                </motion.span>
+                <motion.span 
+                  whileHover={{ rotate: 4, scale: 1.05 }}
+                  className="text-[3.5rem] sm:text-6xl md:text-[90px] font-black transform rotate-2 cursor-default mt-2 md:mt-4"
+                  style={{ 
+                    color: '#00d2ff', 
+                    WebkitTextStroke: '2px #005f9e',
+                    textShadow: '0 8px 0 #005f9e, 0 15px 15px rgba(0,0,0,0.3)',
+                    fontFamily: "var(--font-space), 'Arial Rounded MT Bold', sans-serif",
+                    lineHeight: '1.1',
+                    letterSpacing: '-0.02em'
+                  }}
+                >
+                  Family
+                </motion.span>
+              </div>
             </motion.div>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-3xl md:text-4xl font-bold font-[var(--font-space)] text-[#1a102b]"
-            >
-              Meet Our Creative Family
-            </motion.h2>
           </div>
 
+          {/* SVG Filters for Brush Effects */}
+          <svg width="0" height="0" className="absolute hidden">
+            <defs>
+              <filter id="brush-blue" x="-10%" y="-10%" width="120%" height="120%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04 0.15" numOctaves="3" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+              </filter>
+              <filter id="brush-yellow" x="-10%" y="-10%" width="120%" height="120%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.08 0.2" numOctaves="2" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+              </filter>
+            </defs>
+          </svg>
+
           {/* Grid - No Scroll, All Visible */}
-          <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-12 pb-8 pt-4">
+          <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-16 pb-8 pt-4">
             {TEAM.map((member, idx) => (
               <motion.div 
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.05, duration: 0.4 }}
+                transition={{ delay: idx * 0.05, duration: 0.5, type: 'spring', stiffness: 100 }}
                 onClick={() => setSelectedMember(member)}
-                className="flex flex-col items-center cursor-pointer group w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)] md:w-[calc(25%-1.125rem)]"
+                className="flex flex-col items-center cursor-pointer group w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)] md:w-[calc(25%-1.125rem)] relative"
               >
-                <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden mb-6 border-4 border-transparent group-hover:border-tropixie-primary transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.05)] group-hover:shadow-[0_20px_40px_rgba(168,85,247,0.2)] relative bg-gray-100 flex-shrink-0">
+                {/* Profile Image */}
+                <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden mb-2 z-10 border-[6px] border-white group-hover:border-[#085da6] transition-colors duration-300 shadow-[0_15px_35px_rgba(0,0,0,0.1)] relative bg-gray-100 flex-shrink-0">
                   <img 
-                    src={member.dpImage || member.image} 
+                    src={member.image} 
                     alt={member.name} 
-                    className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" 
+                    className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700 ease-out" 
                   />
-                  {/* Subtle hover overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300"></div>
+                  {/* Subtle inner shadow for depth */}
+                  <div className="absolute inset-0 rounded-full shadow-[inset_0_0_20px_rgba(0,0,0,0.1)] pointer-events-none transition-all duration-300"></div>
                 </div>
-                <h4 className="font-bold text-[#1a102b] font-[var(--font-space)] text-lg md:text-xl text-center group-hover:text-tropixie-primary transition-colors">
-                  {member.name}
-                </h4>
-                <p className="text-tropixie-secondary text-sm font-semibold uppercase tracking-wider text-center mt-2">
-                  {member.role}
-                </p>
+                
+                {/* Text Tags Container */}
+                <div className="relative -mt-6 sm:-mt-8 w-full sm:w-[105%] z-20 flex flex-col items-center group-hover:-translate-y-1 transition-transform duration-300 ease-out">
+                  
+                  {/* Name Tag (Blue) */}
+                  <div className="relative w-[95%] sm:w-full flex justify-center py-2 sm:py-3 px-3 z-20 hover:scale-105 transition-transform duration-200">
+                    <svg className="absolute inset-0 w-full h-full text-[#085da6] drop-shadow-md z-[-1]" preserveAspectRatio="none" viewBox="0 0 200 50">
+                      <rect x="5" y="8" width="190" height="34" rx="10" fill="currentColor" filter="url(#brush-blue)"/>
+                    </svg>
+                    <h4 className="font-bold text-white font-[var(--font-space)] text-xs sm:text-sm md:text-sm lg:text-base text-center tracking-wide leading-tight">
+                      {member.name}
+                    </h4>
+                  </div>
+                  
+                  {/* Role Tag (Yellow) */}
+                  <div className="relative -mt-3 sm:-mt-4 w-[75%] sm:w-[80%] flex justify-center py-1.5 sm:py-2 px-2 z-10 group-hover:rotate-3 transition-transform duration-300">
+                    <svg className="absolute inset-0 w-full h-full text-[#ffc107] drop-shadow-sm z-[-1]" preserveAspectRatio="none" viewBox="0 0 200 40">
+                      <rect x="10" y="8" width="180" height="24" rx="8" fill="currentColor" filter="url(#brush-yellow)"/>
+                    </svg>
+                    <p className="text-[#0d0718] text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-widest text-center">
+                      {member.role}
+                    </p>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
