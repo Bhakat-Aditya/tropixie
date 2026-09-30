@@ -52,11 +52,6 @@ export default function About() {
               transition={{ duration: 0.8 }}
               className="w-full max-w-xl relative z-10"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <span className="text-tropixie-primary font-[var(--font-space)] tracking-widest text-sm font-semibold uppercase">About Us</span>
-                <div className="h-[2px] w-12 bg-tropixie-primary"></div>
-              </div>
-
               <h2 className="text-5xl md:text-6xl lg:text-[4.5rem] font-black font-[var(--font-space)] text-white mb-8 leading-[1.1] tracking-tight">
                 About <span className="text-transparent bg-clip-text bg-gradient-to-r from-tropixie-primary via-purple-400 to-tropixie-secondary">us</span>
               </h2>
