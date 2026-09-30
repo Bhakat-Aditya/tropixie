@@ -117,7 +117,17 @@ export default function About() {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="relative w-full sm:w-[90%] aspect-[4/3] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-white/20 shadow-[0_50px_100px_rgba(168,85,247,0.15)] z-20 bg-[#0a0a0a]"
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                onDragEnd={(e, { offset }) => {
+                  if (offset.x < -50) {
+                    setCurrentSlide((prev) => (prev + 1) % slideImages.length);
+                  } else if (offset.x > 50) {
+                    setCurrentSlide((prev) => (prev === 0 ? slideImages.length - 1 : prev - 1));
+                  }
+                }}
+                className="relative w-full sm:w-[90%] aspect-[4/3] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-white/20 shadow-[0_50px_100px_rgba(168,85,247,0.15)] z-20 bg-[#0a0a0a] cursor-grab active:cursor-grabbing"
                 style={{ transform: 'rotateY(0deg)' }}
               >
                   <AnimatePresence mode="wait">

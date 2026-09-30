@@ -21,15 +21,29 @@ export default function Hero() {
   return (
     <section className="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden" id="hero">
       {/* Background Slideshow */}
-      {backgrounds.map((bg, idx) => (
-        <div
-          key={bg}
-          className={`absolute inset-0 transition-opacity duration-1000 ${idx === bgIndex ? 'opacity-100' : 'opacity-0'
-            }`}
-        >
-          <img src={bg} alt="Background" className="w-full h-full object-cover object-top" />
-        </div>
-      ))}
+      <motion.div
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.2}
+        onDragEnd={(e, { offset }) => {
+          if (offset.x < -50) {
+            setBgIndex((prev) => (prev + 1) % backgrounds.length);
+          } else if (offset.x > 50) {
+            setBgIndex((prev) => (prev - 1 + backgrounds.length) % backgrounds.length);
+          }
+        }}
+        className="absolute inset-0 cursor-grab active:cursor-grabbing z-0"
+      >
+        {backgrounds.map((bg, idx) => (
+          <div
+            key={bg}
+            className={`absolute inset-0 transition-opacity duration-1000 pointer-events-none ${idx === bgIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+          >
+            <img src={bg} alt="Background" className="w-full h-full object-cover object-top" />
+          </div>
+        ))}
+      </motion.div>
 
 
 
