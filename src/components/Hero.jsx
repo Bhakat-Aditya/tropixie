@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import gsap from 'gsap'
 
 export default function Hero() {
@@ -21,30 +21,21 @@ export default function Hero() {
   return (
     <section className="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden" id="hero">
       {/* Background Slideshow */}
-      <motion.div
-        drag="x"
-        dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0.2}
-        onDragEnd={(e, { offset }) => {
-          if (offset.x < -50) {
-            setBgIndex((prev) => (prev + 1) % backgrounds.length);
-          } else if (offset.x > 50) {
-            setBgIndex((prev) => (prev === 0 ? backgrounds.length - 1 : prev - 1));
-          }
-        }}
-        animate={{ x: `-${bgIndex * 100}%` }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="absolute inset-0 flex cursor-grab active:cursor-grabbing z-0"
-      >
-        {backgrounds.map((bg, idx) => (
-          <div
-            key={bg}
-            className="w-full h-full flex-shrink-0 pointer-events-none relative"
-          >
-            <img src={bg} alt="Background" className="w-full h-full object-cover object-top" />
-          </div>
-        ))}
-      </motion.div>
+      {/* Background Slideshow */}
+      <div className="absolute inset-0 z-0 bg-black">
+        <AnimatePresence>
+          <motion.img
+            key={bgIndex}
+            src={backgrounds[bgIndex]}
+            alt="Background"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full object-cover object-top"
+          />
+        </AnimatePresence>
+      </div>
 
 
 

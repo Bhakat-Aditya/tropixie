@@ -114,33 +114,22 @@ export default function About() {
                 transition={{ duration: 0.8 }}
                 className="relative w-full sm:w-[90%] aspect-[4/3] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-white/20 shadow-[0_50px_100px_rgba(168,85,247,0.15)] z-20 bg-[#0a0a0a]"
               >
-                  <motion.div
-                    drag="x"
-                    dragConstraints={{ left: 0, right: 0 }}
-                    dragElastic={0.2}
-                    onDragEnd={(e, { offset }) => {
-                      if (offset.x < -50) {
-                        setCurrentSlide((prev) => (prev + 1) % slideImages.length);
-                      } else if (offset.x > 50) {
-                        setCurrentSlide((prev) => (prev === 0 ? slideImages.length - 1 : prev - 1));
-                      }
-                    }}
-                    animate={{ x: `-${currentSlide * 100}%` }}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    className="absolute inset-0 flex cursor-grab active:cursor-grabbing"
-                  >
-                    {slideImages.map((slide, idx) => (
-                      <div key={idx} className="w-full h-full flex-shrink-0 relative overflow-hidden">
-                        <img
-                          src={slide.src}
-                          className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-700"
-                          alt={`Slide ${idx + 1}`}
-                          onClick={() => setPopupSlide(slide)}
-                          draggable={false}
-                        />
-                      </div>
-                    ))}
-                  </motion.div>
+                  <div className="absolute inset-0">
+                    <AnimatePresence>
+                      <motion.img
+                        key={currentSlide}
+                        src={slideImages[currentSlide].src}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        className="absolute inset-0 w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-700"
+                        alt={`Slide ${currentSlide + 1}`}
+                        onClick={() => setPopupSlide(slideImages[currentSlide])}
+                        draggable={false}
+                      />
+                    </AnimatePresence>
+                  </div>
                   
                   {/* Glassmorphism Control Pill */}
                   <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-[#0a0a0a]/40 backdrop-blur-xl px-6 py-3 rounded-full border border-white/20 z-30 shadow-2xl">

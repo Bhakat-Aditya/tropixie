@@ -44,10 +44,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-400 flex items-center nav-scrolled ${scrolled ? 'h-20' : 'h-28'
-          }`}
-      >
+      <nav className="absolute top-0 left-0 right-0 z-[100] flex items-center h-28 nav-scrolled">
         <div className="max-w-7xl w-full mx-auto px-4 lg:px-6 flex items-center justify-between h-full">
           {/* Studio Name */}
           <motion.div

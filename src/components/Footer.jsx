@@ -5,11 +5,11 @@ export default function Footer() {
     <footer className="bg-[#f8f9fc] pt-16 pb-8 border-t border-gray-200 text-gray-600 font-[var(--font-outfit)]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16 mb-12">
+        <div className="grid grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-10 lg:gap-8 mb-12">
 
           {/* Col 1 */}
-          <div className="col-span-2 lg:col-span-1 flex flex-col items-center justify-center w-full">
-            <img src="/logo.png" alt="Tropixie" className="w-48 md:w-64 lg:w-80 h-auto object-contain mb-2 lg:mb-16" />
+          <div className="col-span-2 lg:col-span-4 flex flex-col items-center justify-center w-full">
+            <img src="/logo.png" alt="Tropixie" className="w-48 md:w-64 lg:w-80 h-auto object-contain mb-6 lg:mb-10" />
             
             {/* Social Icons */}
             <div className="flex items-center justify-center gap-4 w-full">
@@ -26,7 +26,7 @@ export default function Footer() {
           </div>
 
           {/* Col 2: Quick Links */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="col-span-1 lg:col-span-2 flex flex-col items-start text-left">
             <h4 className="text-gray-900 font-bold font-[var(--font-space)] text-lg md:text-xl mb-6 tracking-wide">Quick Links</h4>
             <ul className="space-y-3 text-base md:text-lg font-medium">
               <li><a href="#hero" className="hover:text-tropixie-primary transition-colors">Home</a></li>
@@ -38,21 +38,22 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 3: Services */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <h4 className="text-gray-900 font-bold font-[var(--font-space)] text-lg md:text-xl mb-6 tracking-wide">Our Services</h4>
-            <ul className="space-y-3 text-base md:text-lg font-medium">
-              <li><a href="#services" className="hover:text-tropixie-primary transition-colors">3D Animation</a></li>
-              <li><a href="#services" className="hover:text-tropixie-primary transition-colors">VFX & Effects</a></li>
-              <li><a href="#services" className="hover:text-tropixie-primary transition-colors">Motion Graphics</a></li>
-              <li><a href="#services" className="hover:text-tropixie-primary transition-colors">3D Printing</a></li>
-              <li><a href="#services" className="hover:text-tropixie-primary transition-colors">AI-Powered VFX</a></li>
-              <li><a href="#services" className="hover:text-tropixie-primary transition-colors">Sound Design</a></li>
-            </ul>
+          {/* Col 3: Contact Info */}
+          <div className="col-span-1 lg:col-span-3 flex flex-col items-start text-left">
+            <h4 className="text-gray-900 font-bold font-[var(--font-space)] text-lg md:text-xl mb-6 tracking-wide">Contact Us</h4>
+            <div className="space-y-1 text-sm md:text-base font-medium text-gray-600">
+              <p>Our office- Swajan,</p>
+              <p>Michael MadhusudanNagar,</p>
+              <p>Midnapur Town,</p>
+              <p>Dist. PaschimMidnapore</p>
+              <p>(West Bengal) Pin-721101</p>
+              <p className="pt-2 text-gray-800">Mob: <a href="tel:+918436601135" className="hover:text-tropixie-primary transition-colors">8436601135</a></p>
+              <p className="text-gray-800">Email: <a href="mailto:hello.tropixie@gmail.com" className="hover:text-tropixie-primary transition-colors">hello.tropixie@gmail.com</a></p>
+            </div>
           </div>
 
           {/* Col 4: Map */}
-          <div className="col-span-2 lg:col-span-1 flex flex-col items-center lg:items-start">
+          <div className="col-span-2 lg:col-span-3 flex flex-col items-center lg:items-start w-full">
             <h4 className="text-gray-900 font-bold font-[var(--font-space)] text-lg md:text-xl mb-6 tracking-wide">Find Us Here</h4>
             <div
               className="w-full h-[200px] rounded-xl overflow-hidden relative shadow-lg border border-white/10 bg-gray-900 group cursor-pointer"

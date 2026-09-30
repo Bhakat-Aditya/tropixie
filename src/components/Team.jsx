@@ -63,7 +63,7 @@ export default function Team() {
 
   return (
     <>
-      <section id="team" className="relative py-20 lg:py-28 bg-tropixie-light overflow-hidden">
+      <section id="team" className="relative py-20 lg:py-28 bg-tropixie-dark border-t border-tropixie-border overflow-hidden text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
           {/* Header */}
@@ -75,7 +75,7 @@ export default function Team() {
               transition={{ type: "spring", stiffness: 200, damping: 15 }}
               className="flex flex-col items-center justify-center relative z-10 w-full"
             >
-              <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold font-[var(--font-space)] text-[#1a102b] mb-2 md:mb-0 z-20">
+              <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold font-[var(--font-space)] text-white mb-2 md:mb-0 z-20">
                 Meet Our
               </h3>
 
@@ -85,7 +85,7 @@ export default function Team() {
                   whileHover={{ rotate: -4, scale: 1.05 }}
                   className="text-[4rem] sm:text-[5.5rem] md:text-[90px] font-black transform -rotate-2 cursor-default"
                   style={{
-                    color: '#1a102b', // Dark theme color
+                    color: 'white', // Dark theme color
                     textShadow: '1px 1px 0 #a855f7, 2px 2px 0 #a855f7, 3px 3px 0 #a855f7, 4px 4px 0 #a855f7, 5px 5px 0 #a855f7, 6px 6px 0 #a855f7, 7px 7px 0 #a855f7, 8px 8px 0 #a855f7, 0 20px 20px rgba(0,0,0,0.15)',
                     fontFamily: "var(--font-space), 'Arial Rounded MT Bold', sans-serif",
                     lineHeight: '1.1',
@@ -94,13 +94,13 @@ export default function Team() {
                 >
                   Creative
                 </motion.span>
-                
+
                 <motion.span
                   whileHover={{ rotate: 4, scale: 1.05 }}
                   className="text-[4rem] sm:text-[5.5rem] md:text-[90px] font-black transform rotate-2 cursor-default mt-2 md:mt-6"
                   style={{
                     color: '#a855f7', // Tropixie Primary purple
-                    textShadow: '1px 1px 0 #1a102b, 2px 2px 0 #1a102b, 3px 3px 0 #1a102b, 4px 4px 0 #1a102b, 5px 5px 0 #1a102b, 6px 6px 0 #1a102b, 7px 7px 0 #1a102b, 8px 8px 0 #1a102b, 0 20px 20px rgba(0,0,0,0.15)',
+                    textShadow: '1px 1px 0 white, 2px 2px 0 white, 3px 3px 0 white, 4px 4px 0 white, 5px 5px 0 white, 6px 6px 0 white, 7px 7px 0 white, 8px 8px 0 white, 0 20px 20px rgba(0,0,0,0.15)',
                     fontFamily: "var(--font-space), 'Arial Rounded MT Bold', sans-serif",
                     lineHeight: '1.1',
                     letterSpacing: '-0.02em'
@@ -177,6 +177,11 @@ export default function Team() {
           </div>
 
         </div>
+
+        {/* Decorative Glowing Divider */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-gradient-to-r from-transparent via-tropixie-primary to-transparent opacity-70"></div>
+        <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-1/2 h-6 bg-tropixie-primary rounded-full blur-[20px] opacity-30 pointer-events-none"></div>
+
       </section>
 
       {/* Team Member Modal */}
