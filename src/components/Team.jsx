@@ -68,19 +68,6 @@ export default function Team() {
 
           {/* Header */}
           <div className="flex flex-col items-center text-center mb-16 relative">
-            
-            {/* Elegant Top Header matches About Us */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-4 mb-6"
-            >
-              <div className="h-[2px] w-8 md:w-12 bg-tropixie-primary"></div>
-              <span className="text-tropixie-primary font-[var(--font-space)] tracking-widest text-sm font-semibold uppercase">Our Team</span>
-              <div className="h-[2px] w-8 md:w-12 bg-tropixie-primary"></div>
-            </motion.div>
-
             <motion.div
               initial={{ opacity: 0, y: 30, scale: 0.9 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -163,24 +150,24 @@ export default function Team() {
                 </div>
 
                 {/* Text Tags Container */}
-                <div className="relative -mt-6 sm:-mt-8 w-full sm:w-[105%] z-20 flex flex-col items-center group-hover:-translate-y-1 transition-transform duration-300 ease-out">
+                <div className="relative -mt-6 sm:-mt-8 z-20 flex flex-col items-center group-hover:-translate-y-1 transition-transform duration-300 ease-out max-w-[110%]">
 
                   {/* Name Tag (Blue) */}
-                  <div className="relative w-[95%] sm:w-full flex justify-center py-2 sm:py-3 px-3 z-20 hover:scale-105 transition-transform duration-200">
+                  <div className="relative w-max flex justify-center py-2 sm:py-3 px-4 sm:px-6 z-20 hover:scale-105 transition-transform duration-200">
                     <svg className="absolute inset-0 w-full h-full text-[#085da6] drop-shadow-md z-[-1]" preserveAspectRatio="none" viewBox="0 0 200 50">
                       <rect x="5" y="8" width="190" height="34" rx="10" fill="currentColor" filter="url(#brush-blue)" />
                     </svg>
-                    <h4 className="font-bold text-white font-[var(--font-space)] text-xs sm:text-sm md:text-sm lg:text-base text-center tracking-wide leading-tight">
+                    <h4 className="font-bold text-white font-[var(--font-space)] text-xs sm:text-sm md:text-sm lg:text-base text-center tracking-wide leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
                       {member.name}
                     </h4>
                   </div>
 
                   {/* Role Tag (Yellow) */}
-                  <div className="relative -mt-3 sm:-mt-4 w-[75%] sm:w-[80%] flex justify-center py-1.5 sm:py-2 px-2 z-10 group-hover:rotate-3 transition-transform duration-300">
+                  <div className="relative -mt-3 sm:-mt-4 w-max flex justify-center py-1.5 sm:py-2 px-5 sm:px-6 z-10 group-hover:rotate-3 transition-transform duration-300">
                     <svg className="absolute inset-0 w-full h-full text-[#ffc107] drop-shadow-sm z-[-1]" preserveAspectRatio="none" viewBox="0 0 200 40">
                       <rect x="10" y="8" width="180" height="24" rx="8" fill="currentColor" filter="url(#brush-yellow)" />
                     </svg>
-                    <p className="text-[#0d0718] text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-widest text-center">
+                    <p className="text-[#0d0718] text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-widest text-center whitespace-nowrap overflow-hidden text-ellipsis">
                       {member.role}
                     </p>
                   </div>

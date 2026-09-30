@@ -45,9 +45,9 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-400 flex items-center nav-scrolled ${scrolled ? 'h-16' : 'h-20'
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-400 flex items-center nav-scrolled ${scrolled ? 'h-20' : 'h-28'
           }`}
-      > 
+      >
         <div className="max-w-7xl w-full mx-auto px-4 lg:px-6 flex items-center justify-between h-full">
           {/* Studio Name */}
           <motion.div
@@ -57,14 +57,7 @@ export default function Navbar() {
             className="flex items-center cursor-pointer z-[150] h-full"
             onClick={() => scrollTo('#hero')}
           >
-            <div className="font-[var(--font-space)] uppercase flex flex-col md:flex-row items-start md:items-baseline whitespace-nowrap leading-tight gap-1 md:gap-2">
-              <span className="font-bold text-xl tracking-[0.1em] text-white">
-                Tropixie
-              </span>
-              <span className="font-bold text-xl tracking-[0.1em] text-white flex items-start">
-                Animation Studio<sup className="text-[10px] md:text-xs font-medium ml-1 mt-0.5 text-tropixie-primary">&trade;</sup>
-              </span>
-            </div>
+            <img src="/logo.png" alt="Tropixie Logo" className="h-25 md:h-30 lg:h-40 w-auto object-contain mt-5 lg:mt-15" />
           </motion.div>
 
           {/* Desktop Links */}
@@ -77,8 +70,8 @@ export default function Navbar() {
             {NAV_LINKS.map((link) => (
               <button
                 key={link.href}
-                className={`relative font-[var(--font-outfit)] text-sm tracking-widest uppercase py-1 transition-all duration-300 group ${activeSection === link.href.replace('#', '')
-                  ? 'text-white font-bold'
+                className={`relative font-[var(--font-outfit)] text-base font-bold tracking-widest uppercase py-1 transition-all duration-300 group ${activeSection === link.href.replace('#', '')
+                  ? 'text-white'
                   : 'text-gray-400 hover:text-white'
                   }`}
                 onClick={() => scrollTo(link.href)}

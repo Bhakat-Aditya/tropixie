@@ -16,7 +16,7 @@ export default function Hero() {
       setBgIndex((prev) => (prev + 1) % backgrounds.length)
     }, 5000)
     return () => clearInterval(interval)
-  }, [])
+  }, [bgIndex])
 
   return (
     <section className="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden" id="hero">
