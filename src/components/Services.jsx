@@ -3,50 +3,50 @@ import { motion } from 'framer-motion'
 const EXPERTISE = [
   {
     title: 'Concept & Script Development',
-    shortDesc: 'Crafting engaging concepts & scripts.',
-    fullDesc: 'We craft engaging concepts and scripts tailored to your vision. Our team works closely with you to understand your core message and translates it into compelling narratives that resonate with your target audience.',
+    shortDesc: 'We craft strong concepts and engaging scripts tailored to your vision, ensuring a clear and impactful storytelling foundation.',
+    fullDesc: 'We craft strong concepts and engaging scripts tailored to your vision, ensuring a clear and impactful storytelling foundation.',
     icon: '/icon_concept_1790525258317.jpg'
   },
   {
     title: '3D Modeling',
-    shortDesc: 'High-quality models & environments.',
-    fullDesc: 'We provide high-quality 3D models for characters, props, and environments. From stylized low-poly assets to photorealistic high-fidelity models, our topology is clean, optimized, and ready for production.',
+    shortDesc: 'We create detailed and production-ready 3D models, including characters, props, and environments with high visual accuracy.',
+    fullDesc: 'We create detailed and production-ready 3D models, including characters, props, and environments with high visual accuracy.',
     icon: '/icon_3d_1790525271896.jpg'
   },
   {
     title: 'Rigging',
-    shortDesc: 'Efficient and expressive rigging.',
-    fullDesc: 'Efficient rigging for smooth, natural, and expressive animations. We build robust skeletal structures, custom controls, and blendshapes to give animators ultimate freedom and flexibility.',
+    shortDesc: 'Our team builds efficient rigging systems that allow smooth, natural, and expressive character movements for animation.',
+    fullDesc: 'Our team builds efficient rigging systems that allow smooth, natural, and expressive character movements for animation.',
     icon: '/icon_rigging_1790525285225.jpg'
   },
   {
     title: 'Lighting & Compositing',
-    shortDesc: 'Cinematic lighting & rich visuals.',
-    fullDesc: 'Cinematic lighting and compositing for visually rich results. We set the mood, enhance depth, and seamlessly blend rendered layers to achieve a polished, industry-standard final look.',
+    shortDesc: 'We enhance every scene with cinematic lighting and advanced compositing techniques, delivering polished and visually rich results.',
+    fullDesc: 'We enhance every scene with cinematic lighting and advanced compositing techniques, delivering polished and visually rich results.',
     icon: '/icon_lighting_1790525297380.jpg'
   },
   {
     title: 'Animation',
-    shortDesc: 'Captivating 3D character animation.',
-    fullDesc: 'High-quality 3D animation that captivates and engages audiences. Whether it is subtle character acting or high-octane action sequences, we breathe life into static models with precise timing and weight.',
+    shortDesc: 'We produce high-quality 3D animation—from stylized storytelling to realistic motion—designed to captivate and engage your audience.',
+    fullDesc: 'We produce high-quality 3D animation—from stylized storytelling to realistic motion—designed to captivate and engage your audience.',
     icon: '/icon_animation_1790525309734.jpg'
   },
   {
     title: 'VFX & Motion Graphics',
-    shortDesc: 'Stunning effects & motion design.',
-    fullDesc: 'Stunning effects and motion graphics that add depth and impact. From explosive simulations (fire, smoke, water) to sleek motion design, we elevate your project’s visual appeal.',
+    shortDesc: 'We create compelling visual effects and modern motion graphics that add depth, energy, and professionalism to your content.',
+    fullDesc: 'We create compelling visual effects and modern motion graphics that add depth, energy, and professionalism to your content.',
     icon: '/icon_vfx_1790525322253.jpg'
   },
   {
     title: 'Sound Design & Dubbing',
-    shortDesc: 'Complete audio solutions.',
-    fullDesc: 'Complete audio solutions for immersive storytelling experiences. We provide Foley, sound effects, mixing, and professional dubbing to ensure your visuals are perfectly complemented by high-fidelity sound.',
+    shortDesc: 'We provide complete audio solutions, including voice-over, sound design, and dubbing, ensuring a seamless and immersive experience.',
+    fullDesc: 'We provide complete audio solutions, including voice-over, sound design, and dubbing, ensuring a seamless and immersive experience.',
     icon: '/icon_sound_1790525339026.jpg'
   },
   {
-    title: 'AI-Powered VFX',
-    shortDesc: 'AI-driven production workflows.',
-    fullDesc: 'AI-driven workflows for faster production and better quality output. We leverage cutting-edge AI tools for rotoscoping, upscaling, style transfer, and rapid concepting to optimize the pipeline.',
+    title: 'AI-Powered Services',
+    shortDesc: 'By integrating AI-driven tools and workflows, we accelerate production, enhance creativity, and deliver innovative, future-ready content.',
+    fullDesc: 'By integrating AI-driven tools and workflows, we accelerate production, enhance creativity, and deliver innovative, future-ready content.',
     icon: '/icon_ai_1790525353719.jpg'
   },
 ]
@@ -64,15 +64,24 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div className="flex flex-col items-center text-center mb-16 max-w-4xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold font-[var(--font-space)] text-white uppercase tracking-[0.1em]"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold font-[var(--font-space)] text-white uppercase tracking-[0.1em] mb-6"
           >
             Our Services
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-gray-400 font-[var(--font-outfit)] text-base md:text-lg leading-relaxed"
+          >
+            At Tropixie Animation Studio, we deliver end-to-end creative solutions that transform ideas into high-quality visual experiences. From initial concept to final output, we combine creativity, technology, and precision to meet professional standards and client expectations.
+          </motion.p>
         </div>
 
         {/* Grid */}
@@ -123,7 +132,6 @@ export default function Services() {
             </motion.a>
           </div>
         </div>
-
       </div>
 
       {/* Decorative Glowing Divider */}

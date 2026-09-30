@@ -29,16 +29,17 @@ export default function Hero() {
           if (offset.x < -50) {
             setBgIndex((prev) => (prev + 1) % backgrounds.length);
           } else if (offset.x > 50) {
-            setBgIndex((prev) => (prev - 1 + backgrounds.length) % backgrounds.length);
+            setBgIndex((prev) => (prev === 0 ? backgrounds.length - 1 : prev - 1));
           }
         }}
-        className="absolute inset-0 cursor-grab active:cursor-grabbing z-0"
+        animate={{ x: `-${bgIndex * 100}%` }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        className="absolute inset-0 flex cursor-grab active:cursor-grabbing z-0"
       >
         {backgrounds.map((bg, idx) => (
           <div
             key={bg}
-            className={`absolute inset-0 transition-opacity duration-1000 pointer-events-none ${idx === bgIndex ? 'opacity-100' : 'opacity-0'
-              }`}
+            className="w-full h-full flex-shrink-0 pointer-events-none relative"
           >
             <img src={bg} alt="Background" className="w-full h-full object-cover object-top" />
           </div>
