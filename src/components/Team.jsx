@@ -121,22 +121,22 @@ export default function Team() {
                 {/* Text Tags Container */}
                 <div className="relative -mt-6 sm:-mt-8 z-20 flex flex-col items-center group-hover:-translate-y-1 transition-transform duration-300 ease-out max-w-[110%]">
 
-                  {/* Name Tag (Blue) */}
+                  {/* Name Tag (Primary Purple) */}
                   <div className="relative w-max flex justify-center py-2 sm:py-3 px-4 sm:px-6 z-20 hover:scale-105 transition-transform duration-200">
-                    <svg className="absolute inset-0 w-full h-full text-[#085da6] drop-shadow-md z-[-1]" preserveAspectRatio="none" viewBox="0 0 200 50">
+                    <svg className="absolute inset-0 w-full h-full text-tropixie-primary drop-shadow-md z-[-1]" preserveAspectRatio="none" viewBox="0 0 200 50">
                       <rect x="5" y="8" width="190" height="34" rx="10" fill="currentColor" filter="url(#brush-blue)" />
                     </svg>
-                    <h4 className="font-bold text-gray-900 font-[var(--font-space)] text-xs sm:text-sm md:text-sm lg:text-base text-center tracking-wide leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
+                    <h4 className="font-bold text-white font-[var(--font-space)] text-xs sm:text-sm md:text-sm lg:text-base text-center tracking-wide leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
                       {member.name}
                     </h4>
                   </div>
 
-                  {/* Role Tag (Yellow) */}
+                  {/* Role Tag (Secondary Pink) */}
                   <div className="relative -mt-3 sm:-mt-4 w-max flex justify-center py-1.5 sm:py-2 px-5 sm:px-6 z-10 group-hover:rotate-3 transition-transform duration-300">
-                    <svg className="absolute inset-0 w-full h-full text-[#ffc107] drop-shadow-sm z-[-1]" preserveAspectRatio="none" viewBox="0 0 200 40">
+                    <svg className="absolute inset-0 w-full h-full text-tropixie-secondary drop-shadow-sm z-[-1]" preserveAspectRatio="none" viewBox="0 0 200 40">
                       <rect x="10" y="8" width="180" height="24" rx="8" fill="currentColor" filter="url(#brush-yellow)" />
                     </svg>
-                    <p className="text-[#0d0718] text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-widest text-center whitespace-nowrap overflow-hidden text-ellipsis">
+                    <p className="text-white text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-widest text-center whitespace-nowrap overflow-hidden text-ellipsis">
                       {member.role}
                     </p>
                   </div>

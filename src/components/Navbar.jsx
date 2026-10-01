@@ -44,7 +44,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="absolute top-0 left-0 right-0 z-[100] flex items-center h-28 nav-scrolled">
+      <nav className="absolute top-0 left-0 right-0 z-[100] flex items-center h-20 nav-scrolled">
         <div className="relative z-10 max-w-7xl w-full mx-auto px-4 lg:px-6 flex items-center justify-between h-full">
           {/* Studio Name */}
           <motion.div
@@ -54,7 +54,7 @@ export default function Navbar() {
             className="flex items-center cursor-pointer z-[150] h-full"
             onClick={() => scrollTo('#hero')}
           >
-            <img src="/logo.png" alt="Tropixie Logo" className="h-25 md:h-30 lg:h-40 w-auto object-contain mt-5 lg:mt-15" />
+            <img src="/logo.png" alt="Tropixie Logo" className="h-12 md:h-14 lg:h-16 w-auto object-contain" />
           </motion.div>
 
           {/* Desktop Links */}
