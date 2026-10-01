@@ -36,13 +36,13 @@ export default function Showreel() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="flex items-center gap-4"
+            className="flex items-center justify-center gap-4 mb-6"
           >
-            <div className="h-[1px] w-12 md:w-24 bg-tropixie-border"></div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-[var(--font-space)] text-gray-900">
-              Our Recent Work
+            <div className="h-[2px] w-12 md:w-24 bg-gradient-to-r from-transparent to-tropixie-primary rounded-full"></div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-[var(--font-space)] text-gray-900 tracking-tight">
+              Our Recent <span className="text-transparent bg-clip-text bg-gradient-to-r from-tropixie-primary via-purple-400 to-tropixie-secondary">Work</span>
             </h2>
-            <div className="h-[1px] w-12 md:w-24 bg-tropixie-border"></div>
+            <div className="h-[2px] w-12 md:w-24 bg-gradient-to-l from-transparent to-tropixie-primary rounded-full"></div>
           </motion.div>
         </div>
 
@@ -69,11 +69,11 @@ export default function Showreel() {
                 }}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-70 group-hover:opacity-100"
               />
-              
+
               {/* Play Button Overlay */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-16 h-16 bg-tropixie-primary/80 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:bg-tropixie-primary transition-all duration-300 shadow-[0_0_20px_rgba(168,85,247,0.5)] group-hover:scale-110">
-                  <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                 </div>
               </div>
             </motion.div>

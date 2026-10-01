@@ -35,14 +35,14 @@ export default function About() {
   return (
     <>
       <section id="about" className="relative py-20 lg:py-32 bg-tropixie-dark overflow-hidden text-gray-900">
-        
+
         {/* Deep background glow */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-tropixie-primary/10 rounded-full blur-[150px] pointer-events-none -translate-y-1/2 translate-x-1/3 z-0"></div>
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none translate-y-1/3 -translate-x-1/3 z-0"></div>
 
         {/* Main Grid Layout */}
         <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center gap-16 lg:gap-12">
-          
+
           {/* Left Side: Text Content */}
           <div className="w-full lg:w-[45%] flex flex-col items-start text-left relative z-10">
             <motion.div
@@ -76,83 +76,79 @@ export default function About() {
               </button>
             </motion.div>
           </div>
-          
+
           {/* Right Side: 3D Holographic Slideshow */}
           <div className="w-full lg:w-[55%] relative z-20 h-[400px] sm:h-[500px] lg:h-[700px] flex items-center justify-center" style={{ perspective: '2000px' }}>
-              
-              {/* Floating Decorative Glass Elements */}
-              <motion.div 
-                animate={{ y: [-15, 15, -15], rotate: [0, 10, 0] }} 
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-4 sm:top-10 right-4 sm:right-10 w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-tr from-white/10 to-white/5 backdrop-blur-xl border border-gray-900/20 shadow-[0_20px_40px_rgba(0,0,0,0.5)] z-30 flex items-center justify-center hidden sm:flex"
-              >
-                 <svg className="w-6 h-6 sm:w-8 sm:h-8 text-tropixie-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15 9l7 1-5 5 1 7-7-4-7 4 1-7-5-5 7-1z" /></svg>
-              </motion.div>
 
-              <motion.div 
-                animate={{ y: [15, -15, 15], rotate: [0, -10, 0] }} 
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-10 lg:bottom-20 left-0 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-purple-500/30 to-transparent backdrop-blur-xl border border-gray-900/20 shadow-[0_20px_40px_rgba(0,0,0,0.5)] z-30 hidden sm:block"
-              />
+            {/* Floating Decorative Glass Elements */}
+            <motion.div
+              animate={{ y: [-15, 15, -15], rotate: [0, 10, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-4 sm:top-10 right-4 sm:right-10 w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-tr from-white/10 to-white/5 backdrop-blur-xl border border-gray-900/20 shadow-[0_20px_40px_rgba(0,0,0,0.5)] z-30 flex items-center justify-center hidden sm:flex"
+            >
+              <svg className="w-6 h-6 sm:w-8 sm:h-8 text-tropixie-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15 9l7 1-5 5 1 7-7-4-7 4 1-7-5-5 7-1z" /></svg>
+            </motion.div>
 
-              {/* Back Card (Next Slide Preview) */}
-              <motion.div 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                className="absolute w-[80%] sm:w-[75%] aspect-[4/3] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-gray-900/10 shadow-[0_30px_60px_rgba(0,0,0,0.6)] z-10 hidden md:block"
-                style={{ transform: 'translateX(40px) scale(0.9) rotateY(-15deg)' }}
-              >
-                <img src={slideImages[(currentSlide + 1) % slideImages.length].src} className="w-full h-full object-cover opacity-50 blur-[2px]" alt="Next slide preview" />
-                <div className="absolute inset-0 bg-tropixie-dark/50"></div>
-              </motion.div>
+            <motion.div
+              animate={{ y: [15, -15, 15], rotate: [0, -10, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute bottom-10 lg:bottom-20 left-0 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-purple-500/30 to-transparent backdrop-blur-xl border border-gray-900/20 shadow-[0_20px_40px_rgba(0,0,0,0.5)] z-30 hidden sm:block"
+            />
 
-              {/* Main Active Card */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="relative w-full sm:w-[90%] aspect-[4/3] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-gray-900/20 shadow-[0_50px_100px_rgba(168,85,247,0.15)] z-20 bg-tropixie-dark-card"
-              >
-                  <div className="absolute inset-0">
-                    <AnimatePresence>
-                      <motion.img
-                        key={currentSlide}
-                        src={slideImages[currentSlide].src}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.8, ease: "easeInOut" }}
-                        className="absolute inset-0 w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-700"
-                        alt={`Slide ${currentSlide + 1}`}
-                        onClick={() => setPopupSlide(slideImages[currentSlide])}
-                        draggable={false}
-                      />
-                    </AnimatePresence>
-                  </div>
-                  
-                  {/* Glassmorphism Control Pill */}
-                  <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-tropixie-dark-card/40 backdrop-blur-xl px-6 py-3 rounded-full border border-gray-900/20 z-30 shadow-2xl">
-                    <button onClick={() => setCurrentSlide((prev) => (prev === 0 ? slideImages.length - 1 : prev - 1))} className="text-gray-900 hover:text-tropixie-primary transition-colors hover:scale-110 active:scale-95">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
-                    </button>
-                    
-                    <div className="flex gap-2 items-center">
-                      {slideImages.map((_, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setCurrentSlide(idx)}
-                          className={`h-2 rounded-full transition-all duration-300 ${currentSlide === idx ? 'bg-tropixie-primary w-6' : 'bg-white/50 hover:bg-white w-2'}`}
-                          aria-label={`Go to slide ${idx + 1}`}
-                        />
-                      ))}
-                    </div>
+            {/* Back Card (Next Slide Preview) */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              className="absolute w-[80%] sm:w-[75%] aspect-[4/3] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-gray-900/10 shadow-[0_30px_60px_rgba(0,0,0,0.6)] z-10 hidden md:block"
+              style={{ transform: 'translateX(40px) scale(0.9) rotateY(-15deg)' }}
+            >
+              <img src={slideImages[(currentSlide + 1) % slideImages.length].src} className="w-full h-full object-cover opacity-50 blur-[2px]" alt="Next slide preview" />
+              <div className="absolute inset-0 bg-tropixie-dark/50"></div>
+            </motion.div>
 
-                    <button onClick={() => setCurrentSlide((prev) => (prev + 1) % slideImages.length)} className="text-gray-900 hover:text-tropixie-primary transition-colors hover:scale-110 active:scale-95">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
-                    </button>
-                  </div>
-              </motion.div>
+            {/* Main Active Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative w-full sm:w-[90%] aspect-[4/3] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-gray-900/20 shadow-[0_50px_100px_rgba(168,85,247,0.15)] z-20 bg-tropixie-dark-card"
+            >
+              <div className="absolute inset-0">
+                <AnimatePresence>
+                  <motion.img
+                    key={currentSlide}
+                    src={slideImages[currentSlide].src}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="absolute inset-0 w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-700"
+                    alt={`Slide ${currentSlide + 1}`}
+                    onClick={() => setPopupSlide(slideImages[currentSlide])}
+                    draggable={false}
+                  />
+                </AnimatePresence>
+              </div>
+
+            </motion.div>
+
+            {/* Outside Controls (Left / Right Arrows) */}
+            <button
+              onClick={() => setCurrentSlide((prev) => (prev === 0 ? slideImages.length - 1 : prev - 1))}
+              className="absolute left-2 sm:left-0 z-30 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 hover:bg-white text-gray-900 hover:text-tropixie-primary rounded-full flex items-center justify-center shadow-[0_10px_20px_rgba(0,0,0,0.1)] transition-all hover:scale-110 active:scale-95 border border-gray-900/10 backdrop-blur-md"
+              aria-label="Previous slide"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
+            </button>
+
+            <button
+              onClick={() => setCurrentSlide((prev) => (prev + 1) % slideImages.length)}
+              className="absolute right-2 sm:right-0 z-30 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 hover:bg-white text-gray-900 hover:text-tropixie-primary rounded-full flex items-center justify-center shadow-[0_10px_20px_rgba(0,0,0,0.1)] transition-all hover:scale-110 active:scale-95 border border-gray-900/10 backdrop-blur-md"
+              aria-label="Next slide"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
+            </button>
           </div>
 
         </div>
@@ -232,28 +228,61 @@ export default function About() {
               className="fixed inset-0 bg-tropixie-dark/95 backdrop-blur-lg z-[300] cursor-zoom-out flex items-center justify-center p-4 md:p-10"
             >
               <div className="relative pointer-events-auto max-w-full w-full lg:w-3/4 flex flex-col items-center">
-                <motion.img
-                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                  src={popupSlide.src}
-                  alt={popupSlide.description || "Popup content"}
-                  className="w-full max-h-[85vh] object-contain rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-                />
-                
+                {/* Left Arrow */}
                 <button
-                  onClick={() => setPopupSlide(null)}
-                  className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-12 h-12 bg-white hover:bg-tropixie-primary text-gray-800 hover:text-gray-900 rounded-full flex items-center justify-center transition-colors shadow-2xl z-10"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    const idx = slideImages.findIndex(img => img.src === popupSlide.src);
+                    setPopupSlide(slideImages[idx === 0 ? slideImages.length - 1 : idx - 1]);
+                  }}
+                  className="fixed left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 hover:bg-white text-gray-900 hover:text-tropixie-primary rounded-full flex items-center justify-center shadow-2xl transition-colors z-20 pointer-events-auto border border-gray-900/10"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+
+                {/* Right Arrow */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    const idx = slideImages.findIndex(img => img.src === popupSlide.src);
+                    setPopupSlide(slideImages[(idx + 1) % slideImages.length]);
+                  }}
+                  className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 hover:bg-white text-gray-900 hover:text-tropixie-primary rounded-full flex items-center justify-center shadow-2xl transition-colors z-20 pointer-events-auto border border-gray-900/10"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
+                </button>
+
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={popupSlide.src}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
+                    src={popupSlide.src}
+                    alt={popupSlide.description || "Popup content"}
+                    onClick={(e) => e.stopPropagation()}
+                    className="w-full max-h-[85vh] object-contain rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] cursor-default"
+                  />
+                </AnimatePresence>
+
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setPopupSlide(null);
+                  }}
+                  className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-12 h-12 bg-white hover:bg-tropixie-primary text-gray-800 hover:text-gray-900 rounded-full flex items-center justify-center transition-colors shadow-2xl z-30"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
 
                 {popupSlide.description && (
-                  <motion.div 
+                  <motion.div
+                    key={`desc-${popupSlide.src}`}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
                     className="mt-6 bg-white/10 backdrop-blur-md text-gray-900 px-8 py-3 rounded-full font-[var(--font-outfit)] text-lg pointer-events-auto shadow-lg border border-gray-900/20 font-medium tracking-wide"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     {popupSlide.description}
                   </motion.div>

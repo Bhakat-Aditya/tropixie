@@ -38,15 +38,15 @@ export default function Contact() {
         >
           {/* Left side: Info */}
           <div className="flex-1 flex flex-col justify-center">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-[var(--font-space)] mb-2 leading-tight">
-              Let's Create
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-[var(--font-space)] mb-2 leading-tight tracking-tight">
+              Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-tropixie-primary via-purple-400 to-tropixie-secondary">Create</span>
             </h2>
-            <span className="font-[var(--font-space)] tracking-[0.1em] text-xl md:text-2xl font-semibold uppercase mb-10 text-gray-900/90">
-              Something Amazing Together
+            <span className="font-[var(--font-space)] tracking-[0.1em] text-xl md:text-2xl font-semibold uppercase mb-10 text-gray-900/90 block">
+              SOMETHING AMAZING TOGETHER
             </span>
 
             <div className="space-y-6">
-              <p className="text-gray-100 font-[var(--font-outfit)] text-sm md:text-base leading-relaxed">
+              <p className="text-gray-700 font-[var(--font-outfit)] text-sm md:text-base leading-relaxed font-light">
                 We are building Tropixie with limited resources but endless passion. Your support helps us create new opportunities for fresh talent from humble backgrounds to shine.
               </p>
             </div>

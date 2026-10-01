@@ -83,9 +83,9 @@ export default function Services() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold font-[var(--font-space)] text-gray-900 uppercase tracking-[0.1em] mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-black font-[var(--font-space)] text-gray-900 uppercase tracking-tight mb-6"
           >
-            Our Services
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-tropixie-primary via-purple-400 to-tropixie-secondary">Services</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -172,15 +172,15 @@ export default function Services() {
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
               </button>
-              
+
               <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl overflow-hidden shadow-lg border border-tropixie-primary/20 mb-6">
                 <img src={selectedService.icon} alt={selectedService.title} className="w-full h-full object-cover" />
               </div>
-              
+
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-[var(--font-space)]">
                 {selectedService.title}
               </h3>
-              
+
               <p className="text-gray-600 font-[var(--font-outfit)] text-base leading-relaxed">
                 {selectedService.fullDesc}
               </p>

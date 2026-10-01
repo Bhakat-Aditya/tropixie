@@ -73,10 +73,10 @@ export default function Team() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="flex flex-col items-center gap-4"
+              className="flex flex-col items-center gap-4 mb-6"
             >
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-[var(--font-space)] text-gray-900 uppercase tracking-[0.1em]">
-                Meet Our Team Members
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-[var(--font-space)] text-gray-900 tracking-tight text-center">
+                Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-tropixie-primary via-purple-400 to-tropixie-secondary">Team</span>
               </h2>
             </motion.div>
           </div>
