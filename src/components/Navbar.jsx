@@ -45,7 +45,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="absolute top-0 left-0 right-0 z-[100] flex items-center h-28 nav-scrolled">
-        <div className="max-w-7xl w-full mx-auto px-4 lg:px-6 flex items-center justify-between h-full">
+        <div className="relative z-10 max-w-7xl w-full mx-auto px-4 lg:px-6 flex items-center justify-between h-full">
           {/* Studio Name */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -95,15 +95,15 @@ export default function Navbar() {
           >
             <motion.span
               animate={mobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-              className="w-6 h-0.5 bg-gray-800 block rounded-full"
+              className="w-6 h-0.5 bg-gray-900 block rounded-full"
             />
             <motion.span
               animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="w-6 h-0.5 bg-gray-800 block rounded-full"
+              className="w-6 h-0.5 bg-gray-900 block rounded-full"
             />
             <motion.span
               animate={mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-              className="w-6 h-0.5 bg-gray-800 block rounded-full"
+              className="w-6 h-0.5 bg-gray-900 block rounded-full"
             />
           </button>
         </div>

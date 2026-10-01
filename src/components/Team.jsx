@@ -63,52 +63,21 @@ export default function Team() {
 
   return (
     <>
-      <section id="team" className="relative py-20 lg:py-28 bg-tropixie-dark border-t border-tropixie-border overflow-hidden text-white">
+      <section id="team" className="relative py-20 lg:py-28 bg-tropixie-dark border-t border-tropixie-border overflow-hidden text-gray-900">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
           {/* Header */}
           <div className="flex flex-col items-center text-center mb-16 relative">
             <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ type: "spring", stiffness: 200, damping: 15 }}
-              className="flex flex-col items-center justify-center relative z-10 w-full"
+              transition={{ delay: 0.1 }}
+              className="flex flex-col items-center gap-4"
             >
-              <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold font-[var(--font-space)] text-white mb-2 md:mb-0 z-20">
-                Meet Our
-              </h3>
-
-              {/* "Creative Family" 3D Text */}
-              <div className="flex flex-wrap justify-center items-center gap-x-3 md:gap-x-6 gap-y-0 mt-[-5px] md:mt-[-10px] pb-6 relative z-10">
-                <motion.span
-                  whileHover={{ rotate: -4, scale: 1.05 }}
-                  className="text-[4rem] sm:text-[5.5rem] md:text-[90px] font-black transform -rotate-2 cursor-default"
-                  style={{
-                    color: 'white', // Dark theme color
-                    textShadow: '1px 1px 0 #a855f7, 2px 2px 0 #a855f7, 3px 3px 0 #a855f7, 4px 4px 0 #a855f7, 5px 5px 0 #a855f7, 6px 6px 0 #a855f7, 7px 7px 0 #a855f7, 8px 8px 0 #a855f7, 0 20px 20px rgba(0,0,0,0.15)',
-                    fontFamily: "var(--font-space), 'Arial Rounded MT Bold', sans-serif",
-                    lineHeight: '1.1',
-                    letterSpacing: '-0.02em'
-                  }}
-                >
-                  Creative
-                </motion.span>
-
-                <motion.span
-                  whileHover={{ rotate: 4, scale: 1.05 }}
-                  className="text-[4rem] sm:text-[5.5rem] md:text-[90px] font-black transform rotate-2 cursor-default mt-2 md:mt-6"
-                  style={{
-                    color: '#a855f7', // Tropixie Primary purple
-                    textShadow: '1px 1px 0 white, 2px 2px 0 white, 3px 3px 0 white, 4px 4px 0 white, 5px 5px 0 white, 6px 6px 0 white, 7px 7px 0 white, 8px 8px 0 white, 0 20px 20px rgba(0,0,0,0.15)',
-                    fontFamily: "var(--font-space), 'Arial Rounded MT Bold', sans-serif",
-                    lineHeight: '1.1',
-                    letterSpacing: '-0.02em'
-                  }}
-                >
-                  Family
-                </motion.span>
-              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-[var(--font-space)] text-gray-900 uppercase tracking-[0.1em]">
+                Meet Our Team Members
+              </h2>
             </motion.div>
           </div>
 
@@ -157,7 +126,7 @@ export default function Team() {
                     <svg className="absolute inset-0 w-full h-full text-[#085da6] drop-shadow-md z-[-1]" preserveAspectRatio="none" viewBox="0 0 200 50">
                       <rect x="5" y="8" width="190" height="34" rx="10" fill="currentColor" filter="url(#brush-blue)" />
                     </svg>
-                    <h4 className="font-bold text-white font-[var(--font-space)] text-xs sm:text-sm md:text-sm lg:text-base text-center tracking-wide leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
+                    <h4 className="font-bold text-gray-900 font-[var(--font-space)] text-xs sm:text-sm md:text-sm lg:text-base text-center tracking-wide leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
                       {member.name}
                     </h4>
                   </div>
@@ -193,7 +162,7 @@ export default function Team() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedMember(null)}
-              className="fixed inset-0 bg-[#0d0718]/80 backdrop-blur-sm z-[200]"
+              className="fixed inset-0 bg-tropixie-dark/80 backdrop-blur-sm z-[200]"
             />
             <motion.div
               data-lenis-prevent

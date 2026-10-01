@@ -6,10 +6,10 @@
 }
 
 @theme {
-  --color-tropixie-dark: #0d0718;
-  --color-tropixie-dark-card: #150d24;
-  --color-tropixie-dark-card-hover: #1f1433;
-  --color-tropixie-border: #2a1f3d;
+  --color-tropixie-dark: #FFF9E6; /* Soft, warm, eye-pleasant yellowish cream */
+  --color-tropixie-dark-card: #FFFFFF; /* Pure white for clean contrast */
+  --color-tropixie-dark-card-hover: #FFFDF0; /* Slight yellow tint on hover */
+  --color-tropixie-border: #F0E6D2; /* Soft warm border */
   
   --color-tropixie-light: #ffffff;
   --color-tropixie-light-bg: #f8f9fc;
@@ -34,7 +34,7 @@ html {
 body {
   font-family: var(--font-outfit);
   background-color: var(--color-tropixie-dark);
-  color: #e2dbea;
+  color: #2a1600; /* Dark warm text */
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -53,7 +53,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-tropixie-primary);
 }
-::selection {
+::-selection {
   background: var(--color-tropixie-primary);
   color: #fff;
 }
@@ -97,11 +97,21 @@ body {
 
 /* Glass effect for navbar */
 .nav-scrolled {
+  position: absolute;
+}
+
+.nav-scrolled::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: rgba(255, 255, 255, 0.85); /* Light off-white glass background */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  /* Creates an inverted U (arch) shape that is broader in the center */
+  mask-image: radial-gradient(ellipse 67.1% 75% at 50% 150%, transparent 99.5%, black 100%);
+  -webkit-mask-image: radial-gradient(ellipse 67.1% 75% at 50% 150%, transparent 99.5%, black 100%);
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* Curve at bottom of hero */
@@ -111,7 +121,7 @@ body {
   left: 0;
   width: 100%;
   height: 120px;
-  fill: #ffffff; /* Matches the 'About' section background */
+  fill: var(--color-tropixie-dark); /* Matches the 'About' section background */
   pointer-events: none;
 }
 
@@ -122,7 +132,7 @@ body {
   left: 0;
   width: 100%;
   height: 120px;
-  fill: #ffffff; 
+  fill: var(--color-tropixie-dark); 
   pointer-events: none;
 }
 

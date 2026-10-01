@@ -3,72 +3,22 @@ import { motion, AnimatePresence } from 'framer-motion'
 import gsap from 'gsap'
 
 export default function Hero() {
-  const [bgIndex, setBgIndex] = useState(0)
-
-  const backgrounds = [
-    '/pic 1.png', // Assuming this is the main image
-    '/1.jpg',
-    '/6.jpg'
-  ]
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setBgIndex((prev) => (prev + 1) % backgrounds.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [bgIndex])
-
   return (
     <section className="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden" id="hero">
-      {/* Background Slideshow */}
-      {/* Background Slideshow */}
-      <div className="absolute inset-0 z-0 bg-black">
-        <AnimatePresence>
-          <motion.img
-            key={bgIndex}
-            src={backgrounds[bgIndex]}
-            alt="Background"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full object-cover object-top"
-          />
-        </AnimatePresence>
-      </div>
-
-
-
-      {/* Slider Controls (Left/Right arrows and dots) */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-4 z-20 hidden md:block">
-        <button
-          onClick={() => setBgIndex((prev) => (prev - 1 + backgrounds.length) % backgrounds.length)}
-          className="w-12 h-12 rounded-full bg-tropixie-dark/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-tropixie-primary transition-all"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
-        </button>
-      </div>
-      <div className="absolute top-1/2 -translate-y-1/2 right-4 z-20 hidden md:block">
-        <button
-          onClick={() => setBgIndex((prev) => (prev + 1) % backgrounds.length)}
-          className="w-12 h-12 rounded-full bg-tropixie-dark/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-tropixie-primary transition-all"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
-        </button>
-      </div>
-
-      <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
-        {backgrounds.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setBgIndex(idx)}
-            className={`h-2 rounded-full transition-all ${idx === bgIndex ? 'w-8 bg-white' : 'w-2 bg-white/40 hover:bg-white/70'}`}
-          />
-        ))}
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0 bg-tropixie-dark">
+        <iframe
+          src="https://www.youtube.com/embed/x3Zlv_biizw?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=x3Zlv_biizw&modestbranding=1&playsinline=1"
+          allow="autoplay; encrypted-media"
+          className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-[1.3] pointer-events-none"
+        ></iframe>
+        
+        {/* Optional overlay to make text more readable if you add any text later */}
+        <div className="absolute inset-0 bg-black/20"></div>
       </div>
 
       {/* SVG Curve - transitions into the light section */}
-      <svg className="hero-curve" viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <svg className="hero-curve relative z-10" viewBox="0 0 1440 120" preserveAspectRatio="none">
         <path d="M0,60 C480,120 960,120 1440,60 L1440,120 L0,120 Z"></path>
       </svg>
     </section>

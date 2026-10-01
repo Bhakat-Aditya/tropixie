@@ -34,7 +34,7 @@ export default function About() {
 
   return (
     <>
-      <section id="about" className="relative py-20 lg:py-32 bg-[#05020a] overflow-hidden text-white">
+      <section id="about" className="relative py-20 lg:py-32 bg-tropixie-dark overflow-hidden text-gray-900">
         
         {/* Deep background glow */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-tropixie-primary/10 rounded-full blur-[150px] pointer-events-none -translate-y-1/2 translate-x-1/3 z-0"></div>
@@ -52,11 +52,11 @@ export default function About() {
               transition={{ duration: 0.8 }}
               className="w-full max-w-xl relative z-10"
             >
-              <h2 className="text-5xl md:text-6xl lg:text-[4.5rem] font-black font-[var(--font-space)] text-white mb-8 leading-[1.1] tracking-tight">
+              <h2 className="text-5xl md:text-6xl lg:text-[4.5rem] font-black font-[var(--font-space)] text-gray-900 mb-8 leading-[1.1] tracking-tight">
                 About <span className="text-transparent bg-clip-text bg-gradient-to-r from-tropixie-primary via-purple-400 to-tropixie-secondary">us</span>
               </h2>
 
-              <div className="space-y-6 text-gray-300 font-[var(--font-outfit)] text-base md:text-lg mb-10 leading-relaxed font-light">
+              <div className="space-y-6 text-gray-700 font-[var(--font-outfit)] text-base md:text-lg mb-10 leading-relaxed font-light">
                 <p>
                   In the historic city of Medinipur, Tropixie Animation Studio was born from the dreams and boundless creative passion of a group of young creators. Founded with a simple yet powerful vision, we strive to connect with people beyond the boundaries of language and culture.
                 </p>
@@ -67,11 +67,11 @@ export default function About() {
 
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="bg-gradient-to-r from-tropixie-primary to-purple-600 text-white font-semibold py-4 px-10 rounded-full inline-flex items-center gap-3 hover:shadow-[0_10px_30px_rgba(168,85,247,0.4)] hover:-translate-y-1 transition-all duration-300 border border-white/10"
+                className="bg-gradient-to-r from-tropixie-primary to-purple-600 text-gray-900 font-semibold py-4 px-10 rounded-full inline-flex items-center gap-3 hover:shadow-[0_10px_30px_rgba(168,85,247,0.4)] hover:-translate-y-1 transition-all duration-300 border border-gray-900/10"
               >
                 Read Our Story
                 <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-                  <svg className="w-3 h-3 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                  <svg className="w-3 h-3 text-gray-900 ml-0.5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
                 </div>
               </button>
             </motion.div>
@@ -84,7 +84,7 @@ export default function About() {
               <motion.div 
                 animate={{ y: [-15, 15, -15], rotate: [0, 10, 0] }} 
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-4 sm:top-10 right-4 sm:right-10 w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-tr from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-[0_20px_40px_rgba(0,0,0,0.5)] z-30 flex items-center justify-center hidden sm:flex"
+                className="absolute top-4 sm:top-10 right-4 sm:right-10 w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-tr from-white/10 to-white/5 backdrop-blur-xl border border-gray-900/20 shadow-[0_20px_40px_rgba(0,0,0,0.5)] z-30 flex items-center justify-center hidden sm:flex"
               >
                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-tropixie-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15 9l7 1-5 5 1 7-7-4-7 4 1-7-5-5 7-1z" /></svg>
               </motion.div>
@@ -92,18 +92,18 @@ export default function About() {
               <motion.div 
                 animate={{ y: [15, -15, 15], rotate: [0, -10, 0] }} 
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-10 lg:bottom-20 left-0 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-purple-500/30 to-transparent backdrop-blur-xl border border-white/20 shadow-[0_20px_40px_rgba(0,0,0,0.5)] z-30 hidden sm:block"
+                className="absolute bottom-10 lg:bottom-20 left-0 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-purple-500/30 to-transparent backdrop-blur-xl border border-gray-900/20 shadow-[0_20px_40px_rgba(0,0,0,0.5)] z-30 hidden sm:block"
               />
 
               {/* Back Card (Next Slide Preview) */}
               <motion.div 
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                className="absolute w-[80%] sm:w-[75%] aspect-[4/3] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.6)] z-10 hidden md:block"
+                className="absolute w-[80%] sm:w-[75%] aspect-[4/3] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-gray-900/10 shadow-[0_30px_60px_rgba(0,0,0,0.6)] z-10 hidden md:block"
                 style={{ transform: 'translateX(40px) scale(0.9) rotateY(-15deg)' }}
               >
                 <img src={slideImages[(currentSlide + 1) % slideImages.length].src} className="w-full h-full object-cover opacity-50 blur-[2px]" alt="Next slide preview" />
-                <div className="absolute inset-0 bg-black/50"></div>
+                <div className="absolute inset-0 bg-tropixie-dark/50"></div>
               </motion.div>
 
               {/* Main Active Card */}
@@ -112,7 +112,7 @@ export default function About() {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="relative w-full sm:w-[90%] aspect-[4/3] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-white/20 shadow-[0_50px_100px_rgba(168,85,247,0.15)] z-20 bg-[#0a0a0a]"
+                className="relative w-full sm:w-[90%] aspect-[4/3] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-gray-900/20 shadow-[0_50px_100px_rgba(168,85,247,0.15)] z-20 bg-tropixie-dark-card"
               >
                   <div className="absolute inset-0">
                     <AnimatePresence>
@@ -132,8 +132,8 @@ export default function About() {
                   </div>
                   
                   {/* Glassmorphism Control Pill */}
-                  <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-[#0a0a0a]/40 backdrop-blur-xl px-6 py-3 rounded-full border border-white/20 z-30 shadow-2xl">
-                    <button onClick={() => setCurrentSlide((prev) => (prev === 0 ? slideImages.length - 1 : prev - 1))} className="text-white hover:text-tropixie-primary transition-colors hover:scale-110 active:scale-95">
+                  <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-tropixie-dark-card/40 backdrop-blur-xl px-6 py-3 rounded-full border border-gray-900/20 z-30 shadow-2xl">
+                    <button onClick={() => setCurrentSlide((prev) => (prev === 0 ? slideImages.length - 1 : prev - 1))} className="text-gray-900 hover:text-tropixie-primary transition-colors hover:scale-110 active:scale-95">
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
                     </button>
                     
@@ -148,7 +148,7 @@ export default function About() {
                       ))}
                     </div>
 
-                    <button onClick={() => setCurrentSlide((prev) => (prev + 1) % slideImages.length)} className="text-white hover:text-tropixie-primary transition-colors hover:scale-110 active:scale-95">
+                    <button onClick={() => setCurrentSlide((prev) => (prev + 1) % slideImages.length)} className="text-gray-900 hover:text-tropixie-primary transition-colors hover:scale-110 active:scale-95">
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
                     </button>
                   </div>
@@ -172,7 +172,7 @@ export default function About() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="fixed inset-0 bg-[#0d0718]/80 backdrop-blur-md z-[200]"
+              className="fixed inset-0 bg-tropixie-dark/80 backdrop-blur-md z-[200]"
             />
             <motion.div
               data-lenis-prevent
@@ -183,7 +183,7 @@ export default function About() {
             >
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-6 right-6 w-12 h-12 bg-gray-50 hover:bg-tropixie-primary text-gray-500 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 shadow-sm"
+                className="absolute top-6 right-6 w-12 h-12 bg-gray-50 hover:bg-tropixie-primary text-gray-500 hover:text-gray-900 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
               </button>
@@ -229,7 +229,7 @@ export default function About() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setPopupSlide(null)}
-              className="fixed inset-0 bg-[#0d0718]/95 backdrop-blur-lg z-[300] cursor-zoom-out flex items-center justify-center p-4 md:p-10"
+              className="fixed inset-0 bg-tropixie-dark/95 backdrop-blur-lg z-[300] cursor-zoom-out flex items-center justify-center p-4 md:p-10"
             >
               <div className="relative pointer-events-auto max-w-full w-full lg:w-3/4 flex flex-col items-center">
                 <motion.img
@@ -243,7 +243,7 @@ export default function About() {
                 
                 <button
                   onClick={() => setPopupSlide(null)}
-                  className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-12 h-12 bg-white hover:bg-tropixie-primary text-gray-800 hover:text-white rounded-full flex items-center justify-center transition-colors shadow-2xl z-10"
+                  className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-12 h-12 bg-white hover:bg-tropixie-primary text-gray-800 hover:text-gray-900 rounded-full flex items-center justify-center transition-colors shadow-2xl z-10"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
@@ -253,7 +253,7 @@ export default function About() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="mt-6 bg-white/10 backdrop-blur-md text-white px-8 py-3 rounded-full font-[var(--font-outfit)] text-lg pointer-events-auto shadow-lg border border-white/20 font-medium tracking-wide"
+                    className="mt-6 bg-white/10 backdrop-blur-md text-gray-900 px-8 py-3 rounded-full font-[var(--font-outfit)] text-lg pointer-events-auto shadow-lg border border-gray-900/20 font-medium tracking-wide"
                   >
                     {popupSlide.description}
                   </motion.div>

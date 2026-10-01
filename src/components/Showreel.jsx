@@ -39,7 +39,7 @@ export default function Showreel() {
             className="flex items-center gap-4"
           >
             <div className="h-[1px] w-12 md:w-24 bg-tropixie-border"></div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-[var(--font-space)] text-white">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-[var(--font-space)] text-gray-900">
               Our Recent Work
             </h2>
             <div className="h-[1px] w-12 md:w-24 bg-tropixie-border"></div>
@@ -56,7 +56,7 @@ export default function Showreel() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
               onClick={() => setSelectedVideo(project)}
-              className="group cursor-pointer relative rounded-2xl overflow-hidden aspect-video bg-black border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:border-tropixie-primary hover:shadow-[0_15px_40px_rgba(168,85,247,0.3)] transition-all duration-300"
+              className="group cursor-pointer relative rounded-2xl overflow-hidden aspect-video bg-tropixie-dark border border-gray-900/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:border-tropixie-primary hover:shadow-[0_15px_40px_rgba(168,85,247,0.3)] transition-all duration-300"
             >
               {/* Thumbnail Image */}
               <img
@@ -94,18 +94,18 @@ export default function Showreel() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedVideo(null)}
-              className="fixed inset-0 bg-black/90 backdrop-blur-md z-[200]"
+              className="fixed inset-0 bg-tropixie-dark/90 backdrop-blur-md z-[200]"
             />
             <motion.div
               data-lenis-prevent
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-5xl aspect-video bg-black border border-tropixie-border rounded-2xl overflow-hidden z-[201] shadow-[0_0_50px_rgba(0,0,0,0.8)]"
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-5xl aspect-video bg-tropixie-dark border border-tropixie-border rounded-2xl overflow-hidden z-[201] shadow-[0_0_50px_rgba(0,0,0,0.8)]"
             >
               <button
                 onClick={() => setSelectedVideo(null)}
-                className="absolute top-4 right-4 w-10 h-10 bg-black/50 hover:bg-tropixie-primary text-white rounded-full flex items-center justify-center transition-colors z-10"
+                className="absolute top-4 right-4 w-10 h-10 bg-tropixie-dark/50 hover:bg-tropixie-primary text-gray-900 rounded-full flex items-center justify-center transition-colors z-10"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
               </button>
