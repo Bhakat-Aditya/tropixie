@@ -56,7 +56,8 @@ const PRINTING_SERVICE = {
   title: 'Premium 3D Printing',
   shortDesc: 'Industrial-grade custom 3D printing.',
   fullDesc: 'Bring your digital models into the physical world. We offer high-precision, industrial-grade 3D printing services for prototypes, miniatures, and custom models with incredible detail and durability.',
-  icon: '/icon_3dprint_1790525583718.jpg'
+  icon: '/icon_3dprint_1790525583718.jpg',
+  externalLink: 'https://catalog.nextapsolutions.com/whatsapp-store/TropixieMiniature'
 }
 
 export default function Services() {
@@ -74,19 +75,23 @@ export default function Services() {
   }, [selectedService])
 
   return (
-    <section id="services" className="relative py-20 lg:py-32 bg-tropixie-dark-card border-y border-tropixie-border overflow-hidden">
+    <section id="services" className="relative py-20 lg:py-32 bg-gradient-to-b from-[#FFF0DB] via-white to-tropixie-dark border-y border-tropixie-border overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16 max-w-4xl mx-auto">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black font-[var(--font-space)] text-gray-900 uppercase tracking-tight mb-6"
+            className="flex items-center justify-center gap-4 mb-6"
           >
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-tropixie-primary via-purple-400 to-tropixie-secondary">Services</span>
-          </motion.h2>
+            <div className="h-[2px] w-12 md:w-24 bg-gradient-to-r from-transparent to-tropixie-primary rounded-full"></div>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-cursive text-[var(--color-tropixie-primary)] tracking-tight whitespace-nowrap">
+              Our Services
+            </h2>
+            <div className="h-[2px] w-12 md:w-24 bg-gradient-to-l from-transparent to-tropixie-primary rounded-full"></div>
+          </motion.div>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -108,7 +113,7 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05, duration: 0.5 }}
               onClick={() => setSelectedService(service)}
-              className="cursor-pointer group relative bg-tropixie-dark rounded-xl p-4 sm:p-6 border border-tropixie-border hover:border-tropixie-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300 flex flex-col justify-center items-center"
+              className="cursor-pointer group relative bg-gradient-to-br from-white to-tropixie-dark rounded-xl p-4 sm:p-6 border border-tropixie-border hover:border-tropixie-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300 flex flex-col justify-center items-center"
             >
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shadow-lg border border-tropixie-primary/20 mb-4 sm:mb-5 group-hover:scale-110 group-hover:border-tropixie-primary transition-all duration-300">
                 <img src={service.icon} alt={service.title} className="w-full h-full object-cover" />
@@ -121,10 +126,8 @@ export default function Services() {
         {/* 3D Printing Centered Card */}
         <div className="flex justify-center mt-4 sm:mt-6">
           <div className="w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]">
-            <motion.a
-              href="https://catalog.nextapsolutions.com/whatsapp-store/TropixieMiniature"
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.div
+              onClick={() => setSelectedService(PRINTING_SERVICE)}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -135,11 +138,7 @@ export default function Services() {
                 <img src={PRINTING_SERVICE.icon} alt={PRINTING_SERVICE.title} className="w-full h-full object-cover" />
               </div>
               <h3 className="font-bold text-base sm:text-lg text-gray-900 mb-2 font-[var(--font-space)] leading-tight w-full text-center">{PRINTING_SERVICE.title}</h3>
-
-              <div className="mt-4 px-6 py-2 bg-gradient-to-r from-tropixie-primary to-purple-600 rounded-full text-white font-bold text-sm shadow-[0_0_15px_rgba(168,85,247,0.4)] group-hover:shadow-[0_0_25px_rgba(168,85,247,0.8)] transition-all duration-300">
-                Order Now
-              </div>
-            </motion.a>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -184,6 +183,17 @@ export default function Services() {
               <p className="text-gray-600 font-[var(--font-outfit)] text-base leading-relaxed">
                 {selectedService.fullDesc}
               </p>
+
+              {selectedService.externalLink && (
+                <a
+                  href={selectedService.externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 px-8 py-3 bg-gradient-to-r from-tropixie-primary to-purple-600 rounded-full text-white font-bold text-sm shadow-[0_0_15px_rgba(168,85,247,0.4)] hover:shadow-[0_0_25px_rgba(168,85,247,0.8)] transition-all duration-300"
+                >
+                  Explore
+                </a>
+              )}
             </motion.div>
           </>
         )}

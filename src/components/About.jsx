@@ -34,7 +34,7 @@ export default function About() {
 
   return (
     <>
-      <section id="about" className="relative py-20 lg:py-32 bg-tropixie-dark overflow-hidden text-gray-900">
+      <section id="about" className="relative py-20 lg:py-32 bg-gradient-to-b from-white via-tropixie-dark to-[#FFF0DB] overflow-hidden text-gray-900">
 
         {/* Deep background glow */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-tropixie-primary/10 rounded-full blur-[150px] pointer-events-none -translate-y-1/2 translate-x-1/3 z-0"></div>
@@ -52,9 +52,13 @@ export default function About() {
               transition={{ duration: 0.8 }}
               className="w-full max-w-xl relative z-10"
             >
-              <h2 className="text-5xl md:text-6xl lg:text-[4.5rem] font-black font-[var(--font-space)] text-gray-900 mb-8 leading-[1.1] tracking-tight">
-                About <span className="text-transparent bg-clip-text bg-gradient-to-r from-tropixie-primary via-purple-400 to-tropixie-secondary">us</span>
-              </h2>
+              <div className="flex items-center gap-4 mb-8">
+                <div className="h-[2px] w-8 md:w-16 bg-gradient-to-r from-transparent to-tropixie-primary rounded-full"></div>
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-cursive text-[var(--color-tropixie-primary)] leading-[1.1] tracking-tight whitespace-nowrap">
+                  About Us
+                </h2>
+                <div className="h-[2px] w-8 md:w-16 bg-gradient-to-l from-transparent to-tropixie-primary rounded-full"></div>
+              </div>
 
               <div className="space-y-6 text-gray-700 font-[var(--font-outfit)] text-base md:text-lg mb-10 leading-relaxed font-light">
                 <p>
@@ -80,20 +84,7 @@ export default function About() {
           {/* Right Side: 3D Holographic Slideshow */}
           <div className="w-full lg:w-[55%] relative z-20 h-[400px] sm:h-[500px] lg:h-[700px] flex flex-col items-center justify-center" style={{ perspective: '2000px' }}>
 
-            {/* Floating Decorative Glass Elements */}
-            <motion.div
-              animate={{ y: [-15, 15, -15], rotate: [0, 10, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-4 sm:top-10 right-4 sm:right-10 w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-tr from-white/10 to-white/5 backdrop-blur-xl border border-gray-900/20 shadow-[0_20px_40px_rgba(0,0,0,0.5)] z-30 flex items-center justify-center hidden sm:flex"
-            >
-              <svg className="w-6 h-6 sm:w-8 sm:h-8 text-tropixie-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15 9l7 1-5 5 1 7-7-4-7 4 1-7-5-5 7-1z" /></svg>
-            </motion.div>
-
-            <motion.div
-              animate={{ y: [15, -15, 15], rotate: [0, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-10 lg:bottom-20 left-0 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-purple-500/30 to-transparent backdrop-blur-xl border border-gray-900/20 shadow-[0_20px_40px_rgba(0,0,0,0.5)] z-30 hidden sm:block"
-            />
+            {/* Floating Decorative Glass Elements Removed */}
 
             {/* Back Card (Next Slide Preview) */}
             <motion.div
@@ -142,7 +133,7 @@ export default function About() {
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
               </button>
-  
+
               <button
                 onClick={() => setCurrentSlide((prev) => (prev + 1) % slideImages.length)}
                 className="w-12 h-12 bg-white/80 hover:bg-white text-gray-900 hover:text-tropixie-primary rounded-full flex items-center justify-center shadow-[0_10px_20px_rgba(0,0,0,0.1)] transition-all hover:scale-110 active:scale-95 border border-gray-900/10 backdrop-blur-md"
@@ -242,7 +233,7 @@ export default function About() {
                   >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
                   </button>
-  
+
                   <button
                     onClick={(e) => {
                       e.stopPropagation();

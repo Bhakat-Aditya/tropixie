@@ -17,10 +17,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/20"></div>
       </div>
 
-      {/* SVG Curve - transitions into the light section */}
-      <svg className="hero-curve relative z-10" viewBox="0 0 1440 120" preserveAspectRatio="none">
-        <path d="M0,60 C480,120 960,120 1440,60 L1440,120 L0,120 Z"></path>
-      </svg>
+
     </section>
   )
 }

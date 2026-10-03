@@ -63,7 +63,7 @@ export default function Team() {
 
   return (
     <>
-      <section id="team" className="relative py-20 lg:py-28 bg-tropixie-dark border-t border-tropixie-border overflow-hidden text-gray-900">
+      <section id="team" className="relative py-20 lg:py-28 bg-gradient-to-b from-white via-[#FFF5CC] to-[#FFF0DB] border-t border-tropixie-border overflow-hidden text-gray-900">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
           {/* Header */}
@@ -73,11 +73,13 @@ export default function Team() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="flex flex-col items-center gap-4 mb-6"
+              className="flex items-center justify-center gap-4 mb-6"
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-[var(--font-space)] text-gray-900 tracking-tight text-center">
-                Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-tropixie-primary via-purple-400 to-tropixie-secondary">Team</span>
+              <div className="h-[2px] w-12 md:w-24 bg-gradient-to-r from-transparent to-tropixie-primary rounded-full"></div>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-cursive text-[var(--color-tropixie-primary)] tracking-tight text-center whitespace-nowrap">
+                Meet Our Team
               </h2>
+              <div className="h-[2px] w-12 md:w-24 bg-gradient-to-l from-transparent to-tropixie-primary rounded-full"></div>
             </motion.div>
           </div>
 

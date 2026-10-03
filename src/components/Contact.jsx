@@ -25,7 +25,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-20 bg-tropixie-dark-card border-b border-tropixie-border overflow-hidden text-gray-900">
+    <section id="contact" className="relative py-20 bg-gradient-to-b from-[#FFF0DB] via-tropixie-dark to-white border-b border-tropixie-border overflow-hidden text-gray-900">
       <div className="max-w-[1400px] mx-auto px-4 lg:px-8">
 
         {/* Main Contact Box */}
@@ -34,13 +34,17 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto bg-tropixie-dark rounded-3xl p-8 md:p-12 text-gray-900 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border border-tropixie-border flex flex-col md:flex-row gap-8 lg:gap-12"
+          className="max-w-4xl mx-auto bg-tropixie-dark-card rounded-3xl p-8 md:p-12 text-gray-900 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border border-tropixie-border flex flex-col md:flex-row gap-8 lg:gap-12"
         >
           {/* Left side: Info */}
           <div className="flex-1 flex flex-col justify-center">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-[var(--font-space)] mb-2 leading-tight tracking-tight">
-              Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-tropixie-primary via-purple-400 to-tropixie-secondary">Create</span>
-            </h2>
+            <div className="flex items-center gap-4 mb-2">
+              <div className="h-[2px] w-8 md:w-16 bg-gradient-to-r from-transparent to-tropixie-primary rounded-full"></div>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-cursive text-[var(--color-tropixie-primary)] leading-tight tracking-tight whitespace-nowrap">
+                Let's Create
+              </h2>
+              <div className="h-[2px] w-8 md:w-16 bg-gradient-to-l from-transparent to-tropixie-primary rounded-full"></div>
+            </div>
             <span className="font-[var(--font-space)] tracking-[0.1em] text-xl md:text-2xl font-semibold uppercase mb-10 text-gray-900/90 block">
               SOMETHING AMAZING TOGETHER
             </span>
@@ -53,14 +57,14 @@ export default function Contact() {
           </div>
 
           {/* Right side: Form */}
-          <div className="flex-1 bg-tropixie-dark-card border border-tropixie-border rounded-2xl p-6 md:p-8 flex flex-col justify-between shadow-lg">
+          <div className="flex-1 bg-white border border-tropixie-border rounded-2xl p-6 md:p-8 flex flex-col justify-between shadow-lg">
             <form onSubmit={handleEmailSubmit} className="space-y-4">
-              <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Your Name" className="w-full bg-tropixie-dark border border-tropixie-border rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-tropixie-primary transition-colors" />
-              <input type="text" name="subject" value={formData.subject} onChange={handleChange} required placeholder="Subject" className="w-full bg-tropixie-dark border border-tropixie-border rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-tropixie-primary transition-colors" />
-              <textarea name="message" value={formData.message} onChange={handleChange} required placeholder="Your Message" rows="4" className="w-full bg-tropixie-dark border border-tropixie-border rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-tropixie-primary transition-colors resize-none"></textarea>
+              <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Your Name" className="w-full bg-white border border-tropixie-border rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-tropixie-primary focus:ring-2 focus:ring-tropixie-primary/20 transition-all" />
+              <input type="text" name="subject" value={formData.subject} onChange={handleChange} required placeholder="Subject" className="w-full bg-white border border-tropixie-border rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-tropixie-primary focus:ring-2 focus:ring-tropixie-primary/20 transition-all" />
+              <textarea name="message" value={formData.message} onChange={handleChange} required placeholder="Your Message" rows="4" className="w-full bg-white border border-tropixie-border rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-tropixie-primary focus:ring-2 focus:ring-tropixie-primary/20 transition-all resize-none"></textarea>
 
-              <button type="submit" className="bg-gradient-to-r from-tropixie-primary to-purple-600 text-gray-900 font-semibold font-[var(--font-outfit)] py-3 px-8 rounded-full text-sm inline-flex items-center gap-2 hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all w-max mt-4">
-                Send
+              <button type="submit" className="bg-gradient-to-r from-tropixie-primary to-purple-600 text-gray-900 font-semibold font-[var(--font-outfit)] py-3 px-8 rounded-xl text-sm flex items-center justify-center gap-2 hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all w-full mt-4">
+                Submit
               </button>
             </form>
           </div>

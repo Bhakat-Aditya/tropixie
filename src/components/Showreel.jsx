@@ -26,7 +26,7 @@ export default function Showreel() {
   }, [selectedVideo])
 
   return (
-    <section id="portfolio" className="relative py-20 lg:py-32 bg-tropixie-dark border-t border-tropixie-border">
+    <section id="portfolio" className="relative py-20 lg:py-32 bg-gradient-to-b from-tropixie-dark via-[#FFF9E6] to-white border-t border-tropixie-border">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
@@ -39,8 +39,8 @@ export default function Showreel() {
             className="flex items-center justify-center gap-4 mb-6"
           >
             <div className="h-[2px] w-12 md:w-24 bg-gradient-to-r from-transparent to-tropixie-primary rounded-full"></div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-[var(--font-space)] text-gray-900 tracking-tight">
-              Our Recent <span className="text-transparent bg-clip-text bg-gradient-to-r from-tropixie-primary via-purple-400 to-tropixie-secondary">Work</span>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-cursive text-[var(--color-tropixie-primary)] tracking-tight">
+              Our Recent Work
             </h2>
             <div className="h-[2px] w-12 md:w-24 bg-gradient-to-l from-transparent to-tropixie-primary rounded-full"></div>
           </motion.div>
@@ -101,21 +101,70 @@ export default function Showreel() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-5xl aspect-video bg-tropixie-dark border border-tropixie-border rounded-2xl overflow-hidden z-[201] shadow-[0_0_50px_rgba(0,0,0,0.8)]"
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] lg:w-[90%] max-w-7xl h-auto max-h-[90vh] bg-white border border-tropixie-border rounded-3xl overflow-hidden z-[201] shadow-[0_0_50px_rgba(0,0,0,0.8)] flex flex-col lg:flex-row"
             >
               <button
                 onClick={() => setSelectedVideo(null)}
-                className="absolute top-4 right-4 w-10 h-10 bg-tropixie-dark/50 hover:bg-tropixie-primary text-gray-900 rounded-full flex items-center justify-center transition-colors z-10"
+                className="absolute top-4 right-4 w-10 h-10 bg-black/40 hover:bg-tropixie-primary text-white rounded-full flex items-center justify-center transition-colors z-[210] backdrop-blur-sm shadow-md"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
               </button>
-              <iframe
-                src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1&rel=0`}
-                title={selectedVideo.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full border-0"
-              ></iframe>
+
+              {/* Main Video Player */}
+              <div className="w-full lg:w-[70%] xl:w-[75%] bg-black relative flex-shrink-0 flex flex-col justify-center">
+                <div className="w-full aspect-video">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1&rel=0`}
+                    title={selectedVideo.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full border-0"
+                  ></iframe>
+                </div>
+              </div>
+
+              {/* Title and Playlist Container */}
+              <div className="flex-1 bg-white/90 p-4 lg:p-6 flex flex-col overflow-hidden max-h-[40vh] lg:max-h-none">
+                <h3 className="text-xl lg:text-3xl font-bold font-cursive text-[var(--color-tropixie-primary)] mb-4 tracking-tight truncate shrink-0">
+                  {selectedVideo.title}
+                </h3>
+                
+                <h4 className="text-gray-900 font-bold font-[var(--font-outfit)] text-sm mb-4 flex items-center justify-between shrink-0">
+                  More Videos
+                  <span className="bg-tropixie-primary/20 text-tropixie-primary text-xs px-2 py-1 rounded-full">{PROJECTS.length}</span>
+                </h4>
+                
+                {/* Thumbnails Scroll Area */}
+                <div className="flex lg:flex-col gap-3 lg:gap-4 overflow-x-auto lg:overflow-x-hidden lg:overflow-y-auto pb-2 lg:pb-0 lg:pr-2 flex-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                  {PROJECTS.map((project) => (
+                    <div 
+                      key={project.id}
+                      onClick={() => setSelectedVideo(project)}
+                      className={`flex-shrink-0 w-36 lg:w-full aspect-video rounded-xl overflow-hidden cursor-pointer border-2 transition-all duration-300 relative group ${selectedVideo.id === project.id ? 'border-tropixie-primary opacity-100 shadow-[0_0_15px_rgba(168,85,247,0.5)] lg:scale-[1.02] ml-1 mr-1 lg:ml-0 lg:mr-0' : 'border-transparent opacity-60 hover:opacity-100 hover:border-tropixie-primary/50'}`}
+                    >
+                      <img
+                        src={`https://img.youtube.com/vi/${project.youtubeId}/mqdefault.jpg`}
+                        alt={project.title}
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = `https://img.youtube.com/vi/${project.youtubeId}/hqdefault.jpg`;
+                        }}
+                        className="w-full h-full object-cover"
+                      />
+                      {selectedVideo.id !== project.id && (
+                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
+                           <div className="w-8 h-8 bg-tropixie-primary/80 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:bg-tropixie-primary transition-all duration-300 lg:group-hover:scale-110">
+                             <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                           </div>
+                         </div>
+                      )}
+                      {selectedVideo.id === project.id && (
+                        <div className="absolute inset-0 border-2 border-tropixie-primary rounded-xl pointer-events-none"></div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           </>
         )}

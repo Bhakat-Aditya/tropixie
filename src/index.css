@@ -6,7 +6,7 @@
 }
 
 @theme {
-  --color-tropixie-dark: #FFF9E6; /* Soft, warm, eye-pleasant yellowish cream */
+  --color-tropixie-dark: #FFF5CC; /* Lighter, eye-pleasing warm yellow */
   --color-tropixie-dark-card: #FFFFFF; /* Pure white for clean contrast */
   --color-tropixie-dark-card-hover: #FFFDF0; /* Slight yellow tint on hover */
   --color-tropixie-border: #F0E6D2; /* Soft warm border */
@@ -14,9 +14,9 @@
   --color-tropixie-light: #ffffff;
   --color-tropixie-light-bg: #f8f9fc;
   
-  --color-tropixie-primary: #a855f7;
-  --color-tropixie-secondary: #ec4899;
-  --color-tropixie-accent: #f97316;
+  --color-tropixie-primary: #FD8C42; /* The requested matching orange */
+  --color-tropixie-secondary: #FFB347; /* A softer matching orange/yellow */
+  --color-tropixie-accent: #FD8C42;
   
   --font-outfit: "Outfit", sans-serif;
   --font-space: "Space Grotesk", sans-serif;
@@ -60,7 +60,7 @@ body {
 
 /* Base button */
 .btn-gradient {
-  background: linear-gradient(135deg, #f97316, #ec4899);
+  background: linear-gradient(135deg, #FD8C42, #FFB347);
   color: white;
   font-weight: 600;
   padding: 0.75rem 1.5rem;
@@ -74,7 +74,7 @@ body {
 }
 .btn-gradient:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+  box-shadow: 0 4px 15px rgba(253, 140, 66, 0.4);
 }
 
 .btn-outline {
@@ -107,9 +107,6 @@ body {
   background: rgba(255, 255, 255, 0.85); /* Light off-white glass background */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  /* Creates an inverted U (arch) shape that is broader in the center */
-  mask-image: radial-gradient(ellipse 67.1% 75% at 50% 150%, transparent 99.5%, black 100%);
-  -webkit-mask-image: radial-gradient(ellipse 67.1% 75% at 50% 150%, transparent 99.5%, black 100%);
   z-index: -1;
   pointer-events: none;
 }
