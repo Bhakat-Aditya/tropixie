@@ -37,7 +37,7 @@ export default function Contact() {
           className="max-w-4xl mx-auto bg-tropixie-dark-card rounded-3xl p-8 md:p-12 text-gray-900 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border border-tropixie-border flex flex-col md:flex-row gap-8 lg:gap-12"
         >
           {/* Left side: Info */}
-          <div className="flex-1 flex flex-col justify-center">
+          <div className="flex-1 flex flex-col justify-start -mt-4 md:-mt-6">
             <div className="mb-4">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 leading-tight tracking-tight whitespace-nowrap">
                 Let's Create

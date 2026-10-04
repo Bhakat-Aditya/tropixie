@@ -105,18 +105,18 @@ export default function Team() {
                 </div>
 
                 {/* Text Tags Container */}
-                <div className="relative -mt-6 sm:-mt-8 z-20 flex flex-col items-center group-hover:-translate-y-1 transition-transform duration-300 ease-out max-w-[110%]">
+                <div className="relative -mt-6 sm:-mt-8 z-20 flex flex-col items-center transition-transform duration-300 ease-out max-w-[110%]">
 
                   {/* Name Tag */}
-                  <div className="relative w-max flex justify-center py-1.5 sm:py-2 px-4 sm:px-6 z-20 hover:scale-105 transition-transform duration-200 bg-purple-900 rounded-xl shadow-[0_4px_15px_rgba(88,28,135,0.4)] border border-purple-800">
-                    <h4 className="font-bold text-white font-[var(--font-space)] text-xs sm:text-sm md:text-sm lg:text-base text-center tracking-wide leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
+                  <div className="relative w-max flex justify-center py-1.5 sm:py-2 px-4 sm:px-6 z-20 bg-purple-900 rounded-xl shadow-[0_4px_15px_rgba(88,28,135,0.4)] border border-purple-800">
+                    <h4 className="font-bold text-white font-[var(--font-space)] text-sm sm:text-base md:text-base lg:text-lg text-center tracking-wide leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
                       {member.name}
                     </h4>
                   </div>
 
                   {/* Role Tag */}
-                  <div className="relative -mt-2 w-max flex justify-center py-1 px-4 sm:px-5 z-10 group-hover:rotate-3 transition-transform duration-300 bg-orange-500 rounded-lg shadow-[0_4px_10px_rgba(249,115,22,0.3)] border border-orange-400">
-                    <p className="text-white text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-widest text-center whitespace-nowrap overflow-hidden text-ellipsis">
+                  <div className="relative mt-0.5 w-max flex justify-center py-1.5 px-4 sm:px-5 z-10 bg-red-600 rounded-lg shadow-[0_4px_10px_rgba(220,38,38,0.4)] border border-red-500">
+                    <p className="text-white text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-widest text-center whitespace-nowrap overflow-hidden text-ellipsis">
                       {member.role}
                     </p>
                   </div>
