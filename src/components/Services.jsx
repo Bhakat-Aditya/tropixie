@@ -79,18 +79,16 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16 max-w-4xl mx-auto">
+        <div className="flex flex-col items-center text-center mb-8 max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center gap-4 mb-6"
+            className="mb-4"
           >
-            <div className="h-[2px] w-12 md:w-24 bg-gradient-to-r from-transparent to-tropixie-primary rounded-full"></div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-cursive text-[var(--color-tropixie-primary)] tracking-tight whitespace-nowrap">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 tracking-tight whitespace-nowrap">
               Our Services
             </h2>
-            <div className="h-[2px] w-12 md:w-24 bg-gradient-to-l from-transparent to-tropixie-primary rounded-full"></div>
           </motion.div>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

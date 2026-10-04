@@ -44,8 +44,24 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="absolute top-0 left-0 right-0 z-[100] flex items-center h-16 lg:h-20 nav-scrolled">
-        <div className="relative z-10 max-w-7xl w-full mx-auto px-4 lg:px-6 flex items-center justify-between h-full">
+      <nav className="absolute top-0 left-0 right-0 z-[100] flex items-center h-20 lg:h-24">
+        
+        {/* SVG for Inverted Curve Clip Path */}
+        <svg width="0" height="0" className="absolute pointer-events-none">
+          <defs>
+            <clipPath id="inverted-curve" clipPathUnits="objectBoundingBox">
+              <path d="M 0 0 L 1 0 L 1 1 Q 0.5 0.5 0 1 Z" />
+            </clipPath>
+          </defs>
+        </svg>
+
+        {/* Curved Background */}
+        <div 
+          className={`absolute top-0 left-0 right-0 h-full transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md drop-shadow-md' : 'bg-white/70 backdrop-blur-sm'}`}
+          style={{ clipPath: 'url(#inverted-curve)' }}
+        ></div>
+
+        <div className="relative z-10 max-w-7xl w-full mx-auto px-4 lg:px-6 flex items-center justify-between h-full pb-6">
           {/* Studio Name */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -56,11 +72,13 @@ export default function Navbar() {
           >
             {/* Mobile View: Logo */}
             <img src="/logo.png" alt="Tropixie Logo" className="h-16 md:h-20 lg:hidden w-auto object-contain" />
-            
+
             {/* PC View: Text */}
-            <span className="hidden lg:flex items-start text-4xl lg:text-5xl font-cursive text-[var(--color-tropixie-primary)] font-bold">
+            <span className="hidden lg:flex items-start text-3xl lg:text-4xl font-bold text-purple-900">
               Tropixie Animation Studio
-              <sup className="text-xl lg:text-2xl ml-1 mt-1 md:mt-2">™</sup>
+              <span className="ml-2 -mt-1 md:-mt-2 flex items-center justify-center w-5 h-5 lg:w-6 lg:h-6 border-2 border-purple-900 rounded-full text-[9px] lg:text-[10px] font-black tracking-tighter">
+                TM
+              </span>
             </span>
           </motion.div>
 

@@ -1,23 +1,42 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import gsap from 'gsap'
+
+const slideImages = [
+  '/pic 1.png',
+  '/1a.png',
+  '/2a.png'
+]
 
 export default function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slideImages.length)
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [])
+
   return (
-    <section className="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden" id="hero">
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0 bg-tropixie-dark">
-        <iframe
-          src="https://www.youtube.com/embed/x3Zlv_biizw?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=x3Zlv_biizw&modestbranding=1&playsinline=1"
-          allow="autoplay; encrypted-media"
-          className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-[1.3] pointer-events-none"
-        ></iframe>
+    <section className="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden bg-tropixie-dark" id="hero">
+      {/* Background Slideshow */}
+      <div className="absolute inset-0 z-0">
+        <AnimatePresence>
+          <motion.img
+            key={currentSlide}
+            src={slideImages[currentSlide]}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full object-cover"
+            alt={`Hero Slide ${currentSlide + 1}`}
+          />
+        </AnimatePresence>
         
         {/* Optional overlay to make text more readable if you add any text later */}
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none"></div>
       </div>
-
-
     </section>
   )
 }

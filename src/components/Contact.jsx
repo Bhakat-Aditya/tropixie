@@ -25,7 +25,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-20 bg-gradient-to-b from-[#FFF0DB] via-tropixie-dark to-white border-b border-tropixie-border overflow-hidden text-gray-900">
+    <section id="contact" className="relative pt-10 lg:pt-12 pb-20 bg-gradient-to-b from-[#FFF0DB] via-tropixie-dark to-white border-b border-tropixie-border overflow-hidden text-gray-900">
       <div className="max-w-[1400px] mx-auto px-4 lg:px-8">
 
         {/* Main Contact Box */}
@@ -38,14 +38,12 @@ export default function Contact() {
         >
           {/* Left side: Info */}
           <div className="flex-1 flex flex-col justify-center">
-            <div className="flex items-center gap-4 mb-2">
-              <div className="h-[2px] w-8 md:w-16 bg-gradient-to-r from-transparent to-tropixie-primary rounded-full"></div>
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-cursive text-[var(--color-tropixie-primary)] leading-tight tracking-tight whitespace-nowrap">
+            <div className="mb-4">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 leading-tight tracking-tight whitespace-nowrap">
                 Let's Create
               </h2>
-              <div className="h-[2px] w-8 md:w-16 bg-gradient-to-l from-transparent to-tropixie-primary rounded-full"></div>
             </div>
-            <span className="font-[var(--font-space)] tracking-[0.1em] text-xl md:text-2xl font-semibold uppercase mb-10 text-gray-900/90 block">
+            <span className="font-[var(--font-space)] tracking-[0.1em] text-xl md:text-2xl font-semibold uppercase mb-6 text-gray-900/90 block">
               SOMETHING AMAZING TOGETHER
             </span>
 
@@ -63,7 +61,7 @@ export default function Contact() {
               <input type="text" name="subject" value={formData.subject} onChange={handleChange} required placeholder="Subject" className="w-full bg-white border border-tropixie-border rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-tropixie-primary focus:ring-2 focus:ring-tropixie-primary/20 transition-all" />
               <textarea name="message" value={formData.message} onChange={handleChange} required placeholder="Your Message" rows="4" className="w-full bg-white border border-tropixie-border rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-tropixie-primary focus:ring-2 focus:ring-tropixie-primary/20 transition-all resize-none"></textarea>
 
-              <button type="submit" className="bg-gradient-to-r from-tropixie-primary to-purple-600 text-gray-900 font-semibold font-[var(--font-outfit)] py-3 px-8 rounded-xl text-sm flex items-center justify-center gap-2 hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all w-full mt-4">
+              <button type="submit" className="bg-orange-500 hover:bg-orange-600 text-white font-bold font-[var(--font-outfit)] py-3 px-8 rounded-xl text-sm flex items-center justify-center gap-2 hover:shadow-lg transition-all w-full mt-4">
                 Submit
               </button>
             </form>

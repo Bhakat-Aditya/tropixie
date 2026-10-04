@@ -52,15 +52,13 @@ export default function About() {
               transition={{ duration: 0.8 }}
               className="w-full max-w-xl relative z-10"
             >
-              <div className="flex items-center gap-4 mb-8">
-                <div className="h-[2px] w-8 md:w-16 bg-gradient-to-r from-transparent to-tropixie-primary rounded-full"></div>
-                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-cursive text-[var(--color-tropixie-primary)] leading-[1.1] tracking-tight whitespace-nowrap">
+              <div className="mb-6">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 leading-[1.1] tracking-tight whitespace-nowrap">
                   About Us
                 </h2>
-                <div className="h-[2px] w-8 md:w-16 bg-gradient-to-l from-transparent to-tropixie-primary rounded-full"></div>
               </div>
 
-              <div className="space-y-6 text-gray-700 font-[var(--font-outfit)] text-base md:text-lg mb-10 leading-relaxed font-light">
+              <div className="space-y-6 text-gray-700 font-[var(--font-outfit)] text-base md:text-lg mb-6 leading-relaxed font-light">
                 <p>
                   In the historic city of Medinipur, Tropixie Animation Studio was born from the dreams and boundless creative passion of a group of young creators. Founded with a simple yet powerful vision, we strive to connect with people beyond the boundaries of language and culture.
                 </p>
@@ -71,11 +69,11 @@ export default function About() {
 
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="bg-gradient-to-r from-tropixie-primary to-purple-600 text-gray-900 font-semibold py-4 px-10 rounded-full inline-flex items-center gap-3 hover:shadow-[0_10px_30px_rgba(168,85,247,0.4)] hover:-translate-y-1 transition-all duration-300 border border-gray-900/10"
+                className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full inline-flex items-center gap-3 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-transparent"
               >
                 Read Our Story
                 <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-                  <svg className="w-3 h-3 text-gray-900 ml-0.5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                  <svg className="w-3 h-3 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
                 </div>
               </button>
             </motion.div>

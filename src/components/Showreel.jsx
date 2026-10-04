@@ -30,19 +30,17 @@ export default function Showreel() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div className="flex flex-col items-center text-center mb-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="flex items-center justify-center gap-4 mb-6"
+            className="mb-4"
           >
-            <div className="h-[2px] w-12 md:w-24 bg-gradient-to-r from-transparent to-tropixie-primary rounded-full"></div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-cursive text-[var(--color-tropixie-primary)] tracking-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 tracking-tight">
               Our Recent Work
             </h2>
-            <div className="h-[2px] w-12 md:w-24 bg-gradient-to-l from-transparent to-tropixie-primary rounded-full"></div>
           </motion.div>
         </div>
 
@@ -125,7 +123,7 @@ export default function Showreel() {
 
               {/* Title and Playlist Container */}
               <div className="flex-1 bg-white/90 p-4 lg:p-6 flex flex-col overflow-hidden max-h-[40vh] lg:max-h-none">
-                <h3 className="text-xl lg:text-3xl font-bold font-cursive text-[var(--color-tropixie-primary)] mb-4 tracking-tight truncate shrink-0">
+                <h3 className="text-lg lg:text-2xl font-bold text-purple-900 mb-4 tracking-tight truncate shrink-0">
                   {selectedVideo.title}
                 </h3>
                 

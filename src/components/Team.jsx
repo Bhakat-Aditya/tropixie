@@ -67,35 +67,19 @@ export default function Team() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
           {/* Header */}
-          <div className="flex flex-col items-center text-center mb-16 relative">
+          <div className="flex flex-col items-center text-center mb-8 relative">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="flex items-center justify-center gap-4 mb-6"
+              className="mb-4"
             >
-              <div className="h-[2px] w-12 md:w-24 bg-gradient-to-r from-transparent to-tropixie-primary rounded-full"></div>
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-cursive text-[var(--color-tropixie-primary)] tracking-tight text-center whitespace-nowrap">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 tracking-tight text-center whitespace-nowrap">
                 Meet Our Team
               </h2>
-              <div className="h-[2px] w-12 md:w-24 bg-gradient-to-l from-transparent to-tropixie-primary rounded-full"></div>
             </motion.div>
           </div>
-
-          {/* SVG Filters for Brush Effects */}
-          <svg width="0" height="0" className="absolute hidden">
-            <defs>
-              <filter id="brush-blue" x="-10%" y="-10%" width="120%" height="120%">
-                <feTurbulence type="fractalNoise" baseFrequency="0.04 0.15" numOctaves="3" result="noise" />
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" />
-              </filter>
-              <filter id="brush-yellow" x="-10%" y="-10%" width="120%" height="120%">
-                <feTurbulence type="fractalNoise" baseFrequency="0.08 0.2" numOctaves="2" result="noise" />
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
-              </filter>
-            </defs>
-          </svg>
 
           {/* Grid - No Scroll, All Visible */}
           <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-16 pb-8 pt-4">
@@ -123,21 +107,15 @@ export default function Team() {
                 {/* Text Tags Container */}
                 <div className="relative -mt-6 sm:-mt-8 z-20 flex flex-col items-center group-hover:-translate-y-1 transition-transform duration-300 ease-out max-w-[110%]">
 
-                  {/* Name Tag (Primary Purple) */}
-                  <div className="relative w-max flex justify-center py-2 sm:py-3 px-4 sm:px-6 z-20 hover:scale-105 transition-transform duration-200">
-                    <svg className="absolute inset-0 w-full h-full text-tropixie-primary drop-shadow-md z-[-1]" preserveAspectRatio="none" viewBox="0 0 200 50">
-                      <rect x="5" y="8" width="190" height="34" rx="10" fill="currentColor" filter="url(#brush-blue)" />
-                    </svg>
+                  {/* Name Tag */}
+                  <div className="relative w-max flex justify-center py-1.5 sm:py-2 px-4 sm:px-6 z-20 hover:scale-105 transition-transform duration-200 bg-purple-900 rounded-xl shadow-[0_4px_15px_rgba(88,28,135,0.4)] border border-purple-800">
                     <h4 className="font-bold text-white font-[var(--font-space)] text-xs sm:text-sm md:text-sm lg:text-base text-center tracking-wide leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
                       {member.name}
                     </h4>
                   </div>
 
-                  {/* Role Tag (Secondary Pink) */}
-                  <div className="relative -mt-3 sm:-mt-4 w-max flex justify-center py-1.5 sm:py-2 px-5 sm:px-6 z-10 group-hover:rotate-3 transition-transform duration-300">
-                    <svg className="absolute inset-0 w-full h-full text-tropixie-secondary drop-shadow-sm z-[-1]" preserveAspectRatio="none" viewBox="0 0 200 40">
-                      <rect x="10" y="8" width="180" height="24" rx="8" fill="currentColor" filter="url(#brush-yellow)" />
-                    </svg>
+                  {/* Role Tag */}
+                  <div className="relative -mt-2 w-max flex justify-center py-1 px-4 sm:px-5 z-10 group-hover:rotate-3 transition-transform duration-300 bg-orange-500 rounded-lg shadow-[0_4px_10px_rgba(249,115,22,0.3)] border border-orange-400">
                     <p className="text-white text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-widest text-center whitespace-nowrap overflow-hidden text-ellipsis">
                       {member.role}
                     </p>

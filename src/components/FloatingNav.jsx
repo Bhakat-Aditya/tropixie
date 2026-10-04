@@ -13,6 +13,7 @@ const NAV_LINKS = [
 export default function FloatingNav() {
   const [isVisible, setIsVisible] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('hero')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +22,18 @@ export default function FloatingNav() {
       } else {
         setIsVisible(false)
         setIsOpen(false)
+      }
+
+      const sections = NAV_LINKS.map((l) => l.href.replace('#', ''))
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i])
+        if (el) {
+          const rect = el.getBoundingClientRect()
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            setActiveSection(sections[i])
+            break
+          }
+        }
       }
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -52,15 +65,22 @@ export default function FloatingNav() {
                 exit={{ opacity: 0, y: 10, scale: 0.9 }}
                 className="bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border border-gray-100 p-2 flex flex-col overflow-hidden"
               >
-                {NAV_LINKS.map((link) => (
-                  <button
-                    key={link.href}
-                    onClick={() => scrollTo(link.href)}
-                    className="px-5 py-2.5 text-sm font-[var(--font-outfit)] font-semibold text-gray-700 hover:text-white hover:bg-tropixie-primary rounded-xl text-right transition-all whitespace-nowrap"
-                  >
-                    {link.label}
-                  </button>
-                ))}
+                {NAV_LINKS.map((link) => {
+                  const isActive = activeSection === link.href.replace('#', '')
+                  return (
+                    <button
+                      key={link.href}
+                      onClick={() => scrollTo(link.href)}
+                      className={`px-5 py-2.5 text-sm font-[var(--font-outfit)] font-semibold rounded-xl text-right transition-all whitespace-nowrap ${
+                        isActive 
+                          ? 'bg-tropixie-primary text-white shadow-md' 
+                          : 'text-gray-700 hover:text-white hover:bg-tropixie-primary/80'
+                      }`}
+                    >
+                      {link.label}
+                    </button>
+                  )
+                })}
               </motion.div>
             )}
           </AnimatePresence>
