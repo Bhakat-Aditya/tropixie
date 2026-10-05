@@ -66,6 +66,15 @@ export default function Team() {
       <section id="team" className="relative py-20 lg:py-28 bg-gradient-to-b from-white via-[#FFF5CC] to-[#FFF0DB] border-t border-tropixie-border overflow-hidden text-gray-900">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
+          {/* SVG Filter for Realistic Brush Stroke Texture */}
+          <svg className="hidden" aria-hidden="true">
+            <filter id="brush-texture" x="-10%" y="-10%" width="120%" height="120%">
+              {/* Fractal noise for rough edges, baseFrequency creates horizontal bristle streaks */}
+              <feTurbulence type="fractalNoise" baseFrequency="0.01 0.3" numOctaves="3" result="noise" />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+          </svg>
+
           {/* Header */}
           <div className="flex flex-col items-center text-center mb-8 relative">
             <motion.div
@@ -104,28 +113,35 @@ export default function Team() {
                   <div className="absolute inset-0 rounded-full shadow-[inset_0_0_20px_rgba(0,0,0,0.1)] pointer-events-none transition-all duration-300"></div>
                 </div>
 
-                {/* Animated Border Wrapper */}
-                <div className="relative -mt-6 sm:-mt-8 z-20 w-[90%] sm:w-[85%] mx-auto rounded-2xl overflow-hidden p-[2px] shadow-[0_10px_20px_rgba(0,0,0,0.08)] group-hover:shadow-[0_15px_40px_rgba(88,28,135,0.3)] transition-all duration-300">
+                {/* Paint Brush Style Tags */}
+                <div className="relative -mt-6 sm:-mt-8 z-20 flex flex-col items-center w-[110%] sm:w-[120%]">
                   
-                  {/* Spinning Gradient Tail / Dot */}
-                  <div className="absolute inset-[-150%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_70%,#ec4899_90%,#8b5cf6_100%)]"></div>
-                  
-                  {/* Inner Glass Text Container */}
-                  <div className="relative z-10 flex flex-col items-center w-full h-full bg-gradient-to-r from-purple-100 via-pink-100 to-orange-100 backdrop-blur-md rounded-xl p-2.5 sm:p-3">
-                    
-                    {/* Name Tag */}
-                    <h4 className="font-bold text-purple-950 font-[var(--font-space)] text-xs sm:text-sm md:text-base text-center tracking-wide leading-tight truncate w-full">
+                  {/* Name Tag (Blue/Purple Stroke) */}
+                  <div className="relative z-10 px-4 py-1.5 md:py-2 transform hover:-translate-y-0.5 transition-transform duration-300 flex items-center justify-center group/name">
+                    {/* Brush Background */}
+                    <div 
+                      className="absolute inset-0 bg-[#635BFF] transition-colors duration-300 group-hover/name:bg-[#5249ea]"
+                      style={{ filter: 'url(#brush-texture)', borderRadius: '255px 15px 225px 15px/15px 225px 15px 255px' }}
+                    ></div>
+                    {/* Text */}
+                    <h4 className="relative z-10 font-bold text-white font-[var(--font-space)] text-sm sm:text-base md:text-lg text-center tracking-wide leading-tight whitespace-nowrap px-1 drop-shadow-sm">
                       {member.name}
                     </h4>
-                    
-                    {/* Role Tag */}
-                    <div className="mt-1.5 bg-red-50 px-2.5 py-1 rounded-xl border border-red-100">
-                      <p className="text-red-600 text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-widest text-center truncate">
-                        {member.role}
-                      </p>
-                    </div>
-
                   </div>
+                  
+                  {/* Role Tag (Magenta/Pink Stroke) */}
+                  <div className="relative -mt-0.5 sm:-mt-1 z-0 px-4 py-1 md:py-1.5 transform hover:-translate-y-0.5 transition-transform duration-300 flex items-center justify-center group/role">
+                    {/* Brush Background */}
+                    <div 
+                      className="absolute inset-0 bg-[#C83681] transition-colors duration-300 group-hover/role:bg-[#b02b6e]"
+                      style={{ filter: 'url(#brush-texture)', borderRadius: '15px 225px 15px 255px/255px 15px 225px 15px' }}
+                    ></div>
+                    {/* Text */}
+                    <p className="relative z-10 text-white text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-widest text-center whitespace-nowrap px-1 drop-shadow-sm">
+                      {member.role}
+                    </p>
+                  </div>
+
                 </div>
               </motion.div>
             ))}
