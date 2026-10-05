@@ -43,33 +43,17 @@ export default function About() {
           <img 
             src="/bg1.jpeg" 
             alt="" 
-            className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-60 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[27deg]" 
+            className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-20 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[7deg]" 
           />
+          {/* Subtle Yellow Brand Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#FCE225]/10 via-yellow-400/5 to-amber-500/10 pointer-events-none mix-blend-multiply"></div>
         </div>
 
         {/* Deep background glow */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-tropixie-primary/10 rounded-full blur-[150px] pointer-events-none -translate-y-1/2 translate-x-1/3 z-0"></div>
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none translate-y-1/3 -translate-x-1/3 z-0"></div>
 
-        {/* Centered Heading with Frosted Glass Box */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="relative inline-flex items-center justify-center px-24 py-10 mt-6"
-          >
-            {/* Soft Faded Blur Background */}
-            <div 
-              className="absolute inset-0 backdrop-blur-xl pointer-events-none"
-              style={{ maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 75%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 75%)' }}
-            ></div>
-            <h2 className="relative z-10 text-4xl md:text-5xl lg:text-6xl font-bold font-[var(--font-space)] tracking-tight text-center whitespace-nowrap px-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 via-purple-500 to-indigo-800 animate-text-gradient drop-shadow-sm">
-              About Us
-            </h2>
-          </motion.div>
-        </div>
+
 
         {/* Main Grid Layout */}
         <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-stretch gap-16 lg:gap-12">
@@ -83,13 +67,17 @@ export default function About() {
               transition={{ duration: 0.8 }}
               className="w-full max-w-xl relative z-10 bg-white/90 backdrop-blur-md rounded-[2rem] p-8 md:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.05)] border border-white/50 h-full flex flex-col justify-center"
             >
-
+              <div className="mb-6 md:mb-8">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-[var(--font-space)] tracking-tight whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 via-purple-500 to-indigo-800 animate-text-gradient drop-shadow-xl">
+                  About Us
+                </h2>
+              </div>
               <div className="space-y-6 text-gray-700 font-[var(--font-outfit)] text-base md:text-lg mb-2 leading-relaxed font-light">
                 <p>
-                  In the historic city of Medinipur, Tropixie Animation Studio was born from the dreams and boundless creative passion of a group of young creators. Founded with a simple yet powerful vision, we strive to connect with people beyond the boundaries of language and culture.
+                  Tropixie Animation Studio™ is a creative studio founded in the historic city of Medinipur, West Bengal, by Sumandeep Pandey, Sulekha Garai Pandey, and Amit Mondal.
                 </p>
                 <p>
-                  We blend rich storytelling traditions with modern technology to create meaningful, high-quality animation. Whether it's 3D animation, VFX, or motion graphics, we serve as a creative space where ideas grow, experiments take shape, and stories come to life.
+                  We combine the timeless art of storytelling with modern technology to create engaging visual experiences. From 3D Animation, 3D Modeling, and VFX to Motion Graphics and AI-driven content, we transform ideas into stories that connect with audiences beyond language and culture.
                 </p>
               </div>
 
@@ -108,7 +96,7 @@ export default function About() {
           </div>
 
           {/* Right Side: 3D Holographic Slideshow */}
-          <div className="w-full lg:w-[55%] relative z-20 h-[400px] sm:h-[500px] lg:h-[700px] flex flex-col items-center justify-center" style={{ perspective: '2000px' }}>
+          <div className="w-full lg:w-[55%] relative z-20 flex flex-col items-center justify-center" style={{ perspective: '2000px' }}>
 
             {/* Floating Decorative Glass Elements Removed */}
 
@@ -151,7 +139,7 @@ export default function About() {
             </motion.div>
 
             {/* Outside Controls (Bottom Arrows) */}
-            <div className="flex gap-6 mt-6 z-30">
+            <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex gap-6 z-30">
               <button
                 onClick={() => setCurrentSlide((prev) => (prev === 0 ? slideImages.length - 1 : prev - 1))}
                 className="w-12 h-12 bg-white/80 hover:bg-white text-gray-900 hover:text-tropixie-primary rounded-full flex items-center justify-center shadow-[0_10px_20px_rgba(0,0,0,0.1)] transition-all hover:scale-110 active:scale-95 border border-gray-900/10 backdrop-blur-md"

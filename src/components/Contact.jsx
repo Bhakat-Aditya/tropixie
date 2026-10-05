@@ -34,8 +34,11 @@ export default function Contact() {
         <img 
           src="/bg2.jpeg" 
           alt="" 
-          className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-60 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[27deg]" 
+          className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-20 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[7deg]" 
         />
+        {/* Subtle Yellow Brand Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FCE225]/10 via-yellow-400/5 to-amber-500/10 pointer-events-none mix-blend-multiply"></div>
+
       </div>
       
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 lg:px-8">
@@ -50,7 +53,7 @@ export default function Contact() {
           {/* Left side: Info */}
           <div className="flex-1 flex flex-col justify-start -mt-4 md:-mt-6">
             <div className="mb-4">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-[var(--font-space)] leading-tight tracking-tight whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 via-purple-500 to-indigo-800 animate-text-gradient drop-shadow-sm">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-[var(--font-space)] leading-tight tracking-tight whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 via-purple-500 to-indigo-800 animate-text-gradient drop-shadow-xl">
                 Let's Create
               </h2>
             </div>
