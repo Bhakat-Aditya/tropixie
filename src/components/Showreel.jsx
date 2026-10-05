@@ -55,7 +55,7 @@ export default function Showreel() {
               className="absolute inset-0 backdrop-blur-xl pointer-events-none"
               style={{ maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 75%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 75%)' }}
             ></div>
-            <h2 className="relative z-10 text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 font-[var(--font-space)] tracking-tight text-center px-4 whitespace-nowrap">
+            <h2 className="relative z-10 text-4xl md:text-5xl lg:text-6xl font-bold font-[var(--font-space)] tracking-tight text-center px-4 whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 via-purple-500 to-indigo-800 animate-text-gradient drop-shadow-sm">
               Our Recent Work
             </h2>
           </motion.div>

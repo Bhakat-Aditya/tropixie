@@ -39,26 +39,6 @@ export default function Contact() {
       </div>
       
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 lg:px-8">
-        {/* Centered Heading with Brush Stroke */}
-        <div className="flex flex-col items-center text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="relative inline-flex items-center justify-center px-24 py-10 mt-6"
-          >
-            {/* Soft Faded Blur Background */}
-            <div 
-              className="absolute inset-0 backdrop-blur-xl pointer-events-none"
-              style={{ maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 75%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 75%)' }}
-            ></div>
-            <h2 className="relative z-10 text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 font-[var(--font-space)] tracking-tight text-center px-4 whitespace-nowrap">
-              Contact Us
-            </h2>
-          </motion.div>
-        </div>
-
         {/* Main Contact Box */}
         <motion.div
           id="contact-box"
@@ -70,7 +50,7 @@ export default function Contact() {
           {/* Left side: Info */}
           <div className="flex-1 flex flex-col justify-start -mt-4 md:-mt-6">
             <div className="mb-4">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 leading-tight tracking-tight whitespace-nowrap">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-[var(--font-space)] leading-tight tracking-tight whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 via-purple-500 to-indigo-800 animate-text-gradient drop-shadow-sm">
                 Let's Create
               </h2>
             </div>
