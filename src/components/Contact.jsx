@@ -46,8 +46,13 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="relative inline-flex items-center justify-center px-10 py-4 mt-8 bg-transparent backdrop-blur-xl rounded-full"
+            className="relative inline-flex items-center justify-center px-24 py-10 mt-6"
           >
+            {/* Soft Faded Blur Background */}
+            <div 
+              className="absolute inset-0 backdrop-blur-xl pointer-events-none"
+              style={{ maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 75%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 75%)' }}
+            ></div>
             <h2 className="relative z-10 text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 font-[var(--font-space)] tracking-tight text-center px-4 whitespace-nowrap">
               Contact Us
             </h2>
