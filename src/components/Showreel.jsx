@@ -35,7 +35,7 @@ export default function Showreel() {
         <img 
           src="/bg3.jpeg" 
           alt="" 
-          className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-20 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[7deg]" 
+          className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-10 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[7deg]" 
         />
         {/* Subtle Yellow Brand Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#FCE225]/10 via-yellow-400/5 to-amber-500/10 pointer-events-none mix-blend-multiply"></div>
