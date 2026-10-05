@@ -72,7 +72,7 @@ export default function Team() {
           <img 
             src="/bg1.jpeg" 
             alt="" 
-            className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-60 blur-[5px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[27deg]" 
+            className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-60 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[27deg]" 
           />
         </div>
 
@@ -88,15 +88,15 @@ export default function Team() {
           </svg>
 
           {/* Header */}
-          <div className="flex flex-col items-center text-center mb-8 relative">
+          <div className="flex flex-col items-center text-center mb-12 relative">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="mb-4"
+              className="relative inline-flex items-center justify-center px-10 py-4 mt-8 bg-transparent backdrop-blur-xl rounded-full"
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 tracking-tight text-center whitespace-nowrap">
+              <h2 className="relative z-10 text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 font-[var(--font-space)] tracking-tight text-center px-4 whitespace-nowrap">
                 Meet Our Team
               </h2>
             </motion.div>

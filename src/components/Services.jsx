@@ -84,33 +84,23 @@ export default function Services() {
         <img 
           src="/bg2.jpeg" 
           alt="" 
-          className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-60 blur-[5px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[27deg]" 
+          className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-60 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[27deg]" 
         />
       </div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
-        {/* Header */}
-        <div className="flex flex-col items-center text-center mb-8 max-w-4xl mx-auto">
+        <div className="flex flex-col items-center text-center mb-12 max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-4"
+            className="relative inline-flex items-center justify-center px-10 py-4 mt-8 bg-transparent backdrop-blur-xl rounded-full"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 tracking-tight whitespace-nowrap">
+            <h2 className="relative z-10 text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 font-[var(--font-space)] tracking-tight whitespace-nowrap px-4 text-center">
               Our Services
             </h2>
           </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-gray-600 font-[var(--font-outfit)] text-base md:text-lg leading-relaxed"
-          >
-            At Tropixie Animation Studio, we deliver end-to-end creative solutions that transform ideas into high-quality visual experiences. From initial concept to final output, we combine creativity, technology, and precision to meet professional standards and client expectations.
-          </motion.p>
         </div>
 
         {/* Grid */}

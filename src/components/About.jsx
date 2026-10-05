@@ -43,7 +43,7 @@ export default function About() {
           <img 
             src="/bg1.jpeg" 
             alt="" 
-            className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-60 blur-[5px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[27deg]" 
+            className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-60 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[27deg]" 
           />
         </div>
 
@@ -51,8 +51,23 @@ export default function About() {
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-tropixie-primary/10 rounded-full blur-[150px] pointer-events-none -translate-y-1/2 translate-x-1/3 z-0"></div>
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none translate-y-1/3 -translate-x-1/3 z-0"></div>
 
+        {/* Centered Heading with Frosted Glass Box */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="relative inline-flex items-center justify-center px-10 py-4 mt-8 bg-transparent backdrop-blur-xl rounded-full"
+          >
+            <h2 className="relative z-10 text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 font-[var(--font-space)] tracking-tight text-center whitespace-nowrap px-4">
+              About Us
+            </h2>
+          </motion.div>
+        </div>
+
         {/* Main Grid Layout */}
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center gap-16 lg:gap-12">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-stretch gap-16 lg:gap-12">
 
           {/* Left Side: Text Content */}
           <div className="w-full lg:w-[45%] flex flex-col items-start text-left relative z-10">
@@ -61,15 +76,10 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8 }}
-              className="w-full max-w-xl relative z-10"
+              className="w-full max-w-xl relative z-10 bg-white/90 backdrop-blur-md rounded-[2rem] p-8 md:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.05)] border border-white/50 h-full flex flex-col justify-center"
             >
-              <div className="mb-6">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-900 leading-[1.1] tracking-tight whitespace-nowrap">
-                  About Us
-                </h2>
-              </div>
 
-              <div className="space-y-6 text-gray-700 font-[var(--font-outfit)] text-base md:text-lg mb-6 leading-relaxed font-light">
+              <div className="space-y-6 text-gray-700 font-[var(--font-outfit)] text-base md:text-lg mb-2 leading-relaxed font-light">
                 <p>
                   In the historic city of Medinipur, Tropixie Animation Studio was born from the dreams and boundless creative passion of a group of young creators. Founded with a simple yet powerful vision, we strive to connect with people beyond the boundaries of language and culture.
                 </p>
@@ -78,15 +88,17 @@ export default function About() {
                 </p>
               </div>
 
+              {/* Temporarily hidden as per request
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full inline-flex items-center gap-3 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-transparent"
+                className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full inline-flex items-center gap-3 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-transparent mt-6"
               >
                 Read Our Story
                 <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
                   <svg className="w-3 h-3 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
                 </div>
               </button>
+              */}
             </motion.div>
           </div>
 
