@@ -72,12 +72,29 @@ export default function About() {
                   About Us
                 </h2>
               </div>
-              <div className="space-y-6 text-gray-700 font-[var(--font-outfit)] text-base md:text-lg mb-2 leading-relaxed font-light">
+              <div className="space-y-6 text-gray-700 font-[var(--font-outfit)] text-base md:text-lg mb-8 leading-relaxed font-light">
                 <p>
                   Tropixie Animation Studio™ is a creative studio founded in the historic city of Medinipur, West Bengal, by Sumandeep Pandey, Sulekha Garai Pandey, and Amit Mondal.
                 </p>
                 <p>
                   We combine the timeless art of storytelling with modern technology to create engaging visual experiences. From 3D Animation, 3D Modeling, and VFX to Motion Graphics and AI-driven content, we transform ideas into stories that connect with audiences beyond language and culture.
+                </p>
+              </div>
+
+              <div className="mb-6 md:mb-8 mt-2">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-[var(--font-space)] tracking-tight whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 via-purple-500 to-indigo-800 animate-text-gradient drop-shadow-xl">
+                  Why Choose Us
+                </h2>
+              </div>
+              <div className="space-y-6 text-gray-700 font-[var(--font-outfit)] text-base md:text-lg mb-2 leading-relaxed font-light">
+                <p>
+                  At Tropixie Animation Studio™, we believe every idea deserves the right creative approach. Our passionate team combines art, technology, attention to detail, and storytelling to deliver unique and impactful results.
+                </p>
+                <p>
+                  We offer high-quality creative solutions at practical costs, with a focus on personalized service and client satisfaction. Whether you are a creator, brand, startup, or organization, we help turn your vision into something people can see, feel, and remember.
+                </p>
+                <p className="font-semibold italic text-indigo-900 mt-4 text-lg">
+                  Your Idea. Our Creativity. Your Story.
                 </p>
               </div>
 
@@ -104,7 +121,7 @@ export default function About() {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              className="absolute w-[80%] sm:w-[75%] aspect-[4/3] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-gray-900/10 shadow-[0_30px_60px_rgba(0,0,0,0.6)] z-10 hidden md:block"
+              className="absolute w-[80%] sm:w-[75%] lg:w-[85%] aspect-[4/3] lg:aspect-auto lg:h-[95%] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-gray-900/10 shadow-[0_30px_60px_rgba(0,0,0,0.6)] z-10 hidden md:block"
               style={{ transform: 'translateX(40px) scale(0.9) rotateY(-15deg)' }}
             >
               <img src={slideImages[(currentSlide + 1) % slideImages.length].src} className="w-full h-full object-cover opacity-50 blur-[2px]" alt="Next slide preview" />
@@ -117,7 +134,7 @@ export default function About() {
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative w-full sm:w-[90%] aspect-[4/3] rounded-3xl sm:rounded-[2rem] overflow-hidden border border-gray-900/20 shadow-[0_50px_100px_rgba(168,85,247,0.15)] z-20 bg-tropixie-dark-card"
+              className="relative w-full sm:w-[90%] aspect-[4/3] lg:aspect-auto lg:h-full rounded-3xl sm:rounded-[2rem] overflow-hidden border border-gray-900/20 shadow-[0_50px_100px_rgba(168,85,247,0.15)] z-20 bg-tropixie-dark-card"
             >
               <div className="absolute inset-0">
                 <AnimatePresence>

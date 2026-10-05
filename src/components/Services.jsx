@@ -75,7 +75,7 @@ export default function Services() {
   }, [selectedService])
 
   return (
-    <section id="services" className="relative py-20 lg:py-32 border-y border-tropixie-border overflow-hidden text-gray-900 bg-white">
+    <section id="services" className="relative py-20 lg:py-32 border-y border-tropixie-border overflow-hidden text-gray-900 bg-gray-50/50">
       {/* Section Background Image */}
       <div 
         className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
@@ -105,8 +105,11 @@ export default function Services() {
           </motion.div>
         </div>
 
+        {/* Smooth Background Highlight for Cards */}
+        <div className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] max-w-5xl h-[80%] bg-tropixie-primary/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
+
         {/* Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {EXPERTISE.map((service, idx) => (
             <motion.div
               key={idx}
@@ -115,7 +118,7 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05, duration: 0.5 }}
               onClick={() => setSelectedService(service)}
-              className="cursor-pointer group relative bg-gradient-to-br from-white to-tropixie-dark rounded-xl p-4 sm:p-6 border border-tropixie-border hover:border-tropixie-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300 flex flex-col justify-center items-center"
+              className="cursor-pointer group relative bg-gradient-to-br from-white to-tropixie-dark rounded-xl p-4 sm:p-6 border border-tropixie-border shadow-lg hover:border-tropixie-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300 flex flex-col justify-center items-center"
             >
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shadow-lg border border-tropixie-primary/20 mb-4 sm:mb-5 group-hover:scale-110 group-hover:border-tropixie-primary transition-all duration-300">
                 <img src={service.icon} alt={service.title} className="w-full h-full object-cover" />

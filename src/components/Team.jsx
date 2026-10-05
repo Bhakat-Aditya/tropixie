@@ -115,7 +115,7 @@ export default function Team() {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05, duration: 0.5, type: 'spring', stiffness: 100 }}
                 onClick={() => setSelectedMember(member)}
-                className="flex flex-col items-center cursor-pointer group w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)] md:w-[calc(25%-1.125rem)] relative"
+                className={`flex flex-col items-center cursor-pointer group ${idx === 2 ? 'w-full sm:w-full' : 'w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)]'} ${idx < 3 ? 'md:w-[calc(33.333%-1rem)] lg:w-[calc(33.333%-1rem)]' : 'md:w-[calc(25%-1.125rem)] lg:w-[calc(25%-1.125rem)]'} relative`}
               >
                 {/* Profile Image */}
                 <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden mb-2 z-10 border-[6px] border-white group-hover:border-[#085da6] transition-colors duration-300 shadow-[0_15px_35px_rgba(0,0,0,0.1)] relative bg-gray-100 flex-shrink-0">
