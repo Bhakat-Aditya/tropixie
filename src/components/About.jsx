@@ -34,7 +34,18 @@ export default function About() {
 
   return (
     <>
-      <section id="about" className="relative py-20 lg:py-32 bg-gradient-to-b from-white via-tropixie-dark to-[#FFF0DB] overflow-hidden text-gray-900">
+      <section id="about" className="relative py-20 lg:py-32 overflow-hidden text-gray-900 bg-white">
+        {/* Section Background Image */}
+        <div 
+          className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
+          style={{ WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)', maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)' }}
+        >
+          <img 
+            src="/bg1.jpeg" 
+            alt="" 
+            className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-60 blur-[5px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[27deg]" 
+          />
+        </div>
 
         {/* Deep background glow */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-tropixie-primary/10 rounded-full blur-[150px] pointer-events-none -translate-y-1/2 translate-x-1/3 z-0"></div>
@@ -144,10 +155,6 @@ export default function About() {
 
         </div>
 
-        {/* Decorative Glowing Divider */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-gradient-to-r from-transparent via-tropixie-primary to-transparent opacity-70"></div>
-        <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-1/2 h-6 bg-tropixie-primary rounded-full blur-[20px] opacity-30 pointer-events-none"></div>
-
       </section>
 
       {/* About Modal */}
@@ -159,7 +166,7 @@ export default function About() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="fixed inset-0 bg-tropixie-dark/80 backdrop-blur-md z-[200]"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200]"
             />
             <motion.div
               data-lenis-prevent
@@ -216,9 +223,9 @@ export default function About() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setPopupSlide(null)}
-              className="fixed inset-0 bg-tropixie-dark/95 backdrop-blur-lg z-[300] cursor-zoom-out flex items-center justify-center p-4 md:p-10"
+              className="fixed inset-0 bg-black/60 backdrop-blur-md z-[300] cursor-zoom-out flex items-center justify-center p-4 md:p-8"
             >
-              <div className="relative pointer-events-auto max-w-full w-full lg:w-3/4 flex flex-col items-center">
+              <div className="relative pointer-events-auto inline-flex flex-col items-center max-w-full max-h-full">
                 {/* Popup Bottom Arrows */}
                 <div className="fixed bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex gap-6 z-30 pointer-events-auto">
                   <button
@@ -254,7 +261,7 @@ export default function About() {
                     src={popupSlide.src}
                     alt={popupSlide.description || "Popup content"}
                     onClick={(e) => e.stopPropagation()}
-                    className="w-full max-h-[85vh] object-contain rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] cursor-default"
+                    className="w-auto h-auto max-w-[95vw] max-h-[85vh] object-contain rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] cursor-default"
                   />
                 </AnimatePresence>
 

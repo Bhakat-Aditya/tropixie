@@ -25,8 +25,20 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative pt-10 lg:pt-12 pb-20 bg-gradient-to-b from-[#FFF0DB] via-tropixie-dark to-white border-b border-tropixie-border overflow-hidden text-gray-900">
-      <div className="max-w-[1400px] mx-auto px-4 lg:px-8">
+    <section id="contact" className="relative pt-10 lg:pt-12 pb-20 overflow-hidden text-gray-900 bg-white">
+      {/* Section Background Image */}
+      <div 
+        className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
+        style={{ WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)', maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)' }}
+      >
+        <img 
+          src="/bg2.jpeg" 
+          alt="" 
+          className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-60 blur-[5px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[27deg]" 
+        />
+      </div>
+      
+      <div className="relative z-10 max-w-[1400px] mx-auto px-4 lg:px-8">
 
         {/* Main Contact Box */}
         <motion.div
@@ -72,9 +84,7 @@ export default function Contact() {
 
       </div>
 
-      {/* Decorative Glowing Divider */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-gradient-to-r from-transparent via-tropixie-primary to-transparent opacity-70"></div>
-      <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-1/2 h-6 bg-tropixie-primary rounded-full blur-[20px] opacity-30 pointer-events-none"></div>
+      {/* Decorative Glowing Divider Removed */}
 
     </section>
   )

@@ -64,8 +64,7 @@ export default function App() {
         />
       </Helmet>
 
-      <div className="relative overflow-x-hidden">
-        <Navbar />
+      <div className="relative overflow-x-hidden">        <Navbar />
         <main style={{ marginTop: '80px' }}>
           <Hero />
           <About />

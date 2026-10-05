@@ -18,7 +18,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden bg-tropixie-dark" id="hero">
+    <section className="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden bg-transparent" id="hero">
       {/* Background Slideshow */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence>

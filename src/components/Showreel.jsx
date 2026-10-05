@@ -26,8 +26,20 @@ export default function Showreel() {
   }, [selectedVideo])
 
   return (
-    <section id="portfolio" className="relative py-20 lg:py-32 bg-gradient-to-b from-tropixie-dark via-[#FFF9E6] to-white border-t border-tropixie-border">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="portfolio" className="relative py-20 lg:py-32 overflow-hidden text-gray-900 bg-white">
+      {/* Section Background Image */}
+      <div 
+        className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
+        style={{ WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)', maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)' }}
+      >
+        <img 
+          src="/bg3.jpeg" 
+          alt="" 
+          className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-60 blur-[5px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[27deg]" 
+        />
+      </div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-8">
@@ -79,9 +91,7 @@ export default function Showreel() {
         </div>
       </div>
 
-      {/* Decorative Glowing Divider */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-gradient-to-r from-transparent via-tropixie-primary to-transparent opacity-70"></div>
-      <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-1/2 h-6 bg-tropixie-primary rounded-full blur-[20px] opacity-30 pointer-events-none"></div>
+      {/* Decorative Glowing Divider Removed */}
 
       {/* Video Popup Modal */}
       <AnimatePresence>
@@ -92,7 +102,7 @@ export default function Showreel() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedVideo(null)}
-              className="fixed inset-0 bg-tropixie-dark/90 backdrop-blur-md z-[200]"
+              className="fixed inset-0 bg-black/80 backdrop-blur-md z-[200]"
             />
             <motion.div
               data-lenis-prevent

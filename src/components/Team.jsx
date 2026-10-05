@@ -63,8 +63,20 @@ export default function Team() {
 
   return (
     <>
-      <section id="team" className="relative py-20 lg:py-28 bg-gradient-to-b from-white via-[#FFF5CC] to-[#FFF0DB] border-t border-tropixie-border overflow-hidden text-gray-900">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section id="team" className="relative py-20 lg:py-28 overflow-hidden text-gray-900 bg-white">
+        {/* Section Background Image */}
+        <div 
+          className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
+          style={{ WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)', maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)' }}
+        >
+          <img 
+            src="/bg1.jpeg" 
+            alt="" 
+            className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-60 blur-[5px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[27deg]" 
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
           {/* SVG Filter for Realistic Brush Stroke Texture */}
           <svg className="hidden" aria-hidden="true">
@@ -149,9 +161,7 @@ export default function Team() {
 
         </div>
 
-        {/* Decorative Glowing Divider */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-gradient-to-r from-transparent via-tropixie-primary to-transparent opacity-70"></div>
-        <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-1/2 h-6 bg-tropixie-primary rounded-full blur-[20px] opacity-30 pointer-events-none"></div>
+        {/* Decorative Glowing Divider Removed */}
 
       </section>
 
@@ -164,7 +174,7 @@ export default function Team() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedMember(null)}
-              className="fixed inset-0 bg-tropixie-dark/80 backdrop-blur-sm z-[200]"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200]"
             />
             <motion.div
               data-lenis-prevent
