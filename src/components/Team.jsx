@@ -104,21 +104,28 @@ export default function Team() {
                   <div className="absolute inset-0 rounded-full shadow-[inset_0_0_20px_rgba(0,0,0,0.1)] pointer-events-none transition-all duration-300"></div>
                 </div>
 
-                {/* Glass Text Container */}
-                <div className="relative -mt-6 sm:-mt-8 z-20 flex flex-col items-center w-[90%] sm:w-[85%] mx-auto bg-white/85 backdrop-blur-md rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.08)] group-hover:shadow-[0_15px_40px_rgba(88,28,135,0.3)] border border-white p-2.5 sm:p-3 transition-all duration-300">
+                {/* Animated Border Wrapper */}
+                <div className="relative -mt-6 sm:-mt-8 z-20 w-[90%] sm:w-[85%] mx-auto rounded-2xl overflow-hidden p-[2px] shadow-[0_10px_20px_rgba(0,0,0,0.08)] group-hover:shadow-[0_15px_40px_rgba(88,28,135,0.3)] transition-all duration-300">
                   
-                  {/* Name Tag */}
-                  <h4 className="font-bold text-purple-950 font-[var(--font-space)] text-xs sm:text-sm md:text-base text-center tracking-wide leading-tight truncate w-full">
-                    {member.name}
-                  </h4>
+                  {/* Spinning Gradient Tail / Dot */}
+                  <div className="absolute inset-[-150%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_70%,#ec4899_90%,#8b5cf6_100%)]"></div>
                   
-                  {/* Role Tag */}
-                  <div className="mt-1.5 bg-red-50 px-2.5 py-1 rounded-md border border-red-100">
-                    <p className="text-red-600 text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-widest text-center truncate">
-                      {member.role}
-                    </p>
-                  </div>
+                  {/* Inner Glass Text Container */}
+                  <div className="relative z-10 flex flex-col items-center w-full h-full bg-gradient-to-r from-purple-100 via-pink-100 to-orange-100 backdrop-blur-md rounded-xl p-2.5 sm:p-3">
+                    
+                    {/* Name Tag */}
+                    <h4 className="font-bold text-purple-950 font-[var(--font-space)] text-xs sm:text-sm md:text-base text-center tracking-wide leading-tight truncate w-full">
+                      {member.name}
+                    </h4>
+                    
+                    {/* Role Tag */}
+                    <div className="mt-1.5 bg-red-50 px-2.5 py-1 rounded-xl border border-red-100">
+                      <p className="text-red-600 text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-widest text-center truncate">
+                        {member.role}
+                      </p>
+                    </div>
 
+                  </div>
                 </div>
               </motion.div>
             ))}

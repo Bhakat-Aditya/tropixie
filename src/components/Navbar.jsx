@@ -76,9 +76,11 @@ export default function Navbar() {
             <img src="/logo.png" alt="Tropixie Logo" className="h-18 md:h-24 lg:h-30 mt-3 lg:mt-5 w-auto object-contain" />
 
             {/* PC View: Text */}
-            <span className="hidden lg:flex items-start text-3xl lg:text-4xl font-bold text-purple-900">
-              Tropixie Animation Studio
-              <span className="ml-1 -mt-1 flex items-center justify-center w-4 h-4 lg:w-4 lg:h-4 border-[1.5px] border-purple-900 rounded-full text-[7px] font-bold tracking-tighter">
+            <span className="hidden lg:flex items-start text-3xl lg:text-4xl font-bold ml-4">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 via-purple-500 to-indigo-800 animate-text-gradient drop-shadow-sm">
+                Tropixie Animation Studio
+              </span>
+              <span className="ml-1.5 -mt-1 flex items-center justify-center w-4 h-4 lg:w-4 lg:h-4 border-[1.5px] border-indigo-800 rounded-full text-[7px] font-bold tracking-tighter text-indigo-800">
                 TM
               </span>
             </span>
