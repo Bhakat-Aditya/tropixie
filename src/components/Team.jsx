@@ -106,7 +106,7 @@ export default function Team() {
           </div>
 
           {/* Grid - No Scroll, All Visible */}
-          <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-16 pb-8 pt-4">
+          <div className="flex flex-wrap justify-center gap-x-8 sm:gap-x-12 gap-y-24 pb-8 pt-4">
             {TEAM.map((member, idx) => (
               <motion.div
                 key={idx}
@@ -115,7 +115,7 @@ export default function Team() {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05, duration: 0.5, type: 'spring', stiffness: 100 }}
                 onClick={() => setSelectedMember(member)}
-                className={`flex flex-col items-center cursor-pointer group ${idx === 2 ? 'w-full sm:w-full' : 'w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)]'} ${idx < 3 ? 'md:w-[calc(33.333%-1rem)] lg:w-[calc(33.333%-1rem)]' : 'md:w-[calc(25%-1.125rem)] lg:w-[calc(25%-1.125rem)]'} relative`}
+                className={`flex flex-col items-center cursor-pointer group ${idx === 2 ? 'w-full sm:w-full' : 'w-[calc(50%-1rem)] sm:w-[calc(50%-1.5rem)]'} ${idx < 3 ? 'md:w-[calc(33.333%-2rem)]' : 'md:w-[calc(25%-2.25rem)]'} relative`}
               >
                 {/* Profile Image */}
                 <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden mb-2 z-10 border-[6px] border-white group-hover:border-[#085da6] transition-colors duration-300 shadow-[0_15px_35px_rgba(0,0,0,0.1)] relative bg-gray-100 flex-shrink-0">
@@ -129,30 +129,30 @@ export default function Team() {
                 </div>
 
                 {/* Paint Brush Style Tags */}
-                <div className="relative -mt-6 sm:-mt-8 z-20 flex flex-col items-center w-[110%] sm:w-[120%]">
+                <div className="relative -mt-6 sm:-mt-8 z-20 flex flex-col items-center">
                   
                   {/* Name Tag (Blue/Purple Stroke) */}
-                  <div className="relative z-10 px-4 py-1.5 md:py-2 transform hover:-translate-y-0.5 transition-transform duration-300 flex items-center justify-center group/name">
+                  <div className="relative z-10 px-3 py-1 transform hover:-translate-y-0.5 transition-transform duration-300 flex items-center justify-center group/name">
                     {/* Brush Background */}
                     <div 
                       className="absolute inset-0 bg-[#635BFF] transition-colors duration-300 group-hover/name:bg-[#5249ea]"
                       style={{ filter: 'url(#brush-texture)', borderRadius: '255px 15px 225px 15px/15px 225px 15px 255px' }}
                     ></div>
                     {/* Text */}
-                    <h4 className="relative z-10 font-bold text-white font-[var(--font-space)] text-sm sm:text-base md:text-lg text-center tracking-wide leading-tight whitespace-nowrap px-1 drop-shadow-sm">
+                    <h4 className="relative z-10 font-bold text-white font-[var(--font-space)] text-sm sm:text-base md:text-lg text-center tracking-wide leading-tight whitespace-nowrap drop-shadow-sm">
                       {member.name}
                     </h4>
                   </div>
                   
                   {/* Role Tag (Magenta/Pink Stroke) */}
-                  <div className="relative -mt-0.5 sm:-mt-1 z-0 px-4 py-1 md:py-1.5 transform hover:-translate-y-0.5 transition-transform duration-300 flex items-center justify-center group/role">
+                  <div className="relative -mt-0.5 z-0 px-2.5 py-0.5 transform hover:-translate-y-0.5 transition-transform duration-300 flex items-center justify-center group/role">
                     {/* Brush Background */}
                     <div 
                       className="absolute inset-0 bg-[#C83681] transition-colors duration-300 group-hover/role:bg-[#b02b6e]"
                       style={{ filter: 'url(#brush-texture)', borderRadius: '15px 225px 15px 255px/255px 15px 225px 15px' }}
                     ></div>
                     {/* Text */}
-                    <p className="relative z-10 text-white text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-widest text-center whitespace-nowrap px-1 drop-shadow-sm">
+                    <p className="relative z-10 text-white text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-widest text-center whitespace-nowrap drop-shadow-sm">
                       {member.role}
                     </p>
                   </div>
