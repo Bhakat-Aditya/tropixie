@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://tropixie-server.onrender.com/api/:path*"
+      "destination": "https://tropixie.onrender.com/api/:path*"
     }
   ]
 }
