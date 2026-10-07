@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 export default function Footer() {
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState('privacy');
+
   return (
     <footer className="bg-[#f8f9fc] pt-16 pb-8 border-t border-gray-200 text-gray-600 font-[var(--font-outfit)]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -35,7 +39,6 @@ export default function Footer() {
               <li><a href="#services" className="hover:text-tropixie-primary transition-colors">Services</a></li>
               <li><a href="#team" className="hover:text-tropixie-primary transition-colors">Our Team</a></li>
               <li><a href="#contact" className="hover:text-tropixie-primary transition-colors">Contact</a></li>
-              <li><a href="/admin/login" className="hover:text-tropixie-primary transition-colors">Admin Login</a></li>
             </ul>
           </div>
 
@@ -82,13 +85,65 @@ export default function Footer() {
         <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-medium">
           <p>&copy; 2026 Tropixie Animation Studio. All Rights Reserved.</p>
           <div className="flex items-center gap-4">
-            <a href="#" className="hover:text-tropixie-primary transition-colors">Privacy Policy</a>
+            <button onClick={(e) => { e.preventDefault(); setModalType('privacy'); setShowModal(true); }} className="hover:text-tropixie-primary transition-colors cursor-pointer">Privacy Policy</button>
             <span>|</span>
-            <a href="#" className="hover:text-tropixie-primary transition-colors">Terms & Conditions</a>
+            <button onClick={(e) => { e.preventDefault(); setModalType('terms'); setShowModal(true); }} className="hover:text-tropixie-primary transition-colors cursor-pointer">Terms & Conditions</button>
           </div>
         </div>
 
       </div>
+
+      {/* Modal for Privacy / Terms */}
+      {showModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4">
+          <div className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 lg:p-8 relative">
+            <button 
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-900 cursor-pointer"
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <h3 className="text-2xl font-bold font-[var(--font-space)] text-gray-900 mb-4">
+              {modalType === 'privacy' ? 'Privacy Policy' : 'Terms & Conditions'}
+            </h3>
+            <div className="text-gray-600 space-y-4 font-[var(--font-outfit)]">
+              {modalType === 'privacy' ? (
+                <>
+                  <p>At Tropixie Animation Studio, we are committed to protecting your privacy. This policy outlines how we handle your personal information.</p>
+                  <p>1. <strong>Information Collection:</strong> We collect information you provide directly to us when you request our services or contact us.</p>
+                  <p>2. <strong>Use of Information:</strong> Your information is used to communicate with you, fulfill your requests, and improve our services.</p>
+                  <p>3. <strong>Data Security:</strong> We implement appropriate security measures to protect your personal information against unauthorized access or disclosure.</p>
+                  <p>If you have any questions about our privacy practices, please contact us.</p>
+                </>
+              ) : (
+                <>
+                  <p>Welcome to Tropixie Animation Studio. By using our website and services, you agree to comply with the following terms and conditions.</p>
+                  <p>1. <strong>Services:</strong> We provide animation and design services as described on our website. All service timelines and deliverables will be agreed upon in writing.</p>
+                  <p>2. <strong>Intellectual Property:</strong> All content, designs, and animations created by us remain our intellectual property until full payment is received, at which point rights are transferred as agreed.</p>
+                  <p>3. <strong>Limitation of Liability:</strong> We shall not be liable for any indirect, incidental, or consequential damages arising out of the use of our services.</p>
+                  <p>These terms are governed by applicable laws. For detailed terms regarding a specific project, please refer to your project agreement.</p>
+                </>
+              )}
+            </div>
+            <div className="mt-8 flex justify-between items-center">
+              <button 
+                onClick={() => setShowModal(false)}
+                className="px-6 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors font-semibold cursor-pointer"
+              >
+                Close
+              </button>
+              {/* Admin Link */}
+              <a href="/admin/login" className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-200 transition-colors cursor-pointer" title="Admin Login">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   )
 }

@@ -26,8 +26,8 @@ const s = {
   headerRight: { display: 'flex', alignItems: 'center', gap: '1rem' },
   viewSite: { color: '#9ca3af', fontSize: '0.8rem', textDecoration: 'none', padding: '6px 12px', border: '1px solid #2a2a35', borderRadius: '6px' },
   logoutBtn: { background: 'transparent', border: '1px solid #3f3f50', color: '#9ca3af', borderRadius: '6px', padding: '6px 14px', cursor: 'pointer', fontSize: '0.8rem' },
-  body: { display: 'flex', minHeight: 'calc(100vh - 60px)' },
-  sidebar: { width: '200px', background: '#14141c', borderRight: '1px solid #2a2a35', padding: '1rem 0', flexShrink: 0, position: 'sticky', top: '60px', height: 'calc(100vh - 60px)', overflowY: 'auto' },
+  body: { display: 'flex', minHeight: 'calc(100vh - 60px)', position: 'relative' },
+  sidebar: { width: '200px', background: '#14141c', borderRight: '1px solid #2a2a35', padding: '1rem 0', flexShrink: 0, height: 'calc(100vh - 60px)', overflowY: 'auto' },
   tab: (active) => ({
     display: 'flex', alignItems: 'center', gap: '0.6rem', width: '100%', padding: '0.65rem 1.25rem',
     background: active ? '#1e1e2e' : 'transparent',
@@ -36,13 +36,14 @@ const s = {
     cursor: 'pointer', fontSize: '0.875rem', fontWeight: active ? 600 : 400,
     transition: 'all 0.15s', border: 'none', textAlign: 'left',
   }),
-  content: { flex: 1, padding: '2rem', maxWidth: '900px' },
+  content: { flex: 1, padding: '1.5rem', maxWidth: '100%', overflowX: 'hidden' },
 }
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('hero')
   const [content, setContent] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const navigate = useNavigate()
 
   const token = localStorage.getItem('tropixie_admin_token')
@@ -73,25 +74,47 @@ export default function AdminDashboard() {
   return (
     <div style={s.wrap}>
       {/* Header */}
-      <header style={s.header}>
+      <header style={s.header} className="px-4 md:px-6">
         <div style={s.logo}>
+          <button 
+            className="md:hidden text-gray-400 hover:text-white mr-2 focus:outline-none"
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+            </svg>
+          </button>
           <span>🎬</span>
-          <span>Tropixie</span>
+          <span className="hidden sm:inline">Tropixie</span>
           <span style={s.logoBadge}>ADMIN</span>
         </div>
         <div style={s.headerRight}>
-          <a href="/" target="_blank" rel="noopener noreferrer" style={s.viewSite}>View Site ↗</a>
+          <a href="/" target="_blank" rel="noopener noreferrer" style={s.viewSite} className="hidden sm:inline-block">View Site ↗</a>
           <button onClick={handleLogout} style={s.logoutBtn}>Logout</button>
         </div>
       </header>
 
       <div style={s.body}>
+        {/* Mobile Overlay */}
+        {isSidebarOpen && (
+          <div 
+            className="fixed inset-0 bg-black/50 z-40 md:hidden"
+            onClick={() => setIsSidebarOpen(false)}
+          />
+        )}
+
         {/* Sidebar */}
-        <aside style={s.sidebar}>
+        <aside 
+          style={s.sidebar}
+          className={`${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 absolute md:sticky top-0 md:top-[60px] left-0 z-50 transition-transform duration-300 ease-in-out`}
+        >
           {TABS.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => {
+                setActiveTab(tab.id)
+                setIsSidebarOpen(false) // Close sidebar on mobile after clicking
+              }}
               style={s.tab(activeTab === tab.id)}
             >
               <span>{tab.icon}</span>
@@ -101,7 +124,7 @@ export default function AdminDashboard() {
         </aside>
 
         {/* Main Content */}
-        <main style={s.content}>
+        <main style={s.content} className="w-full">
           {loading ? (
             <div style={{ color: '#6b7280', padding: '2rem 0' }}>Loading content...</div>
           ) : !content ? (
@@ -109,7 +132,7 @@ export default function AdminDashboard() {
               <p>No content found in database.</p>
             </div>
           ) : (
-            <>
+            <div className="max-w-4xl mx-auto">
               {activeTab === 'hero' && <HeroAdmin {...activeProps} />}
               {activeTab === 'about' && <AboutAdmin {...activeProps} />}
               {activeTab === 'stats' && <StatsAdmin {...activeProps} />}
@@ -117,7 +140,7 @@ export default function AdminDashboard() {
               {activeTab === 'showreel' && <ShowreelAdmin {...activeProps} />}
               {activeTab === 'team' && <TeamAdmin {...activeProps} />}
               {activeTab === 'contact' && <ContactAdmin {...activeProps} />}
-            </>
+            </div>
           )}
         </main>
       </div>
