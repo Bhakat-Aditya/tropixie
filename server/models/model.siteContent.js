@@ -35,7 +35,7 @@ const teamMemberSchema = new mongoose.Schema({
 const siteContentSchema = new mongoose.Schema(
   {
     hero: {
-      images: { type: [imageSchema], default: [] },
+      youtubeId: { type: String, default: '' },
     },
     about: {
       images: { type: [imageSchema], default: [] },

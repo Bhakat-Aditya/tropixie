@@ -20,12 +20,12 @@ export const getAllContent = async (req, res) => {
   }
 }
 
-// PUT /api/content/hero — update hero images list
+// PUT /api/content/hero — update hero video
 export const updateHero = async (req, res) => {
   try {
-    const { images } = req.body // array of { url, publicId, description }
+    const { youtubeId } = req.body
     const content = await getContent()
-    content.hero.images = images
+    content.hero.youtubeId = youtubeId
     await content.save()
     res.json({ message: 'Hero updated', hero: content.hero })
   } catch (err) {
@@ -157,11 +157,7 @@ export const seedContent = async (req, res) => {
     let content = await SiteContent.findOne()
     const payload = {
       hero: {
-        images: [
-          { url: 'https://res.cloudinary.com/adityabhakat/image/upload/v1791298672/pic_1_pyoryf.png', publicId: 'pic_1_pyoryf', description: 'Hero Slide 1' },
-          { url: 'https://res.cloudinary.com/adityabhakat/image/upload/v1791298672/pic_1_pyoryf.png', publicId: 'pic_1_pyoryf_2', description: 'Hero Slide 2' },
-          { url: 'https://res.cloudinary.com/adityabhakat/image/upload/v1791298672/pic_1_pyoryf.png', publicId: 'pic_1_pyoryf_3', description: 'Hero Slide 3' },
-        ],
+        youtubeId: 'dQw4w9WgXcQ', // default placeholder
       },
       about: {
         images: [
