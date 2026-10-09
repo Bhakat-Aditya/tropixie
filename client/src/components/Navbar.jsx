@@ -44,14 +44,11 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="absolute top-0 left-0 right-0 z-[100] flex items-center h-28 lg:h-28">
+      <nav className="absolute top-0 left-0 right-0 z-[100] flex items-center h-28 lg:h-20">
         
         {/* SVG for Inverted Curve Clip Path */}
         <svg width="0" height="0" className="absolute pointer-events-none">
           <defs>
-            <clipPath id="inverted-curve-desktop" clipPathUnits="objectBoundingBox">
-              <path d="M 0 0 L 1 0 L 1 1 Q 0.5 0.2 0 1 Z" />
-            </clipPath>
             <clipPath id="inverted-curve-mobile" clipPathUnits="objectBoundingBox">
               <path d="M 0 0 L 1 0 L 1 1 Q 0.5 0.5 0 1 Z" />
             </clipPath>
@@ -60,10 +57,10 @@ export default function Navbar() {
 
         {/* Curved Background */}
         <div 
-          className={`absolute top-0 left-0 right-0 h-full transition-all duration-500 [clip-path:url(#inverted-curve-mobile)] lg:[clip-path:url(#inverted-curve-desktop)] ${scrolled ? 'bg-white/95 backdrop-blur-md drop-shadow-md' : 'bg-white/70 backdrop-blur-sm'}`}
+          className={`absolute top-0 left-0 right-0 h-full transition-all duration-500 [clip-path:url(#inverted-curve-mobile)] lg:[clip-path:none] ${scrolled ? 'bg-white/95 backdrop-blur-md drop-shadow-md' : 'bg-white/70 backdrop-blur-sm'}`}
         ></div>
 
-        <div className="relative z-10 max-w-full w-full mx-auto px-4 lg:px-12 xl:px-20 flex items-center justify-between h-full pb-10 lg:pb-8">
+        <div className="relative z-10 max-w-full w-full mx-auto px-4 lg:px-12 xl:px-20 flex items-center justify-between h-full pb-10 lg:pb-0">
           {/* Studio Name */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
