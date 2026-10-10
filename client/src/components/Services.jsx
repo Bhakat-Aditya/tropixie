@@ -11,7 +11,7 @@ export default function Services() {
       .then((data) => {
         if (data?.services?.length > 0) setServices(data.services)
       })
-      .catch(() => {})
+      .catch(() => { })
   }, [])
 
   useEffect(() => {
@@ -32,18 +32,18 @@ export default function Services() {
   return (
     <section id="services" className="relative py-20 lg:py-32 border-y border-tropixie-border overflow-hidden text-gray-900 bg-gray-50/50">
       {/* Section Background Image */}
-      <div 
+      <div
         className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
         style={{ WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)', maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)' }}
       >
-        <img 
-          src="/bg2.jpeg" 
-          alt="" 
-          className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-10 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[7deg]" 
+        <img
+          src="/bg2.jpeg"
+          alt=""
+          className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-10 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[7deg]"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[#FCE225]/10 via-yellow-400/5 to-amber-500/10 pointer-events-none mix-blend-multiply"></div>
       </div>
-      
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
         <div className="flex flex-col items-center text-center mb-12 max-w-4xl mx-auto">

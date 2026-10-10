@@ -19,7 +19,7 @@ export default function About() {
           })
         }
       })
-      .catch(() => {})
+      .catch(() => { })
   }, [])
 
   const slideImages = aboutData.images
@@ -49,14 +49,14 @@ export default function About() {
     <>
       <section id="about" className="relative py-20 lg:py-32 overflow-hidden text-gray-900 bg-white">
         {/* Section Background Image */}
-        <div 
+        <div
           className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
           style={{ WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)', maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)' }}
         >
-          <img 
-            src="/bg1.jpeg" 
-            alt="" 
-            className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-10 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[7deg]" 
+          <img
+            src="/bg1.jpeg"
+            alt=""
+            className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-10 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[7deg]"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#FCE225]/10 via-yellow-400/5 to-amber-500/10 pointer-events-none mix-blend-multiply"></div>
         </div>

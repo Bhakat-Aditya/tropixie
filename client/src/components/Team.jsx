@@ -11,7 +11,7 @@ export default function Team() {
       .then((data) => {
         if (data?.team?.length > 0) setTeam(data.team)
       })
-      .catch(() => {})
+      .catch(() => { })
   }, [])
 
   useEffect(() => {
@@ -29,14 +29,14 @@ export default function Team() {
     <>
       <section id="team" className="relative py-20 lg:py-28 overflow-hidden text-gray-900 bg-white">
         {/* Section Background Image */}
-        <div 
+        <div
           className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
           style={{ WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)', maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)' }}
         >
-          <img 
-            src="/bg1.jpeg" 
-            alt="" 
-            className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-10 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[7deg]" 
+          <img
+            src="/bg1.jpeg"
+            alt=""
+            className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-10 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[7deg]"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#FCE225]/10 via-yellow-400/5 to-amber-500/10 pointer-events-none mix-blend-multiply"></div>
         </div>
@@ -90,10 +90,10 @@ export default function Team() {
 
                 {/* Paint Brush Style Tags */}
                 <div className="relative -mt-6 sm:-mt-8 z-20 flex flex-col items-center">
-                  
+
                   {/* Name Tag (Blue/Purple Stroke) */}
                   <div className="relative z-10 px-3 py-1 transform hover:-translate-y-0.5 transition-transform duration-300 flex items-center justify-center group/name">
-                    <div 
+                    <div
                       className="absolute inset-0 bg-[#635BFF] transition-colors duration-300 group-hover/name:bg-[#5249ea]"
                       style={{ filter: 'url(#brush-texture)', borderRadius: '255px 15px 225px 15px/15px 225px 15px 255px' }}
                     ></div>
@@ -101,10 +101,10 @@ export default function Team() {
                       {member.name}
                     </h4>
                   </div>
-                  
+
                   {/* Role Tag (Magenta/Pink Stroke) */}
                   <div className="relative -mt-0.5 z-0 px-2.5 py-0.5 transform hover:-translate-y-0.5 transition-transform duration-300 flex items-center justify-center group/role">
-                    <div 
+                    <div
                       className="absolute inset-0 bg-[#C83681] transition-colors duration-300 group-hover/role:bg-[#b02b6e]"
                       style={{ filter: 'url(#brush-texture)', borderRadius: '15px 225px 15px 255px/255px 15px 225px 15px' }}
                     ></div>

@@ -11,7 +11,7 @@ export default function Showreel() {
       .then((data) => {
         if (data?.showreel?.length > 0) setProjects(data.showreel)
       })
-      .catch(() => {})
+      .catch(() => { })
   }, [])
 
   useEffect(() => {
@@ -28,18 +28,18 @@ export default function Showreel() {
   return (
     <section id="portfolio" className="relative py-20 lg:py-32 overflow-hidden text-gray-900 bg-white">
       {/* Section Background Image */}
-      <div 
+      <div
         className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
         style={{ WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)', maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)' }}
       >
-        <img 
-          src="/bg3.jpeg" 
-          alt="" 
-          className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-10 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[7deg]" 
+        <img
+          src="/bg3.jpeg"
+          alt=""
+          className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] object-cover opacity-10 blur-[2px] saturate-50 transform -translate-x-1/2 -translate-y-1/2 rotate-[7deg]"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[#FCE225]/10 via-yellow-400/5 to-amber-500/10 pointer-events-none mix-blend-multiply"></div>
       </div>
-      
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
@@ -136,16 +136,16 @@ export default function Showreel() {
                 <h3 className="text-lg lg:text-2xl font-bold text-purple-900 mb-4 tracking-tight truncate shrink-0">
                   {selectedVideo.title}
                 </h3>
-                
+
                 <h4 className="text-gray-900 font-bold font-[var(--font-outfit)] text-sm mb-4 flex items-center justify-between shrink-0">
                   More Videos
                   <span className="bg-tropixie-primary/20 text-tropixie-primary text-xs px-2 py-1 rounded-full">{projects.length}</span>
                 </h4>
-                
+
                 {/* Thumbnails Scroll Area */}
                 <div className="flex lg:flex-col gap-3 lg:gap-4 overflow-x-auto lg:overflow-x-hidden lg:overflow-y-auto pb-2 lg:pb-0 lg:pr-2 flex-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                   {projects.map((project, idx) => (
-                    <div 
+                    <div
                       key={project._id || idx}
                       onClick={() => setSelectedVideo(project)}
                       className={`flex-shrink-0 w-36 lg:w-full aspect-video rounded-xl overflow-hidden cursor-pointer border-2 transition-all duration-300 relative group ${selectedVideo._id === project._id || selectedVideo.youtubeId === project.youtubeId ? 'border-tropixie-primary opacity-100 shadow-[0_0_15px_rgba(168,85,247,0.5)] lg:scale-[1.02] ml-1 mr-1 lg:ml-0 lg:mr-0' : 'border-transparent opacity-60 hover:opacity-100 hover:border-tropixie-primary/50'}`}
@@ -162,11 +162,11 @@ export default function Showreel() {
                         className="w-full h-full object-cover"
                       />
                       {(selectedVideo.youtubeId !== project.youtubeId) && (
-                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
-                           <div className="w-8 h-8 bg-tropixie-primary/80 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:bg-tropixie-primary transition-all duration-300 lg:group-hover:scale-110">
-                             <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-                           </div>
-                         </div>
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
+                          <div className="w-8 h-8 bg-tropixie-primary/80 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:bg-tropixie-primary transition-all duration-300 lg:group-hover:scale-110">
+                            <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                          </div>
+                        </div>
                       )}
                     </div>
                   ))}
