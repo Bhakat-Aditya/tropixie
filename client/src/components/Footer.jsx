@@ -13,7 +13,7 @@ export default function Footer() {
 
           {/* Col 1 */}
           <div className="col-span-2 lg:col-span-4 flex flex-col items-center justify-center w-full">
-            <img src="/logo.png" alt="Tropixie" className="w-48 md:w-64 lg:w-80 h-auto object-contain mb-6 lg:mb-10" />
+            <img src="/logo.png" alt="Tropixie" className="w-64 md:w-72 lg:w-80 h-auto object-contain mb-6 lg:mb-10" />
             
             {/* Social Icons */}
             <div className="flex items-center justify-center gap-4 w-full">
